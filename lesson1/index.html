@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English 1_Lesson 1_Unit 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        *, body, html, button, span, h1, h2, h3, p, div, input, textarea, select { 
+            font-family: 'Quicksand', sans-serif; 
+            font-weight: 600;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .perspective { perspective: 1000px; }
+        .backface-hidden { backface-visibility: hidden; }
+        .card-inner { transition: transform 0.5s; transform-style: preserve-3d; }
+        .card-flipped { transform: rotateY(180deg); }
+        .disabled-tab { opacity: 0.4; cursor: not-allowed !important; pointer-events: none; }
+        
+        /* Floating Area Core Mechanics */
+        #word-bank-arena {
+            position: relative;
+            overflow: hidden;
+        }
+        .floating-tile {
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+            white-space: nowrap;
+            will-change: left, top;
+        }
+        .floating-tile:active {
+            cursor: grabbing;
+            transform: scale(1.05);
+            z-index: 50;
+        }
+        .drop-zone-active {
+            background-color: #f0fdf4 !important;
+            border-color: #4ade80 !important;
+        }
+    </style>
+</head>
+<body class="bg-[#f7f9fc] text-slate-800 min-h-screen flex flex-col selection:bg-indigo-200 pb-12">
+
+    <!-- CLASSROOM HEADER -->
+    <header class="bg-gradient-to-r from-[#FFDEE9] via-[#FFE5E5] to-[#B5FFFC] border-b-4 border-dashed border-amber-200 shadow-sm p-6 text-center rounded-b-3xl">
+        <h1 class="text-3xl md:text-4xl font-black tracking-wide drop-shadow-sm text-indigo-900">✨ English 1_Lesson 1_Unit 1 ✨</h1>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-4xl w-full mx-auto px-4 mt-6">
+        <div class="flex bg-amber-100/70 p-1.5 rounded-2xl border border-amber-200 shadow-inner overflow-x-auto">
+            <button onclick="switchTab('reference')" id="btn-reference" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center bg-white text-amber-600 shadow-sm transition cursor-pointer whitespace-nowrap">📚 Word Bank</button>
+            <button onclick="switchTab('flashcard')" id="btn-flashcard" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition cursor-pointer whitespace-nowrap">🎴 Flashcards</button>
+            <button onclick="switchTab('gapfill')" id="btn-gapfill" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">✏️ Gap Fill</button>
+            <button onclick="switchTab('arrange')" id="btn-arrange" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🎮 Unscramble</button>
+            <button onclick="switchTab('finish')" id="btn-finish" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🏆 Finish</button>
+        </div>
+    </div>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        
+        <!-- SECTION 0: VOCABULARY REFERENCE TABLE -->
+        <section id="tab-reference" class="tab-content block space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <h2 class="text-2xl font-black text-indigo-900 font-heading">📖 English 1_Lesson 1_Unit 1_Vocabulary &amp; Grammar</h2>
+                    <p class="text-sm text-slate-500 mt-1">Review all words, grammar and example sentences before starting the practice activities.<br>Xem lại từ vựng, ngữ pháp và câu ví dụ trước khi làm bài luyện tập.</p>
+                </div>
+
+                <!-- GRAMMAR BOX -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-indigo-900">📌 Grammar 1: I'm from + country</h3>
+                        <p class="text-sm text-slate-700">I'm from Japan. <span class="text-slate-500">(Tôi đến từ Nhật Bản.)</span></p>
+                        <p class="text-sm text-slate-700">She is from Mexico. <span class="text-slate-500">(Cô ấy đến từ Mexico.)</span></p>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-indigo-100 leading-relaxed">
+                            <b>Present simple (be) / Thì hiện tại đơn của "be":</b><br>
+                            I <b>am</b> (I'm) · He / She <b>is</b> · You / We / They <b>are</b>
+                        </div>
+                    </div>
+                    <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-amber-800">📌 Grammar 2: I'm a / an + job</h3>
+                        <p class="text-sm text-slate-700">I'm a teacher. <span class="text-slate-500">(Tôi là giáo viên.)</span></p>
+                        <p class="text-sm text-slate-700">He is an engineer. <span class="text-slate-500">(Anh ấy là kỹ sư.)</span></p>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-amber-100 leading-relaxed">
+                            Use <b>a</b> before a consonant sound: a doctor, a chef.<br>
+                            Use <b>an</b> before a vowel sound: an actor, an architect, an engineer.<br>
+                            <span class="text-slate-500">Dùng <b>a</b> trước phụ âm, dùng <b>an</b> trước nguyên âm (a, e, i, o, u).</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAMPLE FORM -->
+                <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4">
+                    <h3 class="text-lg font-black text-emerald-900 mb-2">📝 Personal Information Form / Mẫu thông tin cá nhân</h3>
+                    <div class="grid sm:grid-cols-3 gap-3 text-sm">
+                        <div class="bg-white rounded-xl p-3 border border-emerald-100"><span class="text-xs text-slate-400 block">Name / Tên</span>Ken Sato</div>
+                        <div class="bg-white rounded-xl p-3 border border-emerald-100"><span class="text-xs text-slate-400 block">Country / Quốc gia</span>Japan</div>
+                        <div class="bg-white rounded-xl p-3 border border-emerald-100"><span class="text-xs text-slate-400 block">Job / Nghề nghiệp</span>Engineer</div>
+                    </div>
+                    <p class="text-sm text-emerald-900 mt-3">➡️ <b>I'm Ken Sato. I'm from Japan. I'm an engineer.</b></p>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table class="w-full text-left border-collapse bg-white">
+                        <thead>
+                            <tr class="bg-indigo-50 border-b border-slate-200 text-indigo-900 text-xs uppercase tracking-wider font-black">
+                                <th class="p-3.5">Vocabulary</th>
+                                <th class="p-3.5">Meaning (Tiếng Việt)</th>
+                                <th class="p-3.5">IPA</th>
+                                <th class="p-3.5">Example Sentence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reference-table-body" class="divide-y divide-slate-100 text-xs md:text-sm">
+                            <!-- Dynamic Content Inserted Here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="switchTab('flashcard')" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl text-sm shadow-sm transition cursor-pointer">Start Flashcards ➔ Bắt đầu thẻ từ</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: FLASHCARDS -->
+        <section id="tab-flashcard" class="tab-content hidden space-y-6">
+            <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-amber-300 shadow-sm flex justify-between items-center flex-wrap gap-2">
+                <div class="text-sm font-black text-slate-600">Progress / Tiến độ: <span id="progress-text" class="text-amber-500">0/0</span></div>
+                <div class="w-full sm:w-1/3 bg-slate-100 h-4 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <button onclick="resetProgress()" class="text-xs text-rose-500 hover:underline font-black cursor-pointer">🔄 Reset / Làm lại</button>
+            </div>
+            <p class="text-xs text-center text-slate-500 font-medium">Tap the card to see the meaning. Choose "Good" or "Easy" when you remember the word.<br>Chạm vào thẻ để xem nghĩa. Chọn "Good" hoặc "Easy" khi bạn đã nhớ từ.</p>
+            
+            <div id="flashcard-container">
+                <div id="card-arena" class="perspective w-full max-w-md mx-auto h-[420px] cursor-pointer">
+                    <div id="flashcard-inner" onclick="flipCard()" class="card-inner w-full h-full relative border-4 border-amber-400 rounded-3xl shadow-md bg-white">
+                        <!-- Front View -->
+                        <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between items-center text-center bg-amber-50/30 rounded-[20px]">
+                            <span class="text-xs font-black text-amber-600 uppercase tracking-widest bg-amber-100 px-4 py-1.5 rounded-full">English Word</span>
+                            <div class="space-y-4 my-auto w-full">
+                                <h2 id="f-word" class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"></h2>
+                                <div class="flex justify-center items-center space-x-2">
+                                    <span id="f-ipa" class="text-indigo-600 font-bold text-base md:text-lg"></span>
+                                    <button onclick="speakWord(event)" class="w-10 h-10 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition flex items-center justify-center text-lg cursor-pointer shadow-sm">🔊</button>
+                                </div>
+                                <p id="f-example" class="text-slate-700 text-sm md:text-base border-t-2 border-dashed border-amber-200 pt-4 px-2 leading-relaxed font-medium bg-white rounded-xl p-3 shadow-sm"></p>
+                            </div>
+                            <p class="text-xs text-slate-400 font-bold">👉 Tap card to flip! / Chạm để lật thẻ 👈</p>
+                        </div>
+                        <!-- Back View -->
+                        <div class="backface-hidden w-full h-full absolute inset-0 p-6 flex flex-col justify-between bg-slate-900 text-white rounded-[22px]" style="transform: rotateY(180deg);">
+                            <span class="text-xs font-black text-amber-400 uppercase tracking-widest bg-slate-800 px-4 py-1.5 rounded-full w-max mx-auto">Vietnamese Meaning</span>
+                            <div class="my-auto space-y-5 text-center">
+                                <div>
+                                    <span class="text-xs uppercase font-black text-slate-400 block mb-1 tracking-wider">Meaning / Nghĩa:</span>
+                                    <h3 id="f-vi" class="text-2xl md:text-3xl font-black text-amber-300"></h3>
+                                </div>
+                            </div>
+                            <p class="text-xs text-center text-slate-500 font-bold">Tap again to flip back / Chạm lần nữa để lật lại</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anki Controls -->
+                <div id="anki-controls" class="w-full max-w-md mx-auto bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-4 gap-2 mt-6">
+                    <button onclick="handleAnkiAction('again')" class="p-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-center transition cursor-pointer"><span class="block text-xs font-black text-rose-600">Again</span><span class="text-[10px] text-rose-400 font-bold block mt-0.5">&lt;1m</span></button>
+                    <button onclick="handleAnkiAction('hard')" class="p-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-center transition cursor-pointer"><span class="block text-xs font-black text-amber-600">Hard</span><span class="text-[10px] text-amber-400 font-bold block mt-0.5">&lt;10m</span></button>
+                    <button onclick="handleAnkiAction('good')" class="p-2 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl text-center transition cursor-pointer"><span class="block text-xs font-black text-indigo-600">Good</span><span class="text-[10px] text-indigo-400 font-bold block mt-0.5">1d</span></button>
+                    <button onclick="handleAnkiAction('easy')" class="p-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-center transition shadow-sm cursor-pointer"><span class="block text-xs font-black text-emerald-600">Easy</span><span class="text-[10px] text-emerald-400 font-bold block mt-0.5">4d</span></button>
+                </div>
+            </div>
+
+            <!-- Flashcard Completion Screen -->
+            <div id="flashcard-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🎈🦄🎈</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Flashcards Completed!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Awesome! You have reviewed all flashcards. Let's move on to the Gap Fill exercise!<br>Tuyệt vời! Bạn đã ôn xong tất cả thẻ từ. Hãy làm bài điền từ nhé!</p>
+                <button onclick="unlockAndGoToGapfill()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Play Gap Fill Exercise ➔</button>
+            </div>
+        </section>
+
+        <!-- TASK 2: GAP FILL EXERCISE (15 ITEMS) -->
+        <section id="tab-gapfill" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-indigo-100 text-indigo-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 2: Practice</span>
+                    <h3 class="text-2xl font-heading font-black text-slate-900">Fill in the Blanks / Điền vào chỗ trống</h3>
+                    <p class="text-sm text-slate-500 font-medium max-w-xl mx-auto">Answer ALL questions first. You can guess! Then click "Check Answers". If you have mistakes, retype the correct answers to continue.<br>Hãy điền TẤT CẢ các câu trước (có thể đoán). Sau đó bấm "Kiểm tra". Nếu sai, bạn phải điền lại đáp án đúng để tiếp tục.</p>
+                </div>
+
+                <div id="gapfill-questions-container" class="space-y-4">
+                    <!-- Dynamic Gap Fill Questions -->
+                </div>
+
+                <div class="text-center pt-4">
+                    <button id="gf-check-btn" onclick="checkGapFillAnswers()" class="px-10 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm rounded-xl shadow-md transition cursor-pointer">Check Answers / Kiểm tra</button>
+                </div>
+
+                <div id="gapfill-feedback" class="p-4 rounded-2xl text-center font-black hidden"></div>
+            </div>
+
+            <div id="gapfill-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🎯🎉🌟</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Great Job!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed" id="gapfill-result-msg">You are ready for the Sentence Unscramble game!</p>
+                <button onclick="unlockAndGoToArrange()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Play Sentence Unscramble ➔</button>
+            </div>
+        </section>
+
+        <!-- TASK 3: UNSCRAMBLE SENTENCES GAME -->
+        <section id="tab-arrange" class="tab-content hidden space-y-6">
+            <div id="arrange-workspace" class="space-y-6">
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex justify-between items-center flex-wrap gap-2">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-xl text-xs font-black uppercase">Sentence <span id="arr-current-num">1</span>/10</span>
+                        <div class="text-sm font-black text-slate-600">Score: <span id="arr-score-text" class="text-emerald-500 font-black">0</span> ⭐</div>
+                    </div>
+                    <p class="text-xs font-bold text-slate-400 italic">Click or drag words into the drop area to build the correct sentence!<br>Nhấp hoặc kéo các từ vào khung để sắp xếp thành câu đúng!</p>
+                </div>
+
+                <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 text-center">
+                    <span class="text-xs font-black text-amber-700 bg-amber-200/60 px-3 py-1 rounded-full uppercase tracking-wider">Vietnamese Meaning</span>
+                    <p id="arr-vi-hint" class="text-slate-800 font-bold text-base md:text-lg mt-2 leading-relaxed"></p>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-xs font-black text-indigo-950 uppercase tracking-wider">☁️ Word Bank (Click or drag tiles):</label>
+                    <div id="word-bank-arena" class="w-full h-[220px] bg-sky-50/50 border-4 border-dashed border-sky-300 rounded-2xl shadow-inner relative">
+                        <!-- Floating tiles inserted here -->
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-xs font-black text-indigo-950 uppercase tracking-wider">📥 Arranged Sentence:</label>
+                    <div id="sentence-drop-zone" ondragover="allowDrop(event)" ondragenter="handleDragEnter(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)" class="w-full min-h-[100px] bg-white border-4 border-dashed border-slate-300 rounded-2xl p-4 flex flex-wrap gap-2.5 items-center justify-center transition shadow-inner">
+                        <!-- Dropped tiles go here -->
+                    </div>
+                </div>
+
+                <div id="arrange-feedback" class="text-center font-black text-base py-3 rounded-xl border hidden transition-all duration-300"></div>
+
+                <div class="flex justify-between items-center gap-3">
+                    <button onclick="resetCurrentSentenceGame()" class="px-5 py-3.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-black rounded-xl text-sm transition cursor-pointer">🔄 Clear</button>
+                    <div class="flex space-x-2">
+                        <button id="arr-check-btn" onclick="checkArrangedSentence()" class="px-7 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-sm transition shadow-sm cursor-pointer">Check</button>
+                        <button id="arr-next-btn" onclick="nextArrangeQuestion()" class="px-7 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-black rounded-xl text-sm transition shadow-sm cursor-pointer hidden">Next Question ➔</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINAL CONGRATULATIONS CARD AFTER UNSCRAMBLE -->
+            <div id="arrange-success-box" class="bg-slate-900 text-white p-8 rounded-3xl max-w-lg mx-auto text-center space-y-5 hidden shadow-xl border-4 border-amber-400">
+                <span class="text-6xl block animate-bounce">🦄🏆🌟</span>
+                <h3 class="text-3xl font-heading font-black text-amber-300">Unscramble Completed!</h3>
+                <p class="text-slate-300 font-medium text-base leading-relaxed">Well done! You have finished the last practice task.<br>Làm tốt lắm! Bạn đã hoàn thành bài luyện tập cuối cùng.</p>
+                
+                <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                    <p class="text-xs text-slate-400 uppercase font-bold tracking-wider mb-1">Final Score</p>
+                    <p class="text-2xl font-black text-emerald-400"><span id="final-score-display">10</span> / 10 ⭐</p>
+                </div>
+
+                <div class="pt-4 border-t border-slate-800">
+                    <button onclick="unlockAndGoToFinish()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Finish Lesson 1 ➔ Hoàn thành bài học</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL: COMPLETION + SUMMARY -->
+        <section id="tab-finish" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 text-white p-8 rounded-3xl max-w-lg mx-auto text-center space-y-5 shadow-xl border-4 border-amber-400">
+                <span class="text-6xl block animate-bounce">🦄🏆🌟</span>
+                <h3 class="text-3xl font-heading font-black text-amber-300">Congratulations!</h3>
+                <p class="text-slate-200 font-medium text-base leading-relaxed">You have completed English 1_Lesson 1_Unit 1!<br>Chúc mừng bạn đã hoàn thành English 1_Lesson 1_Unit 1!</p>
+
+                <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-left space-y-2 text-sm">
+                    <p class="text-xs text-amber-300 uppercase font-black tracking-wider text-center">📋 Lesson Summary / Tổng kết bài học</p>
+                    <p class="text-slate-200"><b class="text-amber-300">Vocabulary / Từ vựng:</b> 12 countries, numbers 1-10, 18 jobs.<br><span class="text-slate-400">12 quốc gia, số từ 1 đến 10, 18 nghề nghiệp.</span></p>
+                    <p class="text-slate-200"><b class="text-amber-300">Grammar / Ngữ pháp:</b> I'm from + country. I'm a / an + job. Present simple of "be" (am, is, are).<br><span class="text-slate-400">Giới thiệu quốc gia và nghề nghiệp; thì hiện tại đơn của "be".</span></p>
+                    <p class="text-slate-200"><b class="text-amber-300">Goal / Mục tiêu:</b> You can now fill in a personal information form and introduce yourself.<br><span class="text-slate-400">Bạn đã có thể điền mẫu thông tin cá nhân và tự giới thiệu bản thân.</span></p>
+                    <p class="text-emerald-300 text-center pt-1">Example: "I'm Ken Sato. I'm from Japan. I'm an engineer."</p>
+                </div>
+
+                <p class="text-amber-200 font-bold">Great job! See you in the next lesson! 🎉<br>Làm tốt lắm! Hẹn gặp bạn ở bài học tiếp theo!</p>
+
+                <div class="pt-4 border-t border-slate-800">
+                    <button onclick="restartEntireSession()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">🔄 Restart Lesson 1 Practice</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // MASTER VOCABULARY LIST (English 1_Lesson 1_Unit 1)
+        const vocabularyData = [
+            // Countries
+            { word: "Argentina", ipa: "/ˌɑːdʒənˈtiːnə/", vi: "Ác-hen-ti-na", ex: "I'm from Argentina. I'm Argentinian." },
+            { word: "Australia", ipa: "/ɒˈstreɪliə/", vi: "nước Úc", ex: "She is from Australia. She's Australian." },
+            { word: "Brazil", ipa: "/brəˈzɪl/", vi: "Bra-xin", ex: "He is from Brazil. He's Brazilian." },
+            { word: "Britain", ipa: "/ˈbrɪtn/", vi: "nước Anh", ex: "I'm from Britain. I'm British." },
+            { word: "Canada", ipa: "/ˈkænədə/", vi: "Ca-na-đa", ex: "They are from Canada. They're Canadian." },
+            { word: "Egypt", ipa: "/ˈiːdʒɪpt/", vi: "Ai Cập", ex: "I'm from Egypt. I'm Egyptian." },
+            { word: "Italy", ipa: "/ˈɪtəli/", vi: "nước Ý", ex: "Pizza is from Italy. I'm Italian." },
+            { word: "Japan", ipa: "/dʒəˈpæn/", vi: "Nhật Bản", ex: "My teacher is from Japan. She's Japanese." },
+            { word: "Mexico", ipa: "/ˈmeksɪkəʊ/", vi: "Mê-hi-cô", ex: "He is from Mexico. He's Mexican." },
+            { word: "Morocco", ipa: "/məˈrɒkəʊ/", vi: "Ma-rốc", ex: "I'm from Morocco. I'm Moroccan." },
+            { word: "Spain", ipa: "/speɪn/", vi: "Tây Ban Nha", ex: "She is from Spain. She's Spanish." },
+            { word: "Turkey", ipa: "/ˈtɜːki/", vi: "Thổ Nhĩ Kỳ", ex: "We are from Turkey. We're Turkish." },
+
+            // Numbers
+            { word: "one", ipa: "/wʌn/", vi: "số 1", ex: "I have one book." },
+            { word: "two", ipa: "/tuː/", vi: "số 2", ex: "I have two pens." },
+            { word: "three", ipa: "/θriː/", vi: "số 3", ex: "There are three students." },
+            { word: "four", ipa: "/fɔː(r)/", vi: "số 4", ex: "My class has four teachers." },
+            { word: "five", ipa: "/faɪv/", vi: "số 5", ex: "I have five friends." },
+            { word: "six", ipa: "/sɪks/", vi: "số 6", ex: "There are six chairs here." },
+            { word: "seven", ipa: "/ˈsevn/", vi: "số 7", ex: "I get up at seven." },
+            { word: "eight", ipa: "/eɪt/", vi: "số 8", ex: "My class starts at eight." },
+            { word: "nine", ipa: "/naɪn/", vi: "số 9", ex: "She has nine books." },
+            { word: "ten", ipa: "/ten/", vi: "số 10", ex: "There are ten students." },
+
+            // Jobs
+            { word: "architect", ipa: "/ˈɑːkɪtekt/", vi: "kiến trúc sư", ex: "I'm an architect. I design houses." },
+            { word: "computer programmer", ipa: "/kəmˈpjuːtə ˈprəʊɡræmə(r)/", vi: "lập trình viên", ex: "He is a computer programmer." },
+            { word: "designer", ipa: "/dɪˈzaɪnə(r)/", vi: "nhà thiết kế", ex: "She is a designer." },
+            { word: "doctor", ipa: "/ˈdɒktə(r)/", vi: "bác sĩ", ex: "My mother is a doctor." },
+            { word: "engineer", ipa: "/ˌendʒɪˈnɪə(r)/", vi: "kỹ sư", ex: "My father is an engineer." },
+            { word: "manager", ipa: "/ˈmænɪdʒə(r)/", vi: "quản lý", ex: "She is a manager." },
+            { word: "student", ipa: "/ˈstjuːdnt/", vi: "sinh viên, học sinh", ex: "I'm a student." },
+            { word: "teacher", ipa: "/ˈtiːtʃə(r)/", vi: "giáo viên", ex: "He is a teacher." },
+            { word: "actor", ipa: "/ˈæktə(r)/", vi: "diễn viên", ex: "He is an actor." },
+            { word: "builder", ipa: "/ˈbɪldə(r)/", vi: "thợ xây", ex: "My uncle is a builder." },
+            { word: "chef", ipa: "/ʃef/", vi: "đầu bếp", ex: "She is a chef." },
+            { word: "musician", ipa: "/mjuˈzɪʃn/", vi: "nhạc sĩ, nhạc công", ex: "I'm a musician." },
+            { word: "photographer", ipa: "/fəˈtɒɡrəfə(r)/", vi: "nhiếp ảnh gia", ex: "She is a photographer." },
+            { word: "police officer", ipa: "/pəˈliːs ˈɒfɪsə(r)/", vi: "cảnh sát", ex: "He is a police officer." },
+            { word: "receptionist", ipa: "/rɪˈsepʃənɪst/", vi: "lễ tân", ex: "She is a receptionist." },
+            { word: "salesperson", ipa: "/ˈseɪlzpɜːsn/", vi: "nhân viên bán hàng", ex: "I'm a salesperson." },
+            { word: "soccer player", ipa: "/ˈsɒkə pleɪə(r)/", vi: "cầu thủ bóng đá", ex: "He is a soccer player." },
+            { word: "writer", ipa: "/ˈraɪtə(r)/", vi: "nhà văn", ex: "She is a writer." }
+        ];
+
+        // TASK 2: 15 GAP-FILL ITEMS
+        const gapFillData = [
+            { id: 1, sentence: "Hi! I'm Ken. I'm ________ Japan.", answer: "from", hint: "từ, đến từ" },
+            { id: 2, sentence: "Maria ________ from Brazil.", answer: "is", hint: "thì, là (she)" },
+            { id: 3, sentence: "Tom is ________ architect.", answer: "an", hint: "một (trước nguyên âm)" },
+            { id: 4, sentence: "I'm ________ doctor. I work in a hospital.", answer: "a", hint: "một (trước phụ âm)" },
+            { id: 5, sentence: "Big Ben is in London. London is in ________.", answer: "Britain", hint: "nước Anh" },
+            { id: 6, sentence: "Name: Marco. Country: Italy. → I'm Marco. I'm from ________.", answer: "Italy", hint: "nước Ý" },
+            { id: 7, sentence: "Tokyo is a city in ________.", answer: "Japan", hint: "Nhật Bản" },
+            { id: 8, sentence: "Kangaroos live in ________.", answer: "Australia", hint: "nước Úc" },
+            { id: 9, sentence: "The pyramids are in ________.", answer: "Egypt", hint: "Ai Cập" },
+            { id: 10, sentence: "One, two, three, ________, five.", answer: "four", hint: "số 4" },
+            { id: 11, sentence: "Seven, eight, ________, ten.", answer: "nine", hint: "số 9" },
+            { id: 12, sentence: "He is a ________. He plays soccer for a team.", answer: "soccer player", hint: "cầu thủ bóng đá" },
+            { id: 13, sentence: "Job: photographer → I'm a ________.", answer: "photographer", hint: "nhiếp ảnh gia" },
+            { id: 14, sentence: "I'm a ________. I study at university.", answer: "student", hint: "sinh viên" },
+            { id: 15, sentence: "They ________ teachers.", answer: "are", hint: "thì, là (they)" }
+        ];
+
+        // TASK 3: UNSCRAMBLE POOL
+        const gameSentencesPool = [
+            { id: 0, target: "I'm from Japan .", vi: "Tôi đến từ Nhật Bản." },
+            { id: 1, target: "She is from Mexico .", vi: "Cô ấy đến từ Mexico." },
+            { id: 2, target: "He is a doctor .", vi: "Anh ấy là bác sĩ." },
+            { id: 3, target: "I'm an engineer .", vi: "Tôi là kỹ sư." },
+            { id: 4, target: "They are from Canada .", vi: "Họ đến từ Ca-na-đa." },
+            { id: 5, target: "My teacher is from Britain .", vi: "Giáo viên của tôi đến từ nước Anh." },
+            { id: 6, target: "Maria is a musician from Brazil .", vi: "Maria là một nhạc sĩ đến từ Bra-xin." },
+            { id: 7, target: "We are students .", vi: "Chúng tôi là sinh viên." },
+            { id: 8, target: "I'm a student from Turkey .", vi: "Tôi là sinh viên đến từ Thổ Nhĩ Kỳ." },
+            { id: 9, target: "He is an actor from Italy .", vi: "Anh ấy là diễn viên đến từ nước Ý." }
+        ];
+
+        let gapfillUnlocked = false;
+        let arrangeUnlocked = false;
+        let finishUnlocked = false;
+
+        let flashcardStates = vocabularyData.map(v => ({ word: v.word, done: false }));
+        let currentFlashcardIndex = 0;
+
+        let arrangeCurrentIndex = 0;
+        let arrangeScore = 0;
+
+        let animatedObjects = [];
+        let animationFrameId = null;
+
+        const pastelColors = [
+            'bg-pink-100 text-pink-700 border-pink-300 hover:bg-pink-200',
+            'bg-orange-100 text-orange-700 border-orange-300 hover:bg-orange-200',
+            'bg-amber-100 text-amber-700 border-amber-300 hover:bg-amber-200',
+            'bg-emerald-100 text-emerald-700 border-emerald-300 hover:bg-emerald-200',
+            'bg-sky-100 text-sky-700 border-sky-300 hover:bg-sky-200',
+            'bg-indigo-100 text-indigo-700 border-indigo-300 hover:bg-indigo-200',
+            'bg-purple-100 text-purple-700 border-purple-300 hover:bg-purple-200'
+        ];
+
+        window.onload = function() {
+            renderReferenceTable();
+            renderGapFillQuestions();
+            updateFlashcardUI();
+        };
+
+        function renderReferenceTable() {
+            const tbody = document.getElementById('reference-table-body');
+            tbody.innerHTML = vocabularyData.map(v => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3.5 font-black text-indigo-950">${v.word}</td>
+                    <td class="p-3.5 font-bold text-slate-700">${v.vi}</td>
+                    <td class="p-3.5 text-indigo-600 font-bold">${v.ipa}</td>
+                    <td class="p-3.5 text-slate-600">${v.ex}</td>
+                </tr>
+            `).join('');
+        }
+
+        function switchTab(tabId) {
+            if (tabId === 'gapfill' && !gapfillUnlocked) return;
+            if (tabId === 'arrange' && !arrangeUnlocked) return;
+            if (tabId === 'finish' && !finishUnlocked) return;
+
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-white', 'text-amber-600', 'shadow-sm');
+                el.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            activeBtn.classList.add('bg-white', 'text-amber-600', 'shadow-sm');
+            activeBtn.classList.remove('text-slate-500');
+
+            if (tabId !== 'arrange') {
+                stopFloatingAnimationLoop();
+            } else {
+                setTimeout(() => {
+                    initArrangeSentenceGame();
+                }, 60);
+            }
+        }
+
+        /* --- FLASHCARD SYSTEM --- */
+        function updateFlashcardUI() {
+            const undoneCards = flashcardStates.filter(c => !c.done);
+            const total = flashcardStates.length;
+            const completed = total - undoneCards.length;
+            
+            document.getElementById('progress-text').innerText = `${completed}/${total}`;
+            document.getElementById('progress-bar').style.width = `${(completed / total) * 100}%`;
+
+            if (undoneCards.length === 0) {
+                document.getElementById('flashcard-container').classList.add('hidden');
+                document.getElementById('flashcard-success-box').classList.remove('hidden');
+                gapfillUnlocked = true;
+                document.getElementById('btn-gapfill').classList.remove('disabled-tab');
+                return;
+            }
+
+            document.getElementById('flashcard-container').classList.remove('hidden');
+            document.getElementById('flashcard-success-box').classList.add('hidden');
+
+            const item = vocabularyData.find(v => v.word === undoneCards[currentFlashcardIndex % undoneCards.length].word);
+
+            document.getElementById('f-word').innerText = item.word;
+            document.getElementById('f-ipa').innerText = item.ipa;
+            document.getElementById('f-example').innerText = item.ex;
+            document.getElementById('f-vi').innerText = item.vi;
+
+            document.getElementById('flashcard-inner').classList.remove('card-flipped');
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard-inner').classList.toggle('card-flipped');
+        }
+
+        function handleAnkiAction(type) {
+            const undoneCards = flashcardStates.filter(c => !c.done);
+            if (undoneCards.length === 0) return;
+
+            const currentWord = undoneCards[currentFlashcardIndex % undoneCards.length].word;
+
+            if (type === 'good' || type === 'easy') {
+                const target = flashcardStates.find(c => c.word === currentWord);
+                if (target) target.done = true;
+            } else {
+                currentFlashcardIndex++;
+            }
+
+            updateFlashcardUI();
+        }
+
+        function resetProgress() {
+            flashcardStates = vocabularyData.map(v => ({ word: v.word, done: false }));
+            currentFlashcardIndex = 0;
+            updateFlashcardUI();
+        }
+
+        function unlockAndGoToGapfill() {
+            gapfillUnlocked = true;
+            document.getElementById('btn-gapfill').classList.remove('disabled-tab');
+            switchTab('gapfill');
+        }
+
+        function speakWord(event) {
+            event.stopPropagation();
+            const text = document.getElementById('f-word').innerText;
+            if (!text) return;
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'en-US';
+            window.speechSynthesis.speak(msg);
+        }
+
+        /* --- TASK 2: GAP FILL SYSTEM --- */
+        function renderGapFillQuestions() {
+            const container = document.getElementById('gapfill-questions-container');
+            container.innerHTML = gapFillData.map((q, idx) => `
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-3" id="gf-item-${q.id}">
+                    <div class="space-y-1 flex-1">
+                        <span class="text-xs font-black text-indigo-600 uppercase">Question ${idx + 1} (${q.hint})</span>
+                        <p class="text-sm md:text-base font-bold text-slate-800">${q.sentence.replace('________', `<input type="text" id="gf-input-${q.id}" class="px-3 py-1 mx-1 bg-white border-2 border-indigo-200 focus:border-indigo-500 rounded-lg outline-none font-bold text-indigo-900 text-center w-44" placeholder="type answer...">`)}</p>
+                        <div id="gf-ans-display-${q.id}" class="text-xs font-bold text-rose-600 hidden pt-1"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        let gapFirstScore = null;
+
+        function inputClass(state) {
+            const base = "px-3 py-1 mx-1 rounded-lg outline-none font-bold text-center w-44 border-2 ";
+            if (state === 'ok') return base + "bg-emerald-100 border-emerald-500 text-emerald-900";
+            if (state === 'bad') return base + "bg-rose-100 border-rose-500 text-rose-900";
+            if (state === 'empty') return base + "bg-amber-50 border-amber-500 text-amber-900";
+            return base + "bg-white border-indigo-200 text-indigo-900";
+        }
+
+        function checkGapFillAnswers() {
+            const feedback = document.getElementById('gapfill-feedback');
+            feedback.classList.remove('hidden');
+
+            // Step 1: every blank must be filled (right or wrong)
+            let emptyCount = 0;
+            gapFillData.forEach(q => {
+                const inputEl = document.getElementById(`gf-input-${q.id}`);
+                if (inputEl.value.trim() === '') {
+                    emptyCount++;
+                    inputEl.className = inputClass('empty');
+                }
+            });
+            if (emptyCount > 0) {
+                feedback.className = "p-4 rounded-2xl text-center font-black bg-amber-100 text-amber-900 border border-amber-300 block";
+                feedback.innerHTML = `✋ ${emptyCount} blank(s) are empty. Please answer all questions. You can guess!<br>Còn ${emptyCount} câu chưa điền. Hãy điền tất cả các câu (có thể đoán).`;
+                return;
+            }
+
+            // Step 2: check answers
+            let correctCount = 0;
+            gapFillData.forEach(q => {
+                const inputEl = document.getElementById(`gf-input-${q.id}`);
+                const ansDisplay = document.getElementById(`gf-ans-display-${q.id}`);
+                const userVal = inputEl.value.trim().toLowerCase();
+                const expected = q.answer.toLowerCase();
+
+                if (userVal === expected) {
+                    correctCount++;
+                    inputEl.className = inputClass('ok');
+                    inputEl.readOnly = true;
+                    ansDisplay.classList.add('hidden');
+                } else {
+                    inputEl.className = inputClass('bad');
+                    ansDisplay.innerText = `Correct Answer / Đáp án đúng: "${q.answer}" → retype it / hãy gõ lại`;
+                    ansDisplay.classList.remove('hidden');
+                    // clear so students must retype the correct answer
+                    if (gapFirstScore === null) inputEl.value = '';
+                }
+            });
+
+            const firstAttempt = (gapFirstScore === null);
+            if (firstAttempt) gapFirstScore = correctCount;
+
+            if (correctCount === gapFillData.length) {
+                feedback.className = "p-4 rounded-2xl text-center font-black bg-emerald-100 text-emerald-800 border border-emerald-300 block";
+                feedback.innerHTML = `🎉 All answers are correct now! First-try score: ${gapFirstScore}/${gapFillData.length}.<br>Tất cả đã đúng! Điểm lần đầu: ${gapFirstScore}/${gapFillData.length}.`;
+                document.getElementById('gapfill-result-msg').innerText = `First-try score: ${gapFirstScore}/${gapFillData.length}. You corrected all mistakes! / Bạn đã sửa hết các lỗi sai!`;
+                document.getElementById('gf-check-btn').classList.add('hidden');
+                arrangeUnlocked = true;
+                document.getElementById('btn-arrange').classList.remove('disabled-tab');
+                document.getElementById('gapfill-success-box').classList.remove('hidden');
+            } else {
+                feedback.className = "p-4 rounded-2xl text-center font-black bg-rose-100 text-rose-800 border border-rose-300 block";
+                feedback.innerHTML = `❌ ${correctCount}/${gapFillData.length} correct. Retype the correct answers shown in red, then click "Check Again".<br>Đúng ${correctCount}/${gapFillData.length} câu. Hãy gõ lại đáp án đúng (màu đỏ) rồi bấm "Kiểm tra lại".`;
+                document.getElementById('gf-check-btn').innerText = "Check Again / Kiểm tra lại";
+            }
+        }
+
+        function unlockAndGoToFinish() {
+            finishUnlocked = true;
+            document.getElementById('btn-finish').classList.remove('disabled-tab');
+            switchTab('finish');
+        }
+
+        function unlockAndGoToArrange() {
+            arrangeUnlocked = true;
+            document.getElementById('btn-arrange').classList.remove('disabled-tab');
+            switchTab('arrange');
+        }
+
+        /* --- TASK 3: FLOATING UNSCRAMBLE GAME --- */
+        function initArrangeSentenceGame() {
+            if (arrangeCurrentIndex >= gameSentencesPool.length) {
+                showFinalCongratulationsScreen();
+                return;
+            }
+
+            document.getElementById('arrange-workspace').classList.remove('hidden');
+            document.getElementById('arrange-success-box').classList.add('hidden');
+
+            const currentData = gameSentencesPool[arrangeCurrentIndex];
+            document.getElementById('arr-current-num').innerText = arrangeCurrentIndex + 1;
+            document.getElementById('arr-vi-hint').innerText = currentData.vi;
+            document.getElementById('arr-score-text').innerText = arrangeScore;
+
+            const feedback = document.getElementById('arrange-feedback');
+            feedback.classList.add('hidden');
+
+            document.getElementById('arr-check-btn').classList.remove('hidden');
+            document.getElementById('arr-next-btn').classList.add('hidden');
+
+            document.getElementById('sentence-drop-zone').innerHTML = '';
+
+            const words = currentData.target.split(' ').filter(w => w.trim().length > 0);
+            const shuffled = [...words].sort(() => Math.random() - 0.5);
+
+            setupFloatingArena(shuffled);
+        }
+
+        function setupFloatingArena(words) {
+            stopFloatingAnimationLoop();
+
+            const arena = document.getElementById('word-bank-arena');
+            arena.innerHTML = '';
+            animatedObjects = [];
+
+            const arenaWidth = arena.clientWidth || 600;
+            const arenaHeight = arena.clientHeight || 220;
+
+            words.forEach((w, idx) => {
+                const tile = document.createElement('div');
+                const colorClass = pastelColors[idx % pastelColors.length];
+                tile.className = `floating-tile px-4 py-2 border-2 rounded-2xl font-black text-sm shadow-md transition-transform cursor-grab ${colorClass}`;
+                tile.innerText = w;
+                tile.dataset.word = w;
+
+                arena.appendChild(tile);
+
+                const tileWidth = tile.offsetWidth || 80;
+                const tileHeight = tile.offsetHeight || 40;
+
+                const maxX = Math.max(10, arenaWidth - tileWidth - 15);
+                const maxY = Math.max(10, arenaHeight - tileHeight - 15);
+
+                const posX = Math.random() * maxX;
+                const posY = Math.random() * maxY;
+
+                tile.style.left = `${posX}px`;
+                tile.style.top = `${posY}px`;
+
+                const speed = 0.4 + Math.random() * 0.4;
+                const angle = Math.random() * Math.PI * 2;
+                const vx = Math.cos(angle) * speed;
+                const vy = Math.sin(angle) * speed;
+
+                const obj = {
+                    element: tile,
+                    x: posX,
+                    y: posY,
+                    vx: vx,
+                    vy: vy,
+                    w: tileWidth,
+                    h: tileHeight,
+                    isDragging: false
+                };
+
+                attachTileEvents(obj);
+                animatedObjects.push(obj);
+            });
+
+            startFloatingAnimationLoop();
+        }
+
+        function attachTileEvents(obj) {
+            const el = obj.element;
+
+            const onPointerDown = (e) => {
+                e.preventDefault();
+                obj.isDragging = true;
+                el.style.zIndex = '100';
+
+                const rect = el.getBoundingClientRect();
+                const startX = e.clientX || (e.touches && e.touches[0].clientX);
+                const startY = e.clientY || (e.touches && e.touches[0].clientY);
+                const offsetX = startX - rect.left;
+                const offsetY = startY - rect.top;
+
+                const arena = document.getElementById('word-bank-arena');
+                const arenaRect = arena.getBoundingClientRect();
+
+                const onPointerMove = (moveEvt) => {
+                    if (!obj.isDragging) return;
+                    const curX = moveEvt.clientX || (moveEvt.touches && moveEvt.touches[0].clientX);
+                    const curY = moveEvt.clientY || (moveEvt.touches && moveEvt.touches[0].clientY);
+
+                    obj.x = curX - arenaRect.left - offsetX;
+                    obj.y = curY - arenaRect.top - offsetY;
+
+                    el.style.left = `${obj.x}px`;
+                    el.style.top = `${obj.y}px`;
+                };
+
+                const onPointerUp = (upEvt) => {
+                    obj.isDragging = false;
+                    el.style.zIndex = '10';
+
+                    window.removeEventListener('pointermove', onPointerMove);
+                    window.removeEventListener('pointerup', onPointerUp);
+                    window.removeEventListener('touchmove', onPointerMove);
+                    window.removeEventListener('touchend', onPointerUp);
+
+                    const dropZone = document.getElementById('sentence-drop-zone');
+                    const dzRect = dropZone.getBoundingClientRect();
+                    const dropX = upEvt.clientX || (upEvt.changedTouches && upEvt.changedTouches[0].clientX);
+                    const dropY = upEvt.clientY || (upEvt.changedTouches && upEvt.changedTouches[0].clientY);
+
+                    if (dropX >= dzRect.left && dropX <= dzRect.right && dropY >= dzRect.top && dropY <= dzRect.bottom) {
+                        moveTileToDropZone(obj);
+                    }
+                };
+
+                window.addEventListener('pointermove', onPointerMove);
+                window.addEventListener('pointerup', onPointerUp);
+                window.addEventListener('touchmove', onPointerMove, { passive: false });
+                window.addEventListener('touchend', onPointerUp);
+            };
+
+            el.addEventListener('pointerdown', onPointerDown);
+            el.addEventListener('click', () => {
+                if (!obj.isDragging) {
+                    moveTileToDropZone(obj);
+                }
+            });
+        }
+
+        function moveTileToDropZone(obj) {
+            animatedObjects = animatedObjects.filter(o => o !== obj);
+
+            const dropZone = document.getElementById('sentence-drop-zone');
+            const tile = obj.element;
+
+            tile.style.position = 'relative';
+            tile.style.left = 'auto';
+            tile.style.top = 'auto';
+            tile.style.cursor = 'pointer';
+            tile.className = "px-4 py-2 bg-indigo-600 text-white rounded-2xl font-black text-sm shadow-sm hover:bg-indigo-700 transition cursor-pointer";
+
+            tile.onclick = () => {
+                returnTileToArena(tile);
+            };
+
+            dropZone.appendChild(tile);
+        }
+
+        function returnTileToArena(tile) {
+            const word = tile.innerText;
+            tile.remove();
+
+            const arena = document.getElementById('word-bank-arena');
+            const arenaWidth = arena.clientWidth || 600;
+            const arenaHeight = arena.clientHeight || 220;
+
+            const newTile = document.createElement('div');
+            const colorClass = pastelColors[animatedObjects.length % pastelColors.length];
+            newTile.className = `floating-tile px-4 py-2 border-2 rounded-2xl font-black text-sm shadow-md transition-transform cursor-grab ${colorClass}`;
+            newTile.innerText = word;
+
+            arena.appendChild(newTile);
+
+            const tileWidth = newTile.offsetWidth || 80;
+            const tileHeight = newTile.offsetHeight || 40;
+
+            const posX = Math.random() * Math.max(10, arenaWidth - tileWidth - 10);
+            const posY = Math.random() * Math.max(10, arenaHeight - tileHeight - 10);
+
+            newTile.style.left = `${posX}px`;
+            newTile.style.top = `${posY}px`;
+
+            const speed = 0.4 + Math.random() * 0.4;
+            const angle = Math.random() * Math.PI * 2;
+
+            const obj = {
+                element: newTile,
+                x: posX,
+                y: posY,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                w: tileWidth,
+                h: tileHeight,
+                isDragging: false
+            };
+
+            attachTileEvents(obj);
+            animatedObjects.push(obj);
+        }
+
+        function startFloatingAnimationLoop() {
+            const arena = document.getElementById('word-bank-arena');
+
+            function step() {
+                const arenaWidth = arena.clientWidth || 600;
+                const arenaHeight = arena.clientHeight || 220;
+
+                animatedObjects.forEach(obj => {
+                    if (obj.isDragging) return;
+
+                    obj.x += obj.vx;
+                    obj.y += obj.vy;
+
+                    if (obj.x <= 0 || obj.x + obj.w >= arenaWidth) {
+                        obj.vx *= -1;
+                        obj.x = Math.max(0, Math.min(obj.x, arenaWidth - obj.w));
+                    }
+                    if (obj.y <= 0 || obj.y + obj.h >= arenaHeight) {
+                        obj.vy *= -1;
+                        obj.y = Math.max(0, Math.min(obj.y, arenaHeight - obj.h));
+                    }
+
+                    obj.element.style.left = `${obj.x}px`;
+                    obj.element.style.top = `${obj.y}px`;
+                });
+
+                animationFrameId = requestAnimationFrame(step);
+            }
+
+            animationFrameId = requestAnimationFrame(step);
+        }
+
+        function stopFloatingAnimationLoop() {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+        }
+
+        function allowDrop(ev) { ev.preventDefault(); }
+        function handleDragEnter(ev) { ev.currentTarget.classList.add('drop-zone-active'); }
+        function handleDragLeave(ev) { ev.currentTarget.classList.remove('drop-zone-active'); }
+        function handleDrop(ev) { ev.currentTarget.classList.remove('drop-zone-active'); }
+
+        function checkArrangedSentence() {
+            const dropZone = document.getElementById('sentence-drop-zone');
+            const tiles = dropZone.querySelectorAll('div');
+
+            const builtSentence = Array.from(tiles).map(t => t.innerText.trim()).join(' ');
+            const targetSentence = gameSentencesPool[arrangeCurrentIndex].target.trim();
+
+            const feedback = document.getElementById('arrange-feedback');
+            feedback.classList.remove('hidden');
+
+            if (builtSentence === targetSentence) {
+                arrangeScore += 1;
+                document.getElementById('arr-score-text').innerText = arrangeScore;
+
+                feedback.className = "text-center font-black text-base py-3 rounded-xl border bg-emerald-100 text-emerald-800 border-emerald-300 block";
+                feedback.innerText = "🎉 Excellent! Correct sentence! / Chính xác!";
+
+                document.getElementById('arr-check-btn').classList.add('hidden');
+                document.getElementById('arr-next-btn').classList.remove('hidden');
+            } else {
+                feedback.className = "text-center font-black text-base py-3 rounded-xl border bg-rose-100 text-rose-800 border-rose-300 block";
+                feedback.innerText = "❌ Not quite right. Try again! / Chưa đúng. Hãy thử lại!";
+            }
+        }
+
+        function nextArrangeQuestion() {
+            arrangeCurrentIndex++;
+            initArrangeSentenceGame();
+        }
+
+        function resetCurrentSentenceGame() {
+            initArrangeSentenceGame();
+        }
+
+        function showFinalCongratulationsScreen() {
+            document.getElementById('arrange-workspace').classList.add('hidden');
+            const successBox = document.getElementById('arrange-success-box');
+            document.getElementById('final-score-display').innerText = arrangeScore;
+            successBox.classList.remove('hidden');
+        }
+
+        function restartEntireSession() {
+            arrangeCurrentIndex = 0;
+            arrangeScore = 0;
+            gapFirstScore = null;
+            renderGapFillQuestions();
+            document.getElementById('gapfill-feedback').classList.add('hidden');
+            document.getElementById('gapfill-success-box').classList.add('hidden');
+            document.getElementById('gf-check-btn').classList.remove('hidden');
+            document.getElementById('gf-check-btn').innerText = "Check Answers / Kiểm tra";
+            resetProgress();
+            switchTab('reference');
+        }
+    </script>
+</body>
+</html>
