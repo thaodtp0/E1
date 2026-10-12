@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English 1_Lesson 7_Unit 7</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        *, body, html, button, span, h1, h2, h3, p, div, input, select, textarea { 
+            font-family: 'Quicksand', sans-serif; 
+            font-weight: 600;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .perspective { perspective: 1000px; }
+        .backface-hidden { backface-visibility: hidden; }
+        .card-inner { transition: transform 0.5s; transform-style: preserve-3d; }
+        .card-flipped { transform: rotateY(180deg); }
+        .disabled-tab { opacity: 0.4; cursor: not-allowed !important; pointer-events: none; }
+        .grid-cell { user-select: none; -webkit-user-select: none; }
+    </style>
+</head>
+<body class="bg-[#f7f9fc] text-slate-800 min-h-screen flex flex-col selection:bg-indigo-200 pb-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-[#E0E7FF] via-[#EEF2FF] to-[#E0F2FE] border-b-4 border-dashed border-indigo-200 shadow-sm p-6 text-center rounded-b-3xl">
+        <h1 class="text-3xl md:text-4xl font-black tracking-wide drop-shadow-sm text-indigo-950">🌟 English 1_Lesson 7_Unit 7 🎤</h1>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-4xl w-full mx-auto px-4 mt-6">
+        <div class="flex bg-indigo-100/70 p-1.5 rounded-2xl border border-indigo-200 shadow-inner overflow-x-auto">
+            <button onclick="switchTab('reference')" id="btn-reference" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center bg-white text-indigo-600 shadow-sm transition cursor-pointer whitespace-nowrap">📚 Word Bank</button>
+            <button onclick="switchTab('flashcard')" id="btn-flashcard" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition cursor-pointer whitespace-nowrap">🎴 Flashcards</button>
+            <button onclick="switchTab('word-search')" id="btn-word-search" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🔍 Word Search</button>
+            <button onclick="switchTab('sentence-transform')" id="btn-sentence-transform" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">✍️ Sentence Writing</button>
+            <button onclick="switchTab('free-writing')" id="btn-free-writing" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">💬 Personal Writing</button>
+            <button onclick="switchTab('completion')" id="btn-completion" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🎉 Completion</button>
+        </div>
+    </div>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        
+        <!-- TAB 1: WORD BANK -->
+        <section id="tab-reference" class="tab-content block space-y-6">
+
+            <div>
+                <h2 class="text-2xl md:text-3xl font-black text-indigo-900 font-heading">📖 E1_Lesson 7_Unit 7_Summary, Vocabulary &amp; Grammar</h2>
+                <p class="text-xs md:text-sm text-slate-500 font-medium mt-1">Read the summary, grammar and word list before starting the practice activities.<br>Đọc phần tóm tắt, ngữ pháp và danh sách từ vựng trước khi làm bài luyện tập.</p>
+            </div>
+
+            <!-- LESSON SUMMARY -->
+            <div class="bg-indigo-50/70 border-4 border-indigo-200 p-6 rounded-3xl space-y-3 text-sm text-slate-700">
+                <h3 class="text-xl font-black text-indigo-900 font-heading">📋 Lesson Summary / Tóm tắt kiến thức</h3>
+                <p>🚴 <b>Abilities / Khả năng:</b> ride a bicycle, make a cake, speak Chinese, make an omelette, speak Spanish, play tennis, play the piano, ride a horse.</p>
+                <p>⭐ <b>Adjectives / Tính từ:</b> amazing, bad, boring, difficult, easy, good, OK, talented, terrible, healthy, awful.</p>
+                <p>✍️ <b>Grammar / Ngữ pháp:</b> can / can't; possessive 's.</p>
+                <p>🎤 <b>Speaking / Nói:</b> talk about your abilities; talk about people's talents.</p>
+                <p>📝 <b>Writing / Viết:</b> write an application for a talent show.</p>
+                <p>🎯 <b>Goal / Mục tiêu:</b> say what you can and can't do, talk about other people's talents, and write a short application for a talent show.<br>
+                <span class="text-slate-500">Nói bạn có thể / không thể làm gì, nói về tài năng của người khác, và viết đơn đăng ký tham gia chương trình tìm kiếm tài năng.</span></p>
+            </div>
+
+            <!-- GRAMMAR CARDS -->
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-indigo-50/60 border-4 border-indigo-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-indigo-900 font-heading">📌 Grammar 1: can / can't</h3>
+                    <div class="bg-white rounded-2xl border border-indigo-100 p-4 space-y-1">
+                        <p>I / you / he / she / we / they + can + verb</p>
+                        <p>No / không: can't (= cannot) + verb</p>
+                        <p>Question: Can you ...? / Can she ...?</p>
+                        <p>Yes, I can. / No, I can't.</p>
+                        <p>⚠️ Không thêm "to" và không thêm "-s" sau can.</p>
+                    </div>
+                    <p>She can play the piano.<br><span class="text-slate-500">(Cô ấy có thể chơi đàn piano.)</span></p>
+                    <p>I can't speak Spanish.<br><span class="text-slate-500">(Tôi không thể nói tiếng Tây Ban Nha.)</span></p>
+                    <p>Can you ride a horse? – No, I can't.<br><span class="text-slate-500">(Bạn có thể cưỡi ngựa không? – Không.)</span></p>
+                </div>
+
+                <div class="bg-amber-50 border-4 border-amber-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-amber-800 font-heading">📌 Grammar 2: Possessive 's</h3>
+                    <div class="bg-white rounded-2xl border border-amber-100 p-4 space-y-1">
+                        <p>Person + 's + noun = đồ vật / người thuộc về ai</p>
+                        <p>Anna's bicycle = xe đạp của Anna</p>
+                        <p>Tom's sister = chị / em gái của Tom</p>
+                        <p>My friend's cake = bánh của bạn tôi</p>
+                    </div>
+                    <p>Anna's cake is amazing.<br><span class="text-slate-500">(Bánh của Anna thật tuyệt vời.)</span></p>
+                    <p>My brother's piano is old.<br><span class="text-slate-500">(Cây đàn piano của anh trai tôi đã cũ.)</span></p>
+                </div>
+            </div>
+
+            <!-- VOCABULARY GROUPS -->
+            <div class="bg-emerald-50/70 border-4 border-emerald-200 p-6 rounded-3xl space-y-3">
+                <h3 class="text-xl font-black text-emerald-900 font-heading">🥗 Vocabulary groups / Nhóm từ vựng</h3>
+                <div class="grid md:grid-cols-2 gap-3 text-sm text-slate-700">
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4">🚴 <b>Abilities / Khả năng:</b> ride a bicycle, make a cake, speak Chinese, make an omelette, speak Spanish, play tennis, play the piano, ride a horse</div>
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4">⭐ <b>Adjectives / Tính từ:</b> amazing, bad, boring, difficult, easy, good, OK, talented, terrible, healthy, awful</div>
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4 md:col-span-2">📈 <b>Good or bad? / Tốt hay tệ?</b> awful, terrible 👎 → bad → OK → good 👍 → amazing 🌟</div>
+                </div>
+            </div>
+
+            <!-- SPEAKING & WRITING -->
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-sky-50 border-4 border-sky-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-sky-900 font-heading">🎤 Speaking 1: Your abilities</h3>
+                    <div class="bg-white rounded-2xl border border-sky-100 p-4 space-y-1">
+                        <p>A: What can you do?</p>
+                        <p>B: I can ride a bicycle. I can make an omelette.</p>
+                        <p>A: Can you play the piano?</p>
+                        <p>B: No, I can't. But I can play tennis.</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Ask and answer with a partner.<br>Hỏi và trả lời với bạn bên cạnh.</p>
+                </div>
+
+                <div class="bg-rose-50 border-4 border-rose-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-rose-900 font-heading">🌟 Speaking 2: People's talents</h3>
+                    <div class="bg-white rounded-2xl border border-rose-100 p-4 space-y-1">
+                        <p>A: What can your friend do?</p>
+                        <p>B: My friend's sister can speak Chinese.</p>
+                        <p>A: Wow! She's talented!</p>
+                        <p>B: Yes. Her Chinese is amazing.</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Talk about the talents of your family and friends.<br>Nói về tài năng của người thân và bạn bè.</p>
+                </div>
+
+                <div class="bg-purple-50 border-4 border-purple-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700 md:col-span-2">
+                    <h3 class="text-lg font-black text-purple-900 font-heading">📝 Writing | Application: An application for a talent show</h3>
+                    <div class="bg-white rounded-2xl border border-purple-100 p-4 space-y-1">
+                        <p>Hello! My name is Linh. I want to be in the talent show.</p>
+                        <p>I can play the piano and I can make a cake. My piano playing is good.</p>
+                        <p>I can't ride a horse. My friends say I am talented. Thank you!</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Use can / can't and adjectives in your application.<br>Dùng can / can't và tính từ trong đơn của bạn.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center flex-wrap gap-2">
+                    <h2 class="text-2xl font-black text-indigo-900 font-heading">📖 Vocabulary List / Danh sách từ vựng</h2>
+                    <span class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-bold">19 Core Words</span>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-slate-200 max-h-[500px]">
+                    <table class="w-full text-left border-collapse bg-white">
+                        <thead class="sticky top-0 bg-indigo-50 border-b border-slate-200 text-indigo-900 text-xs uppercase tracking-wider font-black z-10">
+                            <tr>
+                                <th class="p-3.5">Vocabulary</th>
+                                <th class="p-3.5">Meaning</th>
+                                <th class="p-3.5">IPA</th>
+                                <th class="p-3.5">Example Sentence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reference-table-body" class="divide-y divide-slate-100 text-xs md:text-sm">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="switchTab('flashcard')" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-sm shadow-sm transition cursor-pointer">Start Flashcards Practice / Bắt đầu ôn Flashcards ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: FLASHCARDS -->
+        <section id="tab-flashcard" class="tab-content hidden space-y-6">
+            <p class="text-center text-xs md:text-sm text-slate-500 font-medium">Tap the card to see the answer, then choose how well you remember. / Chạm vào thẻ để xem đáp án, sau đó chọn mức độ nhớ của bạn.</p>
+            <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-indigo-300 shadow-sm flex justify-between items-center flex-wrap gap-2">
+                <div class="text-sm font-black text-slate-600">Remaining Queue / Thẻ còn lại: <span id="queue-text" class="text-indigo-600 font-extrabold">0 cards</span></div>
+                <div class="w-full sm:w-1/3 bg-slate-100 h-4 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <button onclick="resetProgress()" class="text-xs text-rose-500 hover:underline font-black cursor-pointer">🔄 Reset Session / Làm lại</button>
+            </div>
+            
+            <div id="flashcard-container" class="space-y-6">
+                <div id="card-arena" class="perspective w-full max-w-md mx-auto h-[420px] cursor-pointer">
+                    <div id="flashcard-inner" onclick="flipCard()" class="card-inner w-full h-full relative border-4 border-indigo-400 rounded-3xl shadow-md bg-white">
+                        
+                        <!-- FRONT SIDE -->
+                        <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between items-center text-center bg-indigo-50/40 rounded-[20px]">
+                            <span id="f-badge" class="text-xs font-black text-indigo-700 uppercase tracking-widest bg-indigo-100 px-4 py-1.5 rounded-full">Prompt</span>
+                            
+                            <div class="space-y-3 my-auto w-full">
+                                <h3 id="f-prompt" class="text-2xl md:text-3xl font-black text-indigo-950"></h3>
+                                
+                                <div id="f-extra-content" class="hidden space-y-2 pt-2 border-t border-indigo-200/60">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <span id="f-ipa" class="text-indigo-600 font-bold text-sm font-mono"></span>
+                                        <button id="f-audio-btn" onclick="speakText(currentCard.word, event)" class="w-7 h-7 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full transition flex items-center justify-center text-xs cursor-pointer shadow-sm">🔊</button>
+                                    </div>
+                                    <p id="f-example" class="text-slate-600 text-xs px-2 font-medium leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-indigo-600 font-black">👉 Tap card to reveal answer / Chạm để xem đáp án 👈</p>
+                        </div>
+
+                        <!-- BACK SIDE -->
+                        <div class="backface-hidden w-full h-full absolute inset-0 p-6 flex flex-col justify-between bg-slate-900 text-white rounded-[22px]" style="transform: rotateY(180deg);">
+                            <span id="b-badge" class="text-xs font-black text-indigo-400 uppercase tracking-widest bg-slate-800 px-4 py-1.5 rounded-full w-max mx-auto">Answer</span>
+                            
+                            <div class="my-auto space-y-3 text-center">
+                                <h2 id="b-answer" class="text-3xl md:text-4xl font-black text-amber-300"></h2>
+                                
+                                <div id="b-extra-content" class="space-y-2 border-t border-slate-800 pt-3">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <span id="b-ipa" class="text-indigo-300 font-bold text-sm font-mono"></span>
+                                        <button id="b-audio-btn" onclick="speakText(currentCard.word, event)" class="w-7 h-7 bg-indigo-900 hover:bg-indigo-800 text-indigo-200 rounded-full transition flex items-center justify-center text-xs cursor-pointer shadow-sm">🔊</button>
+                                    </div>
+                                    <p id="b-example" class="text-slate-300 text-xs px-2 font-medium leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-center text-slate-500 font-bold">Rate how well you recalled this / Đánh giá mức độ nhớ 👇</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="w-full max-w-md mx-auto bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-4 gap-2">
+                    <button onclick="handleAnkiAction('again')" class="p-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-rose-600">Again</span>
+                        <span class="text-[10px] text-rose-400 font-bold block mt-0.5">&lt; 1m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('hard')" class="p-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-amber-600">Hard</span>
+                        <span class="text-[10px] text-amber-400 font-bold block mt-0.5">10m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('good')" class="p-2 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-indigo-600">Good</span>
+                        <span class="text-[10px] text-indigo-400 font-bold block mt-0.5">1d</span>
+                    </button>
+                    <button onclick="handleAnkiAction('easy')" class="p-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-center transition shadow-sm cursor-pointer">
+                        <span class="block text-xs font-black text-emerald-600">Easy</span>
+                        <span class="text-[10px] text-emerald-400 font-bold block mt-0.5">4d</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="flashcard-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🌟🎤🎉</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Flashcards Completed!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Awesome job! You have memorized all the core vocabulary for Lesson 7.<br><span class="text-xs text-slate-500">(Tuyệt vời! Bạn đã thuộc hết từ vựng của Bài 7.)</span></p>
+                <button onclick="unlockAndGoToWordSearch()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Word Search Game / Trò chơi tìm từ ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 3: TASK 1 - WORD SEARCH GAME -->
+        <section id="tab-word-search" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-amber-100 text-amber-800 font-black px-4 py-1.5 rounded-full tracking-wide">Task 1: Word Search Puzzle</span>
+                    <p class="text-xs text-slate-600 font-bold">
+                        <b>Instructions:</b> Drag or click grid letters (horizontally, vertically, or diagonally) to find the English words for the Vietnamese meanings.<br>
+                        <span class="text-indigo-600">(Kéo hoặc click chọn các ô chữ cái theo hàng ngang, dọc hoặc chéo để tìm từ tiếng Anh có nghĩa tương ứng)</span>
+                    </p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-6 items-start justify-center">
+                    <div class="mx-auto bg-indigo-50 p-3 rounded-2xl border-2 border-indigo-200 shadow-inner">
+                        <div id="ws-grid" class="grid grid-cols-12 gap-1 touch-none select-none" style="touch-action: none;">
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-72 bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+                        <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                            <h4 class="font-black text-sm text-indigo-950">Meanings / Nghĩa tiếng Việt:</h4>
+                            <span id="ws-count" class="text-xs font-black bg-indigo-600 text-white px-2 py-0.5 rounded-full">0/12</span>
+                        </div>
+                        <ul id="ws-word-list" class="grid grid-cols-2 lg:grid-cols-1 gap-1.5 text-xs">
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="ws-feedback" class="p-3 rounded-2xl text-center font-black hidden max-w-xl mx-auto"></div>
+            </div>
+
+            <div id="ws-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🔍💯🎉</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Word Search Complete!</h4>
+                <p class="text-sm text-slate-700 font-medium">You found all hidden words! Excellent job.<br><span class="text-xs text-slate-500">(Bạn đã tìm ra tất cả các từ vựng ẩn giấu!)</span></p>
+                <button onclick="unlockAndGoToSentenceTransform()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Sentence Writing / Luyện viết câu ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 4: TASK 2 - SENTENCE WRITING (10 ITEMS) -->
+        <section id="tab-sentence-transform" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-1">
+                    <span class="text-xs uppercase bg-purple-100 text-purple-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 2: Sentence Construction</span>
+                    <p class="text-xs text-slate-600 font-bold mt-2">
+                        <b>Instructions:</b> Use the words to write a full sentence. Add missing words (a / an / the) and use <i>can / can't</i> and <i>'s</i>. Type the apostrophe like this: '<br>
+                        <span class="text-indigo-600">(Dùng các từ gợi ý để viết thành câu hoàn chỉnh. Thêm từ còn thiếu (a / an / the), chú ý can / can't và 's. Gõ dấu nháy đơn như sau: ')</span>
+                    </p>
+                </div>
+
+                <div id="st-items-container" class="space-y-6 max-w-2xl mx-auto">
+                </div>
+
+                <div class="text-center pt-4 border-t border-slate-100">
+                    <button onclick="checkAllSentenceTransform()" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-sm shadow-md transition cursor-pointer">Check Answers / Kiểm tra đáp án ➔</button>
+                </div>
+            </div>
+
+            <div id="st-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">✍️🌟🏆</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Awesome Job!</h4>
+                <p class="text-sm text-slate-700 font-medium">You completed all grammar sentences!<br><span class="text-xs text-slate-500">(Bạn đã hoàn thành xuất sắc 10 câu ngữ pháp!)</span></p>
+                <button onclick="unlockAndGoToFreeWriting()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Personal Writing / Viết tự do ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 5: TASK 3 - PERSONAL WRITING (5 FREE SENTENCES) -->
+        <section id="tab-free-writing" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-emerald-100 text-emerald-800 font-black px-4 py-1.5 rounded-full tracking-wide">Task 3: Personal Reflection</span>
+                    <h3 class="text-2xl font-black text-indigo-950 font-heading">Write 5 Sentences About Yourself</h3>
+                    <p class="text-xs text-slate-600 font-bold max-w-xl mx-auto">
+                        <b>Instructions:</b> Write 5 sentences for your talent show application. Use <i>can / can't</i>, <i>'s</i> and adjectives.<br>
+                        <span class="text-indigo-600">(Viết 5 câu cho đơn đăng ký tham gia chương trình tìm kiếm tài năng. Dùng can / can't, 's và tính từ)</span>
+                    </p>
+                </div>
+
+                <div class="space-y-4 max-w-2xl mx-auto">
+                    <div class="space-y-1">
+                        <label class="text-xs font-black text-indigo-900">Sentence 1: (Hint: I can... / Điều bạn có thể làm)</label>
+                        <input id="fw-input-1" type="text" placeholder="e.g. I can play the piano." class="w-full p-3 border-2 border-slate-200 rounded-xl text-sm focus:border-indigo-500 outline-none">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-black text-indigo-900">Sentence 2: (Hint: I can't... / Điều bạn không thể làm)</label>
+                        <input id="fw-input-2" type="text" placeholder="e.g. I can't ride a horse." class="w-full p-3 border-2 border-slate-200 rounded-xl text-sm focus:border-indigo-500 outline-none">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-black text-indigo-900">Sentence 3: (Hint: My friend / mother / father can... / Tài năng của người khác)</label>
+                        <input id="fw-input-3" type="text" placeholder="e.g. My friend can speak Chinese." class="w-full p-3 border-2 border-slate-200 rounded-xl text-sm focus:border-indigo-500 outline-none">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-black text-indigo-900">Sentence 4: (Hint: use 's + adjective. My friend's ... is ...)</label>
+                        <input id="fw-input-4" type="text" placeholder="e.g. My sister's cake is amazing." class="w-full p-3 border-2 border-slate-200 rounded-xl text-sm focus:border-indigo-500 outline-none">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-black text-indigo-900">Sentence 5: (Hint: I want to be in the talent show because... / Vì sao bạn muốn tham gia?)</label>
+                        <input id="fw-input-5" type="text" placeholder="e.g. I want to be in the talent show because I am talented." class="w-full p-3 border-2 border-slate-200 rounded-xl text-sm focus:border-indigo-500 outline-none">
+                    </div>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="submitFreeWriting()" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-sm shadow-md transition cursor-pointer">Submit &amp; See Model Answers / Nộp bài ➔</button>
+                </div>
+
+                <div id="fw-model-box" class="hidden bg-indigo-50 border-2 border-indigo-200 p-5 rounded-2xl max-w-2xl mx-auto space-y-3">
+                    <h4 class="font-black text-indigo-950 text-sm flex items-center gap-2"><span>💡</span> Model Answers / Gợi ý câu tham khảo:</h4>
+                    <ol class="list-decimal list-inside space-y-1.5 text-xs text-slate-700 font-bold leading-relaxed">
+                        <li>I can make a cake and I can play tennis.</li>
+                        <li>I can't speak Spanish.</li>
+                        <li>My mother can make an omelette. It is easy for her.</li>
+                        <li>My brother's piano playing is amazing.</li>
+                        <li>I want to be in the talent show because I can play the piano.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="fw-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">💬✨🎉</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Writing Submitted!</h4>
+                <p class="text-sm text-slate-700 font-medium">Thank you for sharing your thoughts!<br><span class="text-xs text-slate-500">(Cảm ơn bạn đã chia sẻ bài viết!)</span></p>
+                <button onclick="unlockAndGoToCompletion()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Go to Summary &amp; Completion ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 6: COMPLETION / SUMMARY -->
+        <section id="tab-completion" class="tab-content hidden space-y-6">
+            <div class="max-w-2xl mx-auto bg-white border-4 border-indigo-300 p-8 rounded-3xl space-y-6 shadow-xl text-center">
+                <div class="space-y-2">
+                    <span class="text-6xl block animate-bounce">🎓🎉🥳</span>
+                    <h3 class="text-3xl font-heading font-black text-indigo-950">Chúc Mừng Bạn Đã Hoàn Thành Bài 7!</h3>
+                    <p class="text-sm text-slate-600 font-bold">Congratulations! You have completed <span class="text-indigo-600 font-black">English 1_Lesson 7_Unit 7</span>. Bạn đã hoàn thành tất cả nội dung luyện tập của bài học này.</p>
+                </div>
+
+                <div class="bg-indigo-50/50 p-5 rounded-2xl border border-indigo-200 space-y-3 text-left">
+                    <h4 class="text-base font-black text-indigo-900 border-b border-indigo-200 pb-2">💡 Tóm tắt nội dung bài học / Lesson summary:</h4>
+                    <ul class="space-y-2.5 text-xs md:text-sm text-slate-700 font-bold">
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">1.</span> <span><b>Abilities (Khả năng):</b> ride a bicycle, make a cake, speak Chinese, make an omelette, speak Spanish, play tennis, play the piano, ride a horse.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">2.</span> <span><b>Adjectives (Tính từ):</b> amazing, bad, boring, difficult, easy, good, OK, talented, terrible, healthy, awful.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">3.</span> <span><b>can / can't:</b> <i>can / can't + động từ nguyên mẫu</i>. Ví dụ: <i>She can play the piano. I can't ride a horse. Can you make a cake?</i></span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">4.</span> <span><b>Possessive 's (Sở hữu cách):</b> <i>người + 's + danh từ</i>. Ví dụ: <i>Anna's bicycle, Tom's sister.</i></span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200 space-y-2 text-left">
+                    <h4 class="text-base font-black text-amber-800 border-b border-amber-200 pb-2">🗣️ Speaking &amp; ✍️ Writing – Hãy thực hành tiếp:</h4>
+                    <ul class="space-y-2 text-xs md:text-sm text-slate-700 font-bold list-disc pl-5">
+                        <li><b>Speaking:</b> Talk about your abilities. / Nói về khả năng của bạn.</li>
+                        <li><b>Speaking:</b> Talk about people's talents. / Nói về tài năng của mọi người.</li>
+                        <li><b>Writing:</b> Write an application for a talent show. / Viết đơn đăng ký tham gia một chương trình tìm kiếm tài năng.</li>
+                    </ul>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="location.reload()" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm">🔄 Restart Lesson / Ôn lại từ đầu</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // VOCABULARY DATA LESSON 7 (19 ITEMS)
+        const vocabularyData = [
+            { word: "ride a bicycle", ipa: "/ˌraɪd ə ˈbaɪsɪkl/", vi: "đi xe đạp", ex: "I can ride a bicycle.", icon: "🚴" },
+            { word: "make a cake", ipa: "/ˌmeɪk ə ˈkeɪk/", vi: "làm bánh", ex: "She can make a cake.", icon: "🎂" },
+            { word: "speak Chinese", ipa: "/ˌspiːk tʃaɪˈniːz/", vi: "nói tiếng Trung", ex: "My friend can speak Chinese.", icon: "🇨🇳" },
+            { word: "make an omelette", ipa: "/ˌmeɪk ən ˈɒmlət/", vi: "làm trứng ốp-lết", ex: "I can make an omelette.", icon: "🍳" },
+            { word: "speak Spanish", ipa: "/ˌspiːk ˈspænɪʃ/", vi: "nói tiếng Tây Ban Nha", ex: "He can't speak Spanish.", icon: "🇪🇸" },
+            { word: "play tennis", ipa: "/ˌpleɪ ˈtenɪs/", vi: "chơi quần vợt", ex: "Tom can play tennis.", icon: "🎾" },
+            { word: "play the piano", ipa: "/ˌpleɪ ðə piˈænəʊ/", vi: "chơi đàn piano", ex: "Anna can play the piano.", icon: "🎹" },
+            { word: "ride a horse", ipa: "/ˌraɪd ə ˈhɔːs/", vi: "cưỡi ngựa", ex: "I can't ride a horse.", icon: "🐎" },
+            { word: "amazing", ipa: "/əˈmeɪzɪŋ/", vi: "tuyệt vời, đáng kinh ngạc", ex: "Her singing is amazing.", icon: "🤩" },
+            { word: "bad", ipa: "/bæd/", vi: "tệ, dở", ex: "I'm bad at tennis.", icon: "👎" },
+            { word: "boring", ipa: "/ˈbɔːrɪŋ/", vi: "chán, tẻ nhạt", ex: "This game is boring.", icon: "🥱" },
+            { word: "difficult", ipa: "/ˈdɪfɪkəlt/", vi: "khó", ex: "Chinese is difficult.", icon: "😓" },
+            { word: "easy", ipa: "/ˈiːzi/", vi: "dễ", ex: "An omelette is easy to make.", icon: "😎" },
+            { word: "good", ipa: "/ɡʊd/", vi: "giỏi, tốt", ex: "He is good at tennis.", icon: "👍" },
+            { word: "OK", ipa: "/ˌəʊˈkeɪ/", vi: "tạm được, bình thường", ex: "My cooking is OK.", icon: "🆗" },
+            { word: "talented", ipa: "/ˈtæləntɪd/", vi: "có tài", ex: "My sister is talented.", icon: "🌟" },
+            { word: "terrible", ipa: "/ˈterəbl/", vi: "rất tệ", ex: "My singing is terrible.", icon: "😖" },
+            { word: "healthy", ipa: "/ˈhelθi/", vi: "khỏe mạnh, tốt cho sức khỏe", ex: "Fruit is healthy.", icon: "🥦" },
+            { word: "awful", ipa: "/ˈɔːfl/", vi: "kinh khủng", ex: "The food is awful.", icon: "🤢" }
+        ];
+
+        // TASK 2 SENTENCE ITEMS (10 ITEMS)
+        const sentenceTransformItems = [
+            { prompt: "I / can / ride / bicycle.", answers: ["i can ride a bicycle"], hint: "Thêm mạo từ 'a' trước 'bicycle'." },
+            { prompt: "She / can / make / cake.", answers: ["she can make a cake"], hint: "Sau 'can' dùng động từ nguyên mẫu, thêm 'a' trước 'cake'." },
+            { prompt: "He / can't / speak / Chinese.", answers: ["he can't speak chinese", "he cannot speak chinese"], hint: "Phủ định: can't + động từ nguyên mẫu (không thêm 'to')." },
+            { prompt: "Can / you / play / piano?", answers: ["can you play the piano"], hint: "Với nhạc cụ dùng 'the': play the piano." },
+            { prompt: "Can / your brother / make / omelette?", answers: ["can your brother make an omelette"], hint: "'omelette' bắt đầu bằng âm nguyên âm nên dùng 'an'." },
+            { prompt: "This / be / Anna / bicycle.", answers: ["this is anna's bicycle"], hint: "Dùng sở hữu cách: Anna's bicycle (xe đạp của Anna)." },
+            { prompt: "Tom / sister / can / speak / Spanish.", answers: ["tom's sister can speak spanish"], hint: "Chị/em gái của Tom = Tom's sister." },
+            { prompt: "My friend / cake / be / awful.", answers: ["my friend's cake is awful"], hint: "Bánh của bạn tôi = my friend's cake. Động từ 'be' chia là 'is'." },
+            { prompt: "I / can't / ride / horse.", answers: ["i can't ride a horse", "i cannot ride a horse"], hint: "Thêm mạo từ 'a' trước 'horse'." },
+            { prompt: "Lisa / be / talented. She / can / play / piano.", answers: ["lisa is talented she can play the piano", "lisa is talented and she can play the piano"], hint: "Chia 'be' thành 'is' và nhớ dùng 'the' trước 'piano'." }
+        ];
+
+        // 12 TARGET WORDS FOR WORD SEARCH
+        const wsTargetWords = [
+            { word: "AMAZING", vi: "Tuyệt vời" },
+            { word: "BORING", vi: "Chán, tẻ nhạt" },
+            { word: "DIFFICULT", vi: "Khó" },
+            { word: "EASY", vi: "Dễ" },
+            { word: "GOOD", vi: "Giỏi, tốt" },
+            { word: "TALENTED", vi: "Có tài" },
+            { word: "TERRIBLE", vi: "Rất tệ" },
+            { word: "HEALTHY", vi: "Khỏe mạnh" },
+            { word: "AWFUL", vi: "Kinh khủng" },
+            { word: "PIANO", vi: "Đàn piano" },
+            { word: "TENNIS", vi: "Quần vợt" },
+            { word: "BICYCLE", vi: "Xe đạp" }
+        ];
+
+        // GLOBAL STATE
+        let activeTab = 'reference';
+        let flashcardQueue = [];
+        let currentCard = null;
+        let totalCards = vocabularyData.length;
+
+        // TAB NAVIGATION
+        function switchTab(tabId) {
+            const btn = document.getElementById(`btn-${tabId}`);
+            if (btn && btn.classList.contains('disabled-tab')) return;
+
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-white', 'text-indigo-600', 'shadow-sm');
+                el.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            if (btn) {
+                btn.classList.add('bg-white', 'text-indigo-600', 'shadow-sm');
+                btn.classList.remove('text-slate-500');
+            }
+            activeTab = tabId;
+
+            if (tabId === 'word-search' && !wsInitialized) {
+                initWordSearch();
+            }
+        }
+
+        function unlockTab(tabId) {
+            const btn = document.getElementById(`btn-${tabId}`);
+            if (btn) {
+                btn.classList.remove('disabled-tab');
+                btn.classList.add('cursor-pointer');
+            }
+        }
+
+        // TEXT TO SPEECH
+        function speakText(text, event) {
+            if (event) event.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderWordBank();
+            initFlashcards();
+            renderSentenceTransform();
+        });
+
+        // --- TAB 1: WORD BANK ---
+        function renderWordBank() {
+            const tbody = document.getElementById('reference-table-body');
+            tbody.innerHTML = vocabularyData.map(v => `
+                <tr class="hover:bg-indigo-50/50 transition">
+                    <td class="p-3.5 font-black text-indigo-950 flex items-center gap-2">
+                        <span>${v.icon}</span>
+                        <span>${v.word}</span>
+                        <button onclick="speakText('${v.word}', event)" class="text-indigo-600 hover:text-indigo-800 text-xs p-1">🔊</button>
+                    </td>
+                    <td class="p-3.5 text-slate-700 font-bold">${v.vi}</td>
+                    <td class="p-3.5 text-indigo-600 font-mono text-xs font-bold">${v.ipa}</td>
+                    <td class="p-3.5 text-slate-600 italic font-medium">${v.ex}</td>
+                </tr>
+            `).join('');
+        }
+
+        // --- TAB 2: FLASHCARDS ---
+        function initFlashcards() {
+            flashcardQueue = [...vocabularyData.map((v, i) => ({ ...v, id: i }))];
+            totalCards = flashcardQueue.length;
+            updateFlashcardUI();
+            loadNextCard();
+        }
+
+        function loadNextCard() {
+            if (flashcardQueue.length === 0) {
+                document.getElementById('flashcard-container').classList.add('hidden');
+                document.getElementById('flashcard-success-box').classList.remove('hidden');
+                unlockTab('word-search');
+                return;
+            }
+
+            currentCard = flashcardQueue[0];
+            const inner = document.getElementById('flashcard-inner');
+            inner.classList.remove('card-flipped');
+
+            setTimeout(() => {
+                document.getElementById('f-prompt').textContent = currentCard.vi;
+                document.getElementById('f-ipa').textContent = currentCard.ipa;
+                document.getElementById('f-example').textContent = `"${currentCard.ex}"`;
+
+                document.getElementById('b-answer').textContent = `${currentCard.icon} ${currentCard.word}`;
+                document.getElementById('b-ipa').textContent = currentCard.ipa;
+                document.getElementById('b-example').textContent = `"${currentCard.ex}"`;
+            }, 150);
+
+            updateFlashcardUI();
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard-inner').classList.toggle('card-flipped');
+        }
+
+        function handleAnkiAction(action) {
+            if (!currentCard) return;
+
+            if (action === 'again') {
+                const item = flashcardQueue.shift();
+                flashcardQueue.push(item);
+            } else if (action === 'hard') {
+                const item = flashcardQueue.shift();
+                const insertIndex = Math.min(3, flashcardQueue.length);
+                flashcardQueue.splice(insertIndex, 0, item);
+            } else {
+                flashcardQueue.shift();
+            }
+
+            loadNextCard();
+        }
+
+        function updateFlashcardUI() {
+            const remaining = flashcardQueue.length;
+            document.getElementById('queue-text').textContent = `${remaining} cards`;
+            const pct = Math.round(((totalCards - remaining) / totalCards) * 100);
+            document.getElementById('progress-bar').style.width = `${pct}%`;
+        }
+
+        function resetProgress() {
+            document.getElementById('flashcard-container').classList.remove('hidden');
+            document.getElementById('flashcard-success-box').classList.add('hidden');
+            initFlashcards();
+        }
+
+        function unlockAndGoToWordSearch() {
+            unlockTab('word-search');
+            switchTab('word-search');
+        }
+
+        // --- TAB 3: WORD SEARCH GAME (MOUSE & TOUCH) ---
+        let wsInitialized = false;
+        let wsGridSize = 12;
+        let wsGridMatrix = [];
+        let wsFoundWords = new Set();
+        let isWsSelecting = false;
+        let wsSelectedCells = [];
+
+        function initWordSearch() {
+            wsInitialized = true;
+            wsFoundWords.clear();
+            renderWordSearchList();
+            generateWordSearchGrid();
+            setupWordSearchEvents();
+        }
+
+        function renderWordSearchList() {
+            const listEl = document.getElementById('ws-word-list');
+            listEl.innerHTML = wsTargetWords.map(tw => `
+                <li id="ws-item-${tw.word}" class="p-2 rounded-xl bg-white border border-slate-200 flex justify-between items-center transition font-bold text-slate-700">
+                    <span>${tw.vi}</span>
+                    <span id="ws-badge-${tw.word}" class="hidden text-emerald-600 font-black">✓</span>
+                </li>
+            `).join('');
+            document.getElementById('ws-count').textContent = `0/${wsTargetWords.length}`;
+        }
+
+        function generateWordSearchGrid() {
+            wsGridMatrix = Array(wsGridSize).fill(null).map(() => Array(wsGridSize).fill(''));
+            
+            const directions = [
+                [0, 1],
+                [1, 0],
+                [1, 1],
+                [-1, 1]
+            ];
+
+            wsTargetWords.forEach(tw => {
+                let placed = false;
+                let attempts = 0;
+                while (!placed && attempts < 200) {
+                    attempts++;
+                    const dir = directions[Math.floor(Math.random() * directions.length)];
+                    const len = tw.word.length;
+                    const startRow = Math.floor(Math.random() * wsGridSize);
+                    const startCol = Math.floor(Math.random() * wsGridSize);
+
+                    const endRow = startRow + dir[0] * (len - 1);
+                    const endCol = startCol + dir[1] * (len - 1);
+
+                    if (endRow >= 0 && endRow < wsGridSize && endCol >= 0 && endCol < wsGridSize) {
+                        let canPlace = true;
+                        for (let i = 0; i < len; i++) {
+                            const r = startRow + dir[0] * i;
+                            const c = startCol + dir[1] * i;
+                            if (wsGridMatrix[r][c] !== '' && wsGridMatrix[r][c] !== tw.word[i]) {
+                                canPlace = false;
+                                break;
+                            }
+                        }
+
+                        if (canPlace) {
+                            for (let i = 0; i < len; i++) {
+                                const r = startRow + dir[0] * i;
+                                const c = startCol + dir[1] * i;
+                                wsGridMatrix[r][c] = tw.word[i];
+                            }
+                            placed = true;
+                        }
+                    }
+                }
+            });
+
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for (let r = 0; r < wsGridSize; r++) {
+                for (let c = 0; c < wsGridSize; c++) {
+                    if (wsGridMatrix[r][c] === '') {
+                        wsGridMatrix[r][c] = alphabet[Math.floor(Math.random() * alphabet.length)];
+                    }
+                }
+            }
+
+            const gridEl = document.getElementById('ws-grid');
+            gridEl.innerHTML = '';
+            for (let r = 0; r < wsGridSize; r++) {
+                for (let c = 0; c < wsGridSize; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'grid-cell w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-white border border-indigo-100 rounded-lg flex items-center justify-center font-black text-indigo-950 text-xs sm:text-sm cursor-pointer shadow-xs transition hover:bg-indigo-100';
+                    cell.dataset.row = r;
+                    cell.dataset.col = c;
+                    cell.textContent = wsGridMatrix[r][c];
+                    gridEl.appendChild(cell);
+                }
+            }
+        }
+
+        function setupWordSearchEvents() {
+            const grid = document.getElementById('ws-grid');
+
+            grid.addEventListener('mousedown', (e) => {
+                const cell = e.target.closest('.grid-cell');
+                if (!cell) return;
+                isWsSelecting = true;
+                wsSelectedCells = [cell];
+                highlightWsCells();
+            });
+
+            grid.addEventListener('mouseover', (e) => {
+                if (!isWsSelecting) return;
+                const cell = e.target.closest('.grid-cell');
+                if (cell && !wsSelectedCells.includes(cell)) {
+                    wsSelectedCells.push(cell);
+                    highlightWsCells();
+                }
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (isWsSelecting) {
+                    isWsSelecting = false;
+                    checkWsSelectedWord();
+                }
+            });
+
+            grid.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                const cell = document.elementFromPoint(touch.clientX, touch.clientY)?.closest('.grid-cell');
+                if (!cell) return;
+
+                isWsSelecting = true;
+                wsSelectedCells = [cell];
+                highlightWsCells();
+            }, { passive: false });
+
+            grid.addEventListener('touchmove', (e) => {
+                if (!isWsSelecting) return;
+                e.preventDefault();
+
+                const touch = e.touches[0];
+                const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
+                const cell = targetEl?.closest('.grid-cell');
+
+                if (cell && !wsSelectedCells.includes(cell)) {
+                    wsSelectedCells.push(cell);
+                    highlightWsCells();
+                }
+            }, { passive: false });
+
+            grid.addEventListener('touchend', () => {
+                if (isWsSelecting) {
+                    isWsSelecting = false;
+                    checkWsSelectedWord();
+                }
+            });
+        }
+
+        function highlightWsCells() {
+            document.querySelectorAll('.grid-cell:not(.ws-found)').forEach(cell => {
+                cell.classList.remove('bg-indigo-600', 'text-white', 'scale-105');
+            });
+
+            wsSelectedCells.forEach(cell => {
+                if (!cell.classList.contains('ws-found')) {
+                    cell.classList.add('bg-indigo-600', 'text-white', 'scale-105');
+                }
+            });
+        }
+
+        function checkWsSelectedWord() {
+            const formedWord = wsSelectedCells.map(c => c.textContent).join('');
+            const reversedWord = formedWord.split('').reverse().join('');
+
+            const matched = wsTargetWords.find(tw => tw.word === formedWord || tw.word === reversedWord);
+
+            if (matched && !wsFoundWords.has(matched.word)) {
+                wsFoundWords.add(matched.word);
+
+                wsSelectedCells.forEach(cell => {
+                    cell.classList.remove('bg-indigo-600', 'scale-105');
+                    cell.classList.add('ws-found', 'bg-emerald-500', 'text-white', 'font-black');
+                });
+
+                const item = document.getElementById(`ws-item-${matched.word}`);
+                if (item) {
+                    item.classList.add('bg-emerald-50', 'border-emerald-300', 'text-emerald-900');
+                    document.getElementById(`ws-badge-${matched.word}`).classList.remove('hidden');
+                }
+
+                document.getElementById('ws-count').textContent = `${wsFoundWords.size}/${wsTargetWords.length}`;
+
+                showWsFeedback(`🎉 Found: "${matched.word}"!`, "bg-emerald-100 text-emerald-800 border border-emerald-300");
+
+                if (wsFoundWords.size === wsTargetWords.length) {
+                    setTimeout(() => {
+                        document.getElementById('ws-success-box').classList.remove('hidden');
+                        unlockTab('sentence-transform');
+                    }, 500);
+                }
+            } else {
+                wsSelectedCells.forEach(cell => {
+                    if (!cell.classList.contains('ws-found')) {
+                        cell.classList.remove('bg-indigo-600', 'text-white', 'scale-105');
+                    }
+                });
+            }
+
+            wsSelectedCells = [];
+        }
+
+        function showWsFeedback(msg, styleClass) {
+            const fb = document.getElementById('ws-feedback');
+            fb.className = `p-3 rounded-2xl text-center font-black max-w-xl mx-auto ${styleClass}`;
+            fb.textContent = msg;
+            fb.classList.remove('hidden');
+            setTimeout(() => fb.classList.add('hidden'), 2000);
+        }
+
+        function unlockAndGoToSentenceTransform() {
+            unlockTab('sentence-transform');
+            switchTab('sentence-transform');
+        }
+
+        // --- TAB 4: TASK 2 - SENTENCE WRITING ---
+        function renderSentenceTransform() {
+            const container = document.getElementById('st-items-container');
+            container.innerHTML = sentenceTransformItems.map((item, idx) => `
+                <div class="bg-indigo-50/40 p-4 rounded-2xl border border-indigo-100 space-y-2">
+                    <label class="block text-xs font-black text-indigo-950">
+                        <span class="inline-block bg-indigo-600 text-white rounded-full w-5 h-5 text-center leading-5 text-[11px] mr-1.5">${idx + 1}</span>
+                        ${item.prompt}
+                    </label>
+                    <input id="st-input-${idx}" type="text" placeholder="Type complete sentence here... / Gõ câu hoàn chỉnh..." class="w-full p-3 bg-white border-2 border-slate-200 rounded-xl text-xs md:text-sm focus:border-indigo-500 outline-none">
+                    <p id="st-hint-${idx}" class="text-[11px] text-slate-500 italic hidden">💡 Hint: ${item.hint}</p>
+                    <p id="st-feedback-${idx}" class="text-xs font-bold hidden"></p>
+                </div>
+            `).join('');
+        }
+
+        function normalizeText(text) {
+            return text.toLowerCase()
+                       .replace(/[’‘`´]/g, "'")
+                       .replace(/[.,/#!$%^&*;:{}=\-_~()?]/g, "")
+                       .replace(/\s+/g, " ")
+                       .trim();
+        }
+
+        function checkAllSentenceTransform() {
+            let correctCount = 0;
+
+            sentenceTransformItems.forEach((item, idx) => {
+                const inputEl = document.getElementById(`st-input-${idx}`);
+                const fbEl = document.getElementById(`st-feedback-${idx}`);
+                const hintEl = document.getElementById(`st-hint-${idx}`);
+                const userVal = normalizeText(inputEl.value);
+
+                const isCorrect = item.answers.some(ans => normalizeText(ans) === userVal);
+
+                fbEl.classList.remove('hidden', 'text-emerald-600', 'text-rose-600');
+                if (isCorrect) {
+                    correctCount++;
+                    fbEl.textContent = "✓ Correct! / Chính xác!";
+                    fbEl.classList.add('text-emerald-600');
+                    inputEl.classList.remove('border-rose-300', 'bg-rose-50');
+                    inputEl.classList.add('border-emerald-400', 'bg-emerald-50');
+                    hintEl.classList.add('hidden');
+                } else {
+                    fbEl.textContent = `✗ Not quite right. / Chưa đúng. Target: "${item.answers[0]}"`;
+                    fbEl.classList.add('text-rose-600');
+                    inputEl.classList.remove('border-emerald-400', 'bg-emerald-50');
+                    inputEl.classList.add('border-rose-300', 'bg-rose-50');
+                    hintEl.classList.remove('hidden');
+                }
+            });
+
+            if (correctCount === sentenceTransformItems.length) {
+                document.getElementById('st-success-box').classList.remove('hidden');
+                unlockTab('free-writing');
+            }
+        }
+
+        function unlockAndGoToFreeWriting() {
+            unlockTab('free-writing');
+            switchTab('free-writing');
+        }
+
+        // --- TAB 5: TASK 3 - PERSONAL WRITING ---
+        function submitFreeWriting() {
+            let filled = true;
+            for (let i = 1; i <= 5; i++) {
+                const val = document.getElementById(`fw-input-${i}`).value.trim();
+                if (!val) {
+                    filled = false;
+                    break;
+                }
+            }
+
+            if (!filled) {
+                alert("Please complete all 5 sentences before submitting! / Vui lòng điền đủ 5 câu trước khi nộp bài.");
+                return;
+            }
+
+            document.getElementById('fw-model-box').classList.remove('hidden');
+            document.getElementById('fw-success-box').classList.remove('hidden');
+            unlockTab('completion');
+        }
+
+        function unlockAndGoToCompletion() {
+            unlockTab('completion');
+            switchTab('completion');
+        }
+    </script>
+</body>
+</html>
