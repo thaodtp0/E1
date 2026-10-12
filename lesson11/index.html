@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E1_Lesson 11_Unit 10</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        *, body, html, button, span, h1, h2, h3, p, div, input, select, textarea { 
+            font-family: 'Quicksand', sans-serif; 
+            font-weight: 600;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .perspective { perspective: 1000px; }
+        .backface-hidden { backface-visibility: hidden; }
+        .card-inner { transition: transform 0.5s; transform-style: preserve-3d; }
+        .card-flipped { transform: rotateY(180deg); }
+        .disabled-tab { opacity: 0.4; cursor: not-allowed !important; pointer-events: none; }
+    </style>
+</head>
+<body class="bg-[#f7f9fc] text-slate-800 min-h-screen flex flex-col selection:bg-indigo-200 pb-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-[#E0E7FF] via-[#EEF2FF] to-[#E0F2FE] border-b-4 border-dashed border-indigo-200 shadow-sm p-6 text-center rounded-b-3xl">
+        <h1 class="text-3xl md:text-4xl font-black tracking-wide drop-shadow-sm text-indigo-950">🕰️ E1_Lesson 11_Unit 10 🕰️</h1>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-4xl w-full mx-auto px-4 mt-6">
+        <div class="flex bg-indigo-100/70 p-1.5 rounded-2xl border border-indigo-200 shadow-inner overflow-x-auto">
+            <button onclick="switchTab('reference')" id="btn-reference" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center bg-white text-indigo-600 shadow-sm transition cursor-pointer whitespace-nowrap">📚 Word Bank</button>
+            <button onclick="switchTab('flashcard')" id="btn-flashcard" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition cursor-pointer whitespace-nowrap">🎴 Flashcards</button>
+            <button onclick="switchTab('quiz-game')" id="btn-quiz-game" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🎮 Arena Quiz</button>
+            <button onclick="switchTab('sentence-builder')" id="btn-sentence-builder" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🧩 Sentence Builder</button>
+            <button onclick="switchTab('writing-practice')" id="btn-writing-practice" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">✍️ Writing Practice</button>
+            <button onclick="switchTab('completion')" id="btn-completion" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🏆 Finish</button>
+        </div>
+    </div>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        
+        <!-- TAB 1: WORD BANK -->
+        <section id="tab-reference" class="tab-content block space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <h2 class="text-2xl font-black text-indigo-900 font-heading">📖 E1_Lesson 11_Unit 10_Summary, Vocabulary &amp; Grammar</h2>
+                    <p class="text-sm text-slate-500 mt-1">Read the summary, grammar and word list before starting the practice activities.<br>Đọc phần tóm tắt, ngữ pháp và danh sách từ vựng trước khi làm bài luyện tập.</p>
+                </div>
+
+                <!-- LESSON SUMMARY (FIRST PAGE) -->
+                <div class="bg-gradient-to-r from-indigo-50 to-sky-50 border-2 border-indigo-200 rounded-2xl p-4 space-y-2">
+                    <h3 class="text-lg font-black text-indigo-900">📋 Lesson Summary / Tóm tắt kiến thức</h3>
+                    <ul class="text-sm text-slate-700 space-y-1.5 leading-relaxed">
+                        <li>⏳ <b>Time phrases / Cụm chỉ thời gian:</b> in + year, last week / year, ... ago, in the past, a long time ago.</li>
+                        <li>🎓 <b>Life events / Sự kiện cuộc sống:</b> pass a test, meet a person, finish college, write a story, belong to sb, get married, win a prize, drive a car.</li>
+                        <li>🔄 <b>Sequencing words / Từ chỉ trình tự:</b> then, after, later, next.</li>
+                        <li>✍️ <b>Grammar / Ngữ pháp:</b> the simple past (irregular verbs) and simple past questions.</li>
+                        <li>🎯 <b>Goal / Mục tiêu:</b> talk about an important object and past experiences; write about a happy memory.<br><span class="text-slate-500">Nói về một đồ vật quan trọng và những trải nghiệm trong quá khứ; viết về một kỷ niệm vui.</span></li>
+                    </ul>
+                </div>
+
+                <!-- GRAMMAR BOXES -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-base font-black text-indigo-900">📌 Grammar 1: Simple past (irregular verbs)</h3>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-indigo-100 leading-relaxed">
+                            go → <b>went</b> · have → <b>had</b> · see → <b>saw</b><br>
+                            take → <b>took</b> · make → <b>made</b> · buy → <b>bought</b><br>
+                            eat → <b>ate</b> · come → <b>came</b> · give → <b>gave</b><br>
+                            meet → <b>met</b> · write → <b>wrote</b> · get → <b>got</b><br>
+                            win → <b>won</b> · drive → <b>drove</b> · say → <b>said</b>
+                        </div>
+                        <p class="text-sm text-slate-700">I <b>won</b> a prize in 2020.<br><span class="text-slate-500">(Tôi đã giành giải thưởng vào năm 2020.)</span></p>
+                        <p class="text-xs text-slate-500">Irregular verbs do not end in -ed. Learn them by heart.<br>Động từ bất quy tắc không thêm -ed. Hãy học thuộc.</p>
+                    </div>
+                    <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-base font-black text-amber-800">📌 Grammar 2: Simple past questions</h3>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-amber-100 leading-relaxed">
+                            <b>Did</b> + subject + <b>base verb</b>?<br>
+                            Did you <b>win</b> a prize? → Yes, I did. / No, I didn't.<br>
+                            <b>Wh-word</b> + did + subject + base verb?<br>
+                            Where did he <b>go</b> last week?
+                        </div>
+                        <p class="text-sm text-slate-700">Did she finish college in 2015?<br><span class="text-slate-500">(Cô ấy tốt nghiệp đại học năm 2015 phải không?)</span></p>
+                        <p class="text-xs text-slate-500">After <b>did</b>, use the base verb (go, not went).<br>Sau <b>did</b>, dùng động từ nguyên mẫu (go, không dùng went).</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-base font-black text-emerald-900">⏳ Time phrases / Cụm chỉ thời gian</h3>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-emerald-100 leading-relaxed">
+                            <b>in</b> + year: in 2020<br>
+                            <b>last</b> + time: last week, last year<br>
+                            time + <b>ago</b>: two days ago<br>
+                            in the past · a long time ago
+                        </div>
+                        <p class="text-sm text-slate-700">We met two days ago.<br><span class="text-slate-500">(Chúng tôi đã gặp nhau hai ngày trước.)</span></p>
+                    </div>
+                    <div class="bg-rose-50 border-2 border-rose-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-base font-black text-rose-900">🔄 Sequencing words / Từ chỉ trình tự</h3>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-rose-100 leading-relaxed">
+                            I wrote a story. <b>Then</b>, I gave it to my teacher.<br>
+                            <b>After</b> that, I called my mother.<br>
+                            <b>Later</b>, we had dinner.<br>
+                            <b>Next</b>, we watched a movie.
+                        </div>
+                        <p class="text-xs text-slate-500">Put a comma after then, later and next at the start of a sentence.<br>Đặt dấu phẩy sau then, later, next ở đầu câu.</p>
+                    </div>
+                </div>
+
+                <!-- SPEAKING & WRITING -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-sky-50 border-2 border-sky-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-sky-900">🎤 Speaking: An important object and past experiences</h3>
+                        <div class="text-sm bg-white rounded-xl p-3 border border-sky-100 leading-relaxed">
+                            A: What is an important object to you?<br>
+                            B: My watch. My father gave it to me in 2020.<br>
+                            A: Did you win a prize last year?<br>
+                            B: Yes, I did. I won a prize at school.
+                        </div>
+                        <p class="text-xs text-slate-500">Ask and answer with a partner.<br>Hỏi và trả lời với bạn bên cạnh.</p>
+                    </div>
+                    <div class="bg-purple-50 border-2 border-purple-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-purple-900">📝 Writing: A happy memory</h3>
+                        <div class="text-sm bg-white rounded-xl p-3 border border-purple-100 leading-relaxed">
+                            Last year, I wrote a story for my English class. Then, I gave it to my teacher. Later, I won a prize. After that, I called my mother. Next, we had dinner together. I was very happy.
+                        </div>
+                        <p class="text-xs text-slate-500">Use sequencing words in your story.<br>Dùng từ chỉ trình tự trong câu chuyện của bạn.</p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table class="w-full text-left border-collapse bg-white">
+                        <thead>
+                            <tr class="bg-indigo-50 border-b border-slate-200 text-indigo-900 text-xs uppercase tracking-wider font-black">
+                                <th class="p-3.5">Vocabulary</th>
+                                <th class="p-3.5">Meaning (Tiếng Việt)</th>
+                                <th class="p-3.5">IPA</th>
+                                <th class="p-3.5">Example Sentence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reference-table-body" class="divide-y divide-slate-100 text-xs md:text-sm">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="switchTab('flashcard')" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-sm shadow-sm transition cursor-pointer">Start Flashcards Practice ➔ Bắt đầu thẻ từ</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: FLASHCARDS -->
+        <section id="tab-flashcard" class="tab-content hidden space-y-6">
+            <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-indigo-300 shadow-sm flex justify-between items-center flex-wrap gap-2">
+                <div class="text-sm font-black text-slate-600">Remaining / Còn lại: <span id="queue-text" class="text-indigo-600 font-extrabold">0 cards</span></div>
+                <div class="w-full sm:w-1/3 bg-slate-100 h-4 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <button onclick="resetProgress()" class="text-xs text-rose-500 hover:underline font-black cursor-pointer">🔄 Reset / Làm lại</button>
+            </div>
+            <p class="text-xs text-center text-slate-500 font-medium">Think of the answer first, then tap the card. Choose "Again" if you forgot.<br>Hãy nghĩ đáp án trước, rồi chạm vào thẻ. Chọn "Again" nếu bạn quên.</p>
+            
+            <div id="flashcard-container" class="space-y-6">
+                <div id="card-arena" class="perspective w-full max-w-md mx-auto h-[420px] cursor-pointer">
+                    <div id="flashcard-inner" onclick="flipCard()" class="card-inner w-full h-full relative border-4 border-indigo-400 rounded-3xl shadow-md bg-white">
+                        
+                        <!-- FRONT SIDE -->
+                        <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between items-center text-center bg-indigo-50/40 rounded-[20px]">
+                            <span id="f-badge" class="text-xs font-black text-indigo-700 uppercase tracking-widest bg-indigo-100 px-4 py-1.5 rounded-full">Prompt</span>
+                            
+                            <div class="space-y-3 my-auto w-full">
+                                <h3 id="f-prompt" class="text-2xl md:text-3xl font-black text-indigo-950"></h3>
+                                
+                                <div id="f-extra-content" class="hidden space-y-2 pt-2 border-t border-indigo-200/60">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <span id="f-ipa" class="text-indigo-600 font-bold text-sm font-mono"></span>
+                                        <button id="f-audio-btn" onclick="speakText(currentCard.word, event)" class="w-7 h-7 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full transition flex items-center justify-center text-xs cursor-pointer shadow-sm">🔊</button>
+                                    </div>
+                                    <p id="f-example" class="text-slate-600 text-xs px-2 font-medium leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-indigo-600 font-black">👉 Tap card to reveal answer / Chạm để xem đáp án 👈</p>
+                        </div>
+
+                        <!-- BACK SIDE -->
+                        <div class="backface-hidden w-full h-full absolute inset-0 p-6 flex flex-col justify-between bg-slate-900 text-white rounded-[22px]" style="transform: rotateY(180deg);">
+                            <span id="b-badge" class="text-xs font-black text-indigo-400 uppercase tracking-widest bg-slate-800 px-4 py-1.5 rounded-full w-max mx-auto">Answer</span>
+                            
+                            <div class="my-auto space-y-3 text-center">
+                                <h2 id="b-answer" class="text-3xl md:text-4xl font-black text-amber-300"></h2>
+                                
+                                <div id="b-extra-content" class="space-y-2 border-t border-slate-800 pt-3">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <span id="b-ipa" class="text-indigo-300 font-bold text-sm font-mono"></span>
+                                        <button id="b-audio-btn" onclick="speakText(currentCard.word, event)" class="w-7 h-7 bg-indigo-900 hover:bg-indigo-800 text-indigo-200 rounded-full transition flex items-center justify-center text-xs cursor-pointer shadow-sm">🔊</button>
+                                    </div>
+                                    <p id="b-example" class="text-slate-300 text-xs px-2 font-medium leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-center text-slate-500 font-bold">Rate how well you recalled this 👇</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="w-full max-w-md mx-auto bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-4 gap-2">
+                    <button onclick="handleAnkiAction('again')" class="p-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-rose-600">Again</span>
+                        <span class="text-[10px] text-rose-400 font-bold block mt-0.5">&lt; 1m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('hard')" class="p-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-amber-600">Hard</span>
+                        <span class="text-[10px] text-amber-400 font-bold block mt-0.5">10m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('good')" class="p-2 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-indigo-600">Good</span>
+                        <span class="text-[10px] text-indigo-400 font-bold block mt-0.5">1d</span>
+                    </button>
+                    <button onclick="handleAnkiAction('easy')" class="p-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-center transition shadow-sm cursor-pointer">
+                        <span class="block text-xs font-black text-emerald-600">Easy</span>
+                        <span class="text-[10px] text-emerald-400 font-bold block mt-0.5">4d</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="flashcard-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">⏳🏆🎓</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Vocabulary Mastered!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Awesome work! You completed all flashcards. Ready for the Arena Quiz?<br>Làm tốt lắm! Bạn đã sẵn sàng cho bài thi đấu chưa?</p>
+                <button onclick="unlockAndGoToQuiz()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Arena Quiz ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 3: QUIZ GAME -->
+        <section id="tab-quiz-game" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-amber-100 text-amber-800 font-black px-4 py-1.5 rounded-full tracking-wide">Task 1: Interactive Arena Quiz</span>
+                    <p class="text-xs text-slate-500 font-medium">Choose the best word to complete each sentence. Correct answers in a row give combo points!<br>Chọn từ đúng để hoàn thành câu. Trả lời đúng liên tiếp sẽ được thêm điểm combo!</p>
+                </div>
+
+                <div class="flex justify-between items-center bg-gradient-to-r from-amber-50 to-orange-50 p-4 rounded-2xl border border-amber-200 text-xs md:text-sm font-black text-amber-900 max-w-xl mx-auto shadow-sm">
+                    <div class="flex items-center gap-1.5">
+                        <span>🔥 Combo:</span>
+                        <span id="quiz-streak" class="text-orange-600 text-base font-extrabold">0</span>
+                    </div>
+                    <div>Question <span id="quiz-current-index" class="text-indigo-600 font-extrabold">1</span> / <span id="quiz-total-items">16</span></div>
+                    <div class="flex items-center gap-1.5">
+                        <span>⭐ Score:</span>
+                        <span id="quiz-score" class="text-amber-600 text-base font-extrabold">0</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 max-w-xl mx-auto text-center space-y-3">
+                    <p id="quiz-question-text" class="text-lg md:text-xl font-black text-indigo-950 leading-snug"></p>
+                </div>
+
+                <div id="quiz-options-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-xl mx-auto">
+                </div>
+
+                <div id="quiz-feedback" class="p-3.5 rounded-2xl text-center font-black hidden max-w-xl mx-auto text-sm"></div>
+            </div>
+
+            <div id="quiz-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🏆⚡🎓</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Quiz Champion!</h4>
+                <p class="text-sm text-slate-700 font-medium">You scored <span id="final-quiz-score" class="font-extrabold text-emerald-700">0</span> points! Next, let's build past simple sentences.<br>Tiếp theo hãy ghép câu ở thì quá khứ đơn nhé!</p>
+                <button onclick="unlockAndGoToSentenceBuilder()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Sentence Builder ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 4: SENTENCE BUILDER -->
+        <section id="tab-sentence-builder" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-purple-100 text-purple-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 2: Sentence Builder (15 Items)</span>
+                    <p class="text-xs text-slate-500 font-medium">Look at the picture. Choose the correct part of the sentence in 3 steps.<br>Nhìn hình và chọn đúng từng phần của câu qua 3 bước.</p>
+                </div>
+
+                <div class="flex justify-between items-center bg-purple-50 p-3 rounded-2xl border border-purple-100 text-xs md:text-sm font-black text-purple-900 max-w-xl mx-auto">
+                    <span>Progress: <span id="builder-current-index" class="text-purple-600 font-extrabold">1</span> / <span id="builder-total-items">15</span></span>
+                    <span>Step: <span id="builder-current-step" class="text-amber-600 font-extrabold">1 / 3</span></span>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 max-w-xl mx-auto text-center space-y-3">
+                    <div id="builder-image-box" class="py-4 px-2 bg-white rounded-xl border border-slate-200 shadow-inner flex flex-col justify-center items-center gap-2">
+                    </div>
+                    
+                    <div class="bg-white p-3.5 rounded-xl border-2 border-dashed border-purple-300 min-h-[56px] flex items-center justify-center">
+                        <p id="constructed-sentence" class="text-base md:text-lg font-black text-purple-950">
+                            <span id="slot-1" class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 1 ]</span> 
+                            <span id="slot-2" class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 2 ]</span> 
+                            <span id="slot-3" class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 3 ]</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="step-choices-container" class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto">
+                </div>
+
+                <div id="builder-feedback" class="p-3 rounded-2xl text-center font-black hidden max-w-xl mx-auto text-sm"></div>
+            </div>
+
+            <div id="builder-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🧩💯🚀</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Sentence Builder Complete!</h4>
+                <p class="text-sm text-slate-700 font-medium">Excellent work! You built all 15 sentences correctly.<br>Tuyệt vời! Bạn đã ghép đúng cả 15 câu.</p>
+                <button onclick="unlockAndGoToWritingPractice()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Writing Practice ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 5: SPEAKING WARM-UP + WRITING PRACTICE -->
+        <section id="tab-writing-practice" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-1">
+                    <span class="text-xs uppercase bg-teal-100 text-teal-800 font-black px-4 py-1.5 rounded-full tracking-wide">Task 3: Speaking &amp; Writing</span>
+                    <h3 class="text-xl font-heading font-black text-indigo-950 pt-2">Write About a Happy Memory</h3>
+                    <p class="text-xs text-slate-500 font-medium">First, say your answers aloud. Then write 5 sentences with sequencing words.<br>Trước tiên hãy nói to câu trả lời. Sau đó viết 5 câu có từ chỉ trình tự.</p>
+                </div>
+
+                <!-- SPEAKING WARM-UP -->
+                <div class="bg-sky-50 border-2 border-sky-200 p-4 rounded-2xl space-y-2 max-w-2xl mx-auto">
+                    <h4 class="text-xs uppercase font-black text-sky-800 tracking-wider">🎤 Speaking warm-up: An important object and past experiences</h4>
+                    <ul class="text-xs md:text-sm text-slate-700 font-medium space-y-1 list-disc list-inside">
+                        <li>What is an important object to you? <span class="text-slate-500">(Đồ vật quan trọng với bạn là gì?)</span></li>
+                        <li>When did you get it? Who gave it to you? <span class="text-slate-500">(Bạn có nó khi nào? Ai tặng bạn?)</span></li>
+                        <li>Did you win a prize or pass a test last year? <span class="text-slate-500">(Năm ngoái bạn có giành giải hay vượt qua kỳ thi nào không?)</span></li>
+                        <li>What did you do last week? <span class="text-slate-500">(Tuần trước bạn đã làm gì?)</span></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4 max-w-2xl mx-auto">
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                        <label class="block text-xs font-black text-indigo-900">1. When it happened (in + year / last ... / ... ago) / Chuyện xảy ra khi nào:</label>
+                        <input type="text" id="write-input-1" placeholder="e.g. Last year, I won a prize at school." class="w-full p-3 bg-white border border-slate-300 rounded-xl text-sm font-bold focus:outline-indigo-500">
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                        <label class="block text-xs font-black text-indigo-900">2. What you did first (simple past) / Việc bạn làm đầu tiên:</label>
+                        <input type="text" id="write-input-2" placeholder="e.g. First, I wrote a story for my English class." class="w-full p-3 bg-white border border-slate-300 rounded-xl text-sm font-bold focus:outline-indigo-500">
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                        <label class="block text-xs font-black text-indigo-900">3. Use "Then" or "Next" / Dùng "Then" hoặc "Next":</label>
+                        <input type="text" id="write-input-3" placeholder="e.g. Then, I gave it to my teacher." class="w-full p-3 bg-white border border-slate-300 rounded-xl text-sm font-bold focus:outline-indigo-500">
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                        <label class="block text-xs font-black text-indigo-900">4. Use "Later" or "After that" / Dùng "Later" hoặc "After that":</label>
+                        <input type="text" id="write-input-4" placeholder="e.g. Later, my teacher told me the news. After that, I called my mother." class="w-full p-3 bg-white border border-slate-300 rounded-xl text-sm font-bold focus:outline-indigo-500">
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                        <label class="block text-xs font-black text-indigo-900">5. How you felt, or an important object from that day / Bạn cảm thấy thế nào, hoặc đồ vật quan trọng của ngày hôm đó:</label>
+                        <input type="text" id="write-input-5" placeholder="e.g. I was very happy. I still have the prize." class="w-full p-3 bg-white border border-slate-300 rounded-xl text-sm font-bold focus:outline-indigo-500">
+                    </div>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="checkWritingAnswers()" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-sm shadow-md transition cursor-pointer">Submit Writing 🚀 / Nộp bài</button>
+                </div>
+
+                <!-- SAMPLE ANSWERS AFTER SUBMIT -->
+                <div id="writing-results-container" class="hidden max-w-2xl mx-auto bg-emerald-50 border-2 border-emerald-300 p-6 rounded-3xl space-y-4">
+                    <div class="text-center space-y-1">
+                        <span class="text-3xl block animate-bounce">🎉✨</span>
+                        <h4 class="text-xl font-heading font-black text-emerald-950">Well done! You wrote your memory!</h4>
+                        <p class="text-xs text-emerald-800 font-bold">Here are sample sentences to compare with yours:<br>Đây là các câu mẫu để bạn so sánh:</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl border border-emerald-200 space-y-2.5 text-xs md:text-sm text-slate-700 font-bold">
+                        <div class="flex items-start gap-2"><span class="text-indigo-600 font-black">1.</span> <span><b>Time:</b> <b>Last year</b>, I <b>won</b> a prize at school.</span></div>
+                        <div class="flex items-start gap-2"><span class="text-indigo-600 font-black">2.</span> <span><b>First action:</b> <b>First</b>, I <b>wrote</b> a story for my English class.</span></div>
+                        <div class="flex items-start gap-2"><span class="text-indigo-600 font-black">3.</span> <span><b>Then / Next:</b> <b>Then</b>, I <b>gave</b> it to my teacher.</span></div>
+                        <div class="flex items-start gap-2"><span class="text-indigo-600 font-black">4.</span> <span><b>Later / After that:</b> <b>Later</b>, my teacher told me the news. <b>After that</b>, I called my mother.</span></div>
+                        <div class="flex items-start gap-2"><span class="text-indigo-600 font-black">5.</span> <span><b>Feeling / object:</b> I <b>was</b> very happy. I still <b>have</b> the prize.</span></div>
+                    </div>
+
+                    <div class="text-center pt-2">
+                        <button onclick="unlockAndGoToCompletion()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl text-xs shadow-md transition cursor-pointer">Finish Lesson 11 ➔ Hoàn thành bài học</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: FINISH (CONGRATULATIONS + SUMMARY) -->
+        <section id="tab-completion" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 text-white p-8 rounded-3xl max-w-lg mx-auto text-center space-y-5 shadow-xl border-4 border-amber-400">
+                <span class="text-6xl block animate-bounce">🦄🏆🌟</span>
+                <h3 class="text-3xl font-heading font-black text-amber-300">Congratulations!</h3>
+                <p class="text-slate-200 font-medium text-base leading-relaxed">You have completed E1_Lesson 11_Unit 10!<br>Chúc mừng bạn đã hoàn thành E1_Lesson 11_Unit 10!</p>
+
+                <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-left space-y-2 text-sm">
+                    <p class="text-xs text-amber-300 uppercase font-black tracking-wider text-center">📋 Lesson Summary / Tổng kết bài học</p>
+                    <p class="text-slate-200"><b class="text-amber-300">Vocabulary / Từ vựng:</b> time phrases, life events, irregular past verbs, sequencing words.<br><span class="text-slate-400">Cụm chỉ thời gian, sự kiện cuộc sống, động từ bất quy tắc ở quá khứ, từ chỉ trình tự.</span></p>
+                    <p class="text-slate-200"><b class="text-amber-300">Grammar / Ngữ pháp:</b> the simple past (irregular verbs) and simple past questions with did.<br><span class="text-slate-400">Thì quá khứ đơn (động từ bất quy tắc) và câu hỏi với did.</span></p>
+                    <p class="text-slate-200"><b class="text-amber-300">Goal / Mục tiêu:</b> You can talk about an important object and past experiences, and write about a happy memory.<br><span class="text-slate-400">Bạn đã có thể nói về đồ vật quan trọng, trải nghiệm quá khứ và viết về một kỷ niệm vui.</span></p>
+                    <p class="text-emerald-300 text-center pt-1">Example: "Last year, I won a prize. Then, I called my mother."</p>
+                </div>
+
+                <p class="text-amber-200 font-bold">Great job! See you in the next lesson! 🎉<br>Làm tốt lắm! Hẹn gặp bạn ở bài học tiếp theo!</p>
+
+                <div class="pt-4 border-t border-slate-800">
+                    <button onclick="location.reload()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">🔄 Restart Lesson 11 Practice</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // VOCABULARY LIST (28 ITEMS)
+        const vocabularyData = [
+            // Time phrases
+            { word: "in the past", ipa: "/ɪn ðə pɑːst/", vi: "trong quá khứ", ex: "In the past, people wrote letters.", icon: "⏳" },
+            { word: "a long time ago", ipa: "/ə lɒŋ taɪm əˈɡəʊ/", vi: "cách đây rất lâu", ex: "My grandfather drove a car a long time ago.", icon: "🏺" },
+            { word: "last week", ipa: "/lɑːst wiːk/", vi: "tuần trước", ex: "I saw my friend last week.", icon: "📆" },
+            { word: "last year", ipa: "/lɑːst jɪə(r)/", vi: "năm ngoái", ex: "She got married last year.", icon: "🗓️" },
+            { word: "two days ago", ipa: "/tuː deɪz əˈɡəʊ/", vi: "hai ngày trước", ex: "We met two days ago.", icon: "⏪" },
+            { word: "in 2020", ipa: "/ɪn ˌtwenti ˈtwenti/", vi: "vào năm 2020", ex: "I won a prize in 2020.", icon: "📅" },
+
+            // Life events
+            { word: "pass a test", ipa: "/pɑːs ə test/", vi: "vượt qua bài kiểm tra", ex: "I passed the test last week.", icon: "📝" },
+            { word: "meet a person", ipa: "/miːt ə ˈpɜːsn/", vi: "gặp một người", ex: "I met a new friend in 2018.", icon: "🤝" },
+            { word: "finish college", ipa: "/ˈfɪnɪʃ ˈkɒlɪdʒ/", vi: "tốt nghiệp đại học", ex: "He finished college in 2015.", icon: "🎓" },
+            { word: "write a story", ipa: "/raɪt ə ˈstɔːri/", vi: "viết một câu chuyện", ex: "She wrote a story last week.", icon: "✍️" },
+            { word: "belong to sb", ipa: "/bɪˈlɒŋ tə ˈsʌmbədi/", vi: "thuộc về ai đó", ex: "This bag belonged to my grandmother.", icon: "👜" },
+            { word: "get married", ipa: "/ɡet ˈmærid/", vi: "kết hôn", ex: "My parents got married in 1999.", icon: "💍" },
+            { word: "win a prize", ipa: "/wɪn ə praɪz/", vi: "giành giải thưởng", ex: "I won a prize at school.", icon: "🏆" },
+            { word: "drive a car", ipa: "/draɪv ə kɑː(r)/", vi: "lái xe ô tô", ex: "My father drove a car to work.", icon: "🚗" },
+
+            // Irregular past verbs
+            { word: "went", ipa: "/went/", vi: "đã đi (go → went)", ex: "She went to the market last week.", icon: "🚶" },
+            { word: "had", ipa: "/hæd/", vi: "đã có, đã ăn (have → had)", ex: "We had dinner together.", icon: "🎒" },
+            { word: "saw", ipa: "/sɔː/", vi: "đã nhìn thấy (see → saw)", ex: "I saw a movie last week.", icon: "👀" },
+            { word: "took", ipa: "/tʊk/", vi: "đã lấy, đã chụp (take → took)", ex: "He took a photo of the prize.", icon: "🤲" },
+            { word: "made", ipa: "/meɪd/", vi: "đã làm, đã tạo ra (make → made)", ex: "My mother made a cake.", icon: "🛠️" },
+            { word: "bought", ipa: "/bɔːt/", vi: "đã mua (buy → bought)", ex: "He bought a new bike last year.", icon: "🛍️" },
+            { word: "ate", ipa: "/et/", vi: "đã ăn (eat → ate)", ex: "We ate pizza two days ago.", icon: "🍽️" },
+            { word: "came", ipa: "/keɪm/", vi: "đã đến (come → came)", ex: "My friends came to my party.", icon: "🏃" },
+            { word: "gave", ipa: "/ɡeɪv/", vi: "đã cho, đã tặng (give → gave)", ex: "My father gave me a watch.", icon: "🎁" },
+            { word: "said", ipa: "/sed/", vi: "đã nói (say → said)", ex: "My teacher said, \"Well done!\"", icon: "💬" },
+
+            // Sequencing words
+            { word: "then", ipa: "/ðen/", vi: "sau đó, rồi", ex: "I wrote a story. Then, I gave it to my teacher.", icon: "➡️" },
+            { word: "after", ipa: "/ˈɑːftə(r)/", vi: "sau đó; sau khi", ex: "After that, I called my mother.", icon: "⏭️" },
+            { word: "later", ipa: "/ˈleɪtə(r)/", vi: "lát sau, sau đó", ex: "Later, we had dinner.", icon: "🕒" },
+            { word: "next", ipa: "/nekst/", vi: "tiếp theo", ex: "Next, we watched a movie.", icon: "⏩" }
+        ];
+
+        // 16 ARENA QUIZ ITEMS
+        const quizItems = [
+            { q: "She ______ to the market last week.", options: ["went", "go", "goes", "gone"], answer: "went" },
+            { q: "We ______ pizza two days ago.", options: ["ate", "eat", "eats", "eated"], answer: "ate" },
+            { q: "He ______ a new bike last year.", options: ["bought", "buy", "buys", "buyed"], answer: "bought" },
+            { q: "They ______ a prize in 2020.", options: ["won", "win", "wins", "wined"], answer: "won" },
+            { q: "My grandfather ______ a car a long time ago.", options: ["drove", "drive", "drives", "drived"], answer: "drove" },
+            { q: "I ______ my best friend in 2018.", options: ["met", "meet", "meets", "meeted"], answer: "met" },
+            { q: "She ______ a short story last year.", options: ["wrote", "write", "writes", "writed"], answer: "wrote" },
+            { q: "My parents ______ married in 1999.", options: ["got", "get", "gets", "getted"], answer: "got" },
+            { q: "I ______ a movie last week.", options: ["saw", "see", "sees", "seed"], answer: "saw" },
+            { q: "He ______ college in 2015.", options: ["finished", "finish", "finishes", "finishing"], answer: "finished" },
+            { q: "This old bag ______ to my grandmother a long time ago.", options: ["belonged", "belong", "belongs", "belonging"], answer: "belonged" },
+            { q: "Did you ______ the test last week?", options: ["pass", "passed", "passes", "passing"], answer: "pass" },
+            { q: "______ you win the prize last year?", options: ["Did", "Do", "Does", "Are"], answer: "Did" },
+            { q: "Where ______ he go last year?", options: ["did", "does", "do", "was"], answer: "did" },
+            { q: "First, I wrote a story. ______, I gave it to my teacher.", options: ["Then", "Because", "But", "Or"], answer: "Then" },
+            { q: "I got up at seven. ______, I had breakfast.", options: ["Next", "Because", "Why", "Or"], answer: "Next" }
+        ];
+
+        // 15 SENTENCE BUILDER ITEMS
+        const sentenceBuilderItems = [
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">🏆 <span class="text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-bold">2020</span></div>`,
+                step1: ["I", "Winning", "Prize"], 
+                step2: ["won a prize", "win a prize", "winning a prize"], 
+                step3: ["in 2020.", "ago 2020.", "last 2020."], 
+                target: ["I", "won a prize", "in 2020."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">🎓 <span class="text-xs bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold">3 years ago</span></div>`,
+                step1: ["He", "Finish", "College"], 
+                step2: ["finished college", "finish college", "finishing college"], 
+                step3: ["three years ago.", "ago three years.", "last three years."], 
+                target: ["He", "finished college", "three years ago."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">👴 🚗 <span class="text-xs bg-slate-200 text-slate-800 px-3 py-1 rounded-full font-bold">A long time ago</span></div>`,
+                step1: ["My grandfather", "Drove", "Cars"], 
+                step2: ["drove a car", "drived a car", "driving a car"], 
+                step3: ["a long time ago.", "long a time ago.", "ago a long time."], 
+                target: ["My grandfather", "drove a car", "a long time ago."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">👭 💍 <span class="text-xs bg-pink-100 text-pink-800 px-3 py-1 rounded-full font-bold">Last year</span></div>`,
+                step1: ["My sister", "Married", "Got"], 
+                step2: ["got married", "get married", "getting married"], 
+                step3: ["last year.", "year last.", "ago year."], 
+                target: ["My sister", "got married", "last year."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">👩 ✍️📖 <span class="text-xs bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-bold">Last week</span></div>`,
+                step1: ["She", "Writing", "Story"], 
+                step2: ["wrote a story", "writed a story", "write a story"], 
+                step3: ["last week.", "week last.", "a week last."], 
+                target: ["She", "wrote a story", "last week."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">🙋 🤝 🙂 <span class="text-xs bg-sky-100 text-sky-800 px-3 py-1 rounded-full font-bold">2018</span></div>`,
+                step1: ["I", "Meeting", "Friend"], 
+                step2: ["met a new friend", "meet a new friend", "meeted a new friend"], 
+                step3: ["in 2018.", "at 2018.", "ago 2018."], 
+                target: ["I", "met a new friend", "in 2018."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">👨‍👩‍👧 ✅📝 <span class="text-xs bg-teal-100 text-teal-800 px-3 py-1 rounded-full font-bold">Last week</span></div>`,
+                step1: ["We", "Passing", "Test"], 
+                step2: ["passed the test", "pass the test", "passing the test"], 
+                step3: ["last week.", "week last.", "a week last."], 
+                target: ["We", "passed the test", "last week."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">👜 👵 <span class="text-xs bg-slate-200 text-slate-800 px-3 py-1 rounded-full font-bold">A long time ago</span></div>`,
+                step1: ["This bag", "Belonged", "My grandmother"], 
+                step2: ["belonged to my grandmother", "belong to my grandmother", "belongs my grandmother"], 
+                step3: ["a long time ago.", "long a time ago.", "ago a long time."], 
+                target: ["This bag", "belonged to my grandmother", "a long time ago."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">🏆 ❓ <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold">Question: last year</span></div>`,
+                step1: ["Did you", "Do you", "Are you"], 
+                step2: ["win a prize", "won a prize", "winning a prize"], 
+                step3: ["last year?", "last year.", "ago year?"], 
+                target: ["Did you", "win a prize", "last year?"] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">👨 🚗 ❓ <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold">Question: 2 days ago</span></div>`,
+                step1: ["Did he", "Does he", "Is he"], 
+                step2: ["drive a car", "drove a car", "driving a car"], 
+                step3: ["two days ago?", "ago two days?", "two days last?"], 
+                target: ["Did he", "drive a car", "two days ago?"] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">🗺️ 🚶 ❓ <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold">Question: last week</span></div>`,
+                step1: ["Where did he", "Where does he", "Where is he"], 
+                step2: ["go", "went", "going"], 
+                step3: ["last week?", "last week.", "ago week?"], 
+                target: ["Where did he", "go", "last week?"] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">🍽️ 🍕 ❓ <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold">Question: 2 days ago</span></div>`,
+                step1: ["What did you", "What do you", "What are you"], 
+                step2: ["eat", "ate", "eating"], 
+                step3: ["two days ago?", "ago two days?", "two ago days?"], 
+                target: ["What did you", "eat", "two days ago?"] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-4xl font-black">👫 🤝 ❓ <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold">Question: 2019</span></div>`,
+                step1: ["Did they", "Do they", "Are they"], 
+                step2: ["meet", "met", "meeting"], 
+                step3: ["in 2019?", "in 2019.", "ago 2019?"], 
+                target: ["Did they", "meet", "in 2019?"] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-3xl font-black">1️⃣ ✍️📖 ➡️ 2️⃣ 🎁 <span class="text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-bold">Sequence</span></div>`,
+                step1: ["I wrote a story.", "I write a story.", "I writing a story."], 
+                step2: ["Then,", "Because,", "But,"], 
+                step3: ["I gave it to my friends.", "I give it to my friends.", "I gived it to my friends."], 
+                target: ["I wrote a story.", "Then,", "I gave it to my friends."] 
+            },
+            { 
+                visualHtml: `<div class="flex items-center justify-center gap-3 text-3xl font-black">1️⃣ 🍽️ ➡️ 2️⃣ 🎬 <span class="text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-bold">Sequence</span></div>`,
+                step1: ["We ate dinner.", "We eat dinner.", "We eated dinner."], 
+                step2: ["Later,", "Because,", "Or,"], 
+                step3: ["we watched a movie.", "we watch a movie.", "we watching a movie."], 
+                target: ["We ate dinner.", "Later,", "we watched a movie."] 
+            }
+        ];
+
+        // STATE MANAGEMENT
+        let currentTab = 'reference';
+        let flashcardQueue = [];
+        let currentCard = null;
+        let isFlipped = false;
+        let initialQueueLength = 0;
+
+        let quizIndex = 0;
+        let quizScore = 0;
+        let quizStreak = 0;
+
+        let builderIndex = 0;
+        let currentStep = 1;
+        let userChoices = ["", "", ""];
+
+        function speakText(text, e) {
+            if (e) e.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-indigo-600', 'shadow-sm');
+                btn.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-500');
+                activeBtn.classList.add('bg-white', 'text-indigo-600', 'shadow-sm');
+            }
+            currentTab = tabId;
+
+            if (tabId === 'quiz-game' && quizIndex === 0) {
+                initQuizGame();
+            } else if (tabId === 'sentence-builder' && builderIndex === 0) {
+                initSentenceBuilder();
+            }
+        }
+
+        // 1. VOCABULARY TABLE
+        function renderWordBank() {
+            const tbody = document.getElementById('reference-table-body');
+            tbody.innerHTML = vocabularyData.map(item => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3.5 font-bold text-indigo-950"><span class="mr-2">${item.icon || '📌'}</span>${item.word}</td>
+                    <td class="p-3.5 text-slate-600">${item.vi}</td>
+                    <td class="p-3.5 text-indigo-500 font-mono">${item.ipa}</td>
+                    <td class="p-3.5 text-slate-600 font-normal">${item.ex}</td>
+                </tr>
+            `).join('');
+        }
+
+        // 2. FLASHCARDS LOGIC
+        function initFlashcards() {
+            flashcardQueue = vocabularyData.map(item => ({
+                ...item,
+                frontType: Math.random() < 0.5 ? 'vi' : 'en'
+            }));
+            initialQueueLength = flashcardQueue.length;
+            updateQueueUI();
+            nextCard();
+        }
+
+        function updateQueueUI() {
+            document.getElementById('queue-text').innerText = `${flashcardQueue.length} cards`;
+            const percent = ((initialQueueLength - flashcardQueue.length) / initialQueueLength) * 100;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+        }
+
+        function nextCard() {
+            if (flashcardQueue.length === 0) {
+                document.getElementById('flashcard-container').classList.add('hidden');
+                document.getElementById('flashcard-success-box').classList.remove('hidden');
+                document.getElementById('btn-quiz-game').classList.remove('disabled-tab');
+                return;
+            }
+            currentCard = flashcardQueue[0];
+            isFlipped = false;
+            
+            const cardInner = document.getElementById('flashcard-inner');
+            cardInner.classList.remove('card-flipped');
+
+            setTimeout(() => {
+                const fExtra = document.getElementById('f-extra-content');
+                const bExtra = document.getElementById('b-extra-content');
+
+                if (currentCard.frontType === 'vi') {
+                    document.getElementById('f-badge').innerText = "🇻🇳 Vietnamese Prompt";
+                    document.getElementById('f-prompt').innerText = `${currentCard.icon || ''} ${currentCard.vi}`;
+                    fExtra.classList.add('hidden');
+
+                    document.getElementById('b-badge').innerText = "🇬🇧 English";
+                    document.getElementById('b-answer').innerText = currentCard.word;
+                    document.getElementById('b-ipa').innerText = currentCard.ipa;
+                    document.getElementById('b-example').innerText = `"${currentCard.ex}"`;
+                    bExtra.classList.remove('hidden');
+                } else {
+                    document.getElementById('f-badge').innerText = "🇬🇧 English Prompt";
+                    document.getElementById('f-prompt').innerText = `${currentCard.icon || ''} ${currentCard.word}`;
+                    document.getElementById('f-ipa').innerText = currentCard.ipa;
+                    document.getElementById('f-example').innerText = `"${currentCard.ex}"`;
+                    fExtra.classList.remove('hidden');
+
+                    document.getElementById('b-badge').innerText = "🇻🇳 Vietnamese Meaning";
+                    document.getElementById('b-answer').innerText = currentCard.vi;
+                    bExtra.classList.add('hidden');
+                }
+            }, 150);
+        }
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            const cardInner = document.getElementById('flashcard-inner');
+            if (isFlipped) {
+                cardInner.classList.add('card-flipped');
+            } else {
+                cardInner.classList.remove('card-flipped');
+            }
+        }
+
+        function handleAnkiAction(action) {
+            if (!currentCard) return;
+            if (action === 'again') {
+                const card = flashcardQueue.shift();
+                flashcardQueue.push(card);
+            } else {
+                flashcardQueue.shift();
+            }
+            updateQueueUI();
+            nextCard();
+        }
+
+        function resetProgress() {
+            document.getElementById('flashcard-container').classList.remove('hidden');
+            document.getElementById('flashcard-success-box').classList.add('hidden');
+            initFlashcards();
+        }
+
+        function unlockAndGoToQuiz() {
+            const btn = document.getElementById('btn-quiz-game');
+            btn.classList.remove('disabled-tab');
+            switchTab('quiz-game');
+        }
+
+        // 3. ARENA QUIZ GAME
+        function initQuizGame() {
+            quizIndex = 0;
+            quizScore = 0;
+            quizStreak = 0;
+            document.getElementById('quiz-options-grid').classList.remove('hidden');
+            document.getElementById('quiz-question-text').classList.remove('hidden');
+            document.getElementById('quiz-success-box').classList.add('hidden');
+            updateQuizScoreboard();
+            loadQuizQuestion();
+        }
+
+        function updateQuizScoreboard() {
+            document.getElementById('quiz-score').innerText = quizScore;
+            document.getElementById('quiz-streak').innerText = quizStreak;
+            document.getElementById('quiz-current-index').innerText = Math.min(quizIndex + 1, quizItems.length);
+            document.getElementById('quiz-total-items').innerText = quizItems.length;
+        }
+
+        function loadQuizQuestion() {
+            if (quizIndex >= quizItems.length) {
+                document.getElementById('quiz-options-grid').classList.add('hidden');
+                document.getElementById('quiz-question-text').classList.add('hidden');
+                document.getElementById('quiz-feedback').classList.add('hidden');
+                document.getElementById('quiz-success-box').classList.remove('hidden');
+                document.getElementById('final-quiz-score').innerText = quizScore;
+                document.getElementById('btn-sentence-builder').classList.remove('disabled-tab');
+                return;
+            }
+
+            const item = quizItems[quizIndex];
+            document.getElementById('quiz-question-text').innerText = item.q;
+            
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.add('hidden');
+
+            let options = [...item.options].sort(() => Math.random() - 0.5);
+
+            const grid = document.getElementById('quiz-options-grid');
+            grid.innerHTML = options.map(opt => `
+                <button onclick="checkQuizAnswer('${opt.replace(/'/g, "\\'")}')" class="p-3.5 bg-indigo-50/70 hover:bg-indigo-100 border-2 border-indigo-200 rounded-2xl text-indigo-950 font-black text-sm transition transform hover:-translate-y-0.5 cursor-pointer shadow-sm">
+                    ${opt}
+                </button>
+            `).join('');
+
+            updateQuizScoreboard();
+        }
+
+        function checkQuizAnswer(selectedOption) {
+            const item = quizItems[quizIndex];
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.remove('hidden');
+
+            // Prevent double clicks while feedback is showing
+            document.querySelectorAll('#quiz-options-grid button').forEach(b => b.disabled = true);
+
+            if (selectedOption === item.answer) {
+                quizStreak++;
+                quizScore += 10 + (quizStreak * 2);
+                feedback.className = "p-3.5 rounded-2xl text-center font-black bg-emerald-100 text-emerald-800 max-w-xl mx-auto text-sm";
+                feedback.innerHTML = `✨ Correct! +${10 + (quizStreak * 2)} pts`;
+                
+                speakText(item.answer);
+
+                setTimeout(() => {
+                    quizIndex++;
+                    loadQuizQuestion();
+                }, 1100);
+            } else {
+                quizStreak = 0;
+                feedback.className = "p-3.5 rounded-2xl text-center font-black bg-rose-100 text-rose-800 max-w-xl mx-auto text-sm";
+                feedback.innerHTML = `❌ Incorrect! The correct answer is: <b>${item.answer}</b> / Đáp án đúng là: <b>${item.answer}</b>`;
+                
+                setTimeout(() => {
+                    quizIndex++;
+                    loadQuizQuestion();
+                }, 1800);
+            }
+        }
+
+        function unlockAndGoToSentenceBuilder() {
+            const btn = document.getElementById('btn-sentence-builder');
+            btn.classList.remove('disabled-tab');
+            switchTab('sentence-builder');
+        }
+
+        // 4. SENTENCE BUILDER (RANDOMIZED CHOICES AT EACH STEP)
+        function initSentenceBuilder() {
+            builderIndex = 0;
+            loadBuilderQuestion();
+        }
+
+        function loadBuilderQuestion() {
+            if (builderIndex >= sentenceBuilderItems.length) {
+                document.getElementById('step-choices-container').classList.add('hidden');
+                document.getElementById('builder-feedback').classList.add('hidden');
+                document.getElementById('builder-success-box').classList.remove('hidden');
+                document.getElementById('btn-writing-practice').classList.remove('disabled-tab');
+                return;
+            }
+
+            currentStep = 1;
+            userChoices = ["", "", ""];
+            const item = sentenceBuilderItems[builderIndex];
+
+            document.getElementById('builder-current-index').innerText = builderIndex + 1;
+            document.getElementById('builder-total-items').innerText = sentenceBuilderItems.length;
+            document.getElementById('builder-current-step').innerText = `${currentStep} / 3`;
+            document.getElementById('builder-image-box').innerHTML = item.visualHtml;
+
+            updateSentenceDisplay();
+            renderStepChoices();
+
+            const feedback = document.getElementById('builder-feedback');
+            feedback.classList.add('hidden');
+        }
+
+        function updateSentenceDisplay() {
+            document.getElementById('slot-1').innerHTML = userChoices[0] ? `<span class="text-indigo-600 font-extrabold">${userChoices[0]}</span>` : `<span class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 1 ]</span>`;
+            document.getElementById('slot-2').innerHTML = userChoices[1] ? `<span class="text-indigo-600 font-extrabold">${userChoices[1]}</span>` : `<span class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 2 ]</span>`;
+            document.getElementById('slot-3').innerHTML = userChoices[2] ? `<span class="text-indigo-600 font-extrabold">${userChoices[2]}</span>` : `<span class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 3 ]</span>`;
+        }
+
+        function renderStepChoices() {
+            const item = sentenceBuilderItems[builderIndex];
+            let choices = [];
+            if (currentStep === 1) choices = [...item.step1];
+            else if (currentStep === 2) choices = [...item.step2];
+            else if (currentStep === 3) choices = [...item.step3];
+
+            // Shuffle options so the correct answer is NOT always option A
+            choices.sort(() => Math.random() - 0.5);
+
+            const container = document.getElementById('step-choices-container');
+            container.innerHTML = choices.map((choice, idx) => `
+                <button id="choice-btn-${idx}" onclick="makeStepChoice('${choice.replace(/'/g, "\\'")}', ${idx})" class="p-3 bg-purple-50 hover:bg-purple-100 border-2 border-purple-200 rounded-xl text-purple-900 font-black text-xs sm:text-sm transition cursor-pointer shadow-sm">
+                    ${choice}
+                </button>
+            `).join('');
+        }
+
+        function makeStepChoice(choice, btnIndex) {
+            const item = sentenceBuilderItems[builderIndex];
+            const targetChoice = item.target[currentStep - 1];
+            const feedback = document.getElementById('builder-feedback');
+
+            if (choice === targetChoice) {
+                userChoices[currentStep - 1] = choice;
+                updateSentenceDisplay();
+
+                if (currentStep < 3) {
+                    currentStep++;
+                    document.getElementById('builder-current-step').innerText = `${currentStep} / 3`;
+                    feedback.classList.add('hidden');
+                    renderStepChoices();
+                } else {
+                    feedback.classList.remove('hidden');
+                    feedback.className = "p-3 rounded-2xl text-center font-black bg-emerald-100 text-emerald-800 max-w-xl mx-auto text-sm";
+                    feedback.innerText = "🎉 Great job! Correct sentence. / Chính xác!";
+
+                    document.querySelectorAll('#step-choices-container button').forEach(b => b.disabled = true);
+                    speakText(`${userChoices[0]} ${userChoices[1]} ${userChoices[2]}`);
+
+                    setTimeout(() => {
+                        builderIndex++;
+                        loadBuilderQuestion();
+                    }, 1400);
+                }
+            } else {
+                feedback.classList.remove('hidden');
+                feedback.className = "p-3 rounded-2xl text-center font-black bg-rose-100 text-rose-800 max-w-xl mx-auto text-sm";
+                feedback.innerText = "❌ Try another option! / Hãy thử đáp án khác!";
+
+                const wrongBtn = document.getElementById(`choice-btn-${btnIndex}`);
+                if (wrongBtn) {
+                    wrongBtn.disabled = true;
+                    wrongBtn.className = "p-3 bg-slate-100 border-2 border-slate-200 rounded-xl text-slate-400 font-black text-xs sm:text-sm cursor-not-allowed opacity-60";
+                }
+            }
+        }
+
+        function unlockAndGoToWritingPractice() {
+            const btn = document.getElementById('btn-writing-practice');
+            btn.classList.remove('disabled-tab');
+            switchTab('writing-practice');
+        }
+
+        // 5. WRITING PRACTICE (SUBMIT ALL & DISPLAY SAMPLE ANSWERS BELOW)
+        function checkWritingAnswers() {
+            let hasEmpty = false;
+
+            for (let i = 1; i <= 5; i++) {
+                const inputVal = document.getElementById(`write-input-${i}`).value.trim();
+                if (!inputVal) {
+                    hasEmpty = true;
+                    document.getElementById(`write-input-${i}`).classList.add('border-rose-400', 'bg-rose-50');
+                } else {
+                    document.getElementById(`write-input-${i}`).classList.remove('border-rose-400', 'bg-rose-50');
+                }
+            }
+
+            if (hasEmpty) {
+                alert("Please write your sentences in all 5 fields before submitting. / Hãy viết đủ 5 câu trước khi nộp bài.");
+                return;
+            }
+
+            const resultsBox = document.getElementById('writing-results-container');
+            resultsBox.classList.remove('hidden');
+            resultsBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function unlockAndGoToCompletion() {
+            const btn = document.getElementById('btn-completion');
+            btn.classList.remove('disabled-tab');
+            switchTab('completion');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderWordBank();
+            initFlashcards();
+        });
+    </script>
+</body>
+</html>
