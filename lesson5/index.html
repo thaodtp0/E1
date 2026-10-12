@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E1_Lesson 5_Unit 5</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        *, body, html, button, span, h1, h2, h3, p, div, input, select, textarea { 
+            font-family: 'Quicksand', sans-serif; 
+            font-weight: 600;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .perspective { perspective: 1000px; }
+        .backface-hidden { backface-visibility: hidden; }
+        .card-inner { transition: transform 0.5s; transform-style: preserve-3d; }
+        .card-flipped { transform: rotateY(180deg); }
+        .disabled-tab { opacity: 0.4; cursor: not-allowed !important; pointer-events: none; }
+        
+        /* Matching Memory Game Card Styles */
+        .grid-card {
+            perspective: 1000px;
+            height: 75px;
+        }
+        .grid-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.4s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .grid-card.flipped .grid-card-inner {
+            transform: rotateY(180deg);
+        }
+        .grid-card-front, .grid-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.35rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .grid-card-front {
+            background-color: #EEF2FF;
+            border: 2px solid #C7D2FE;
+            color: #3730A3;
+            font-size: 1.25rem;
+        }
+        .grid-card-back {
+            background-color: #4F46E5;
+            color: white;
+            transform: rotateY(180deg);
+            border: 2px solid #4338CA;
+        }
+        .grid-card.matched .grid-card-inner {
+            transform: rotateY(180deg);
+        }
+        .grid-card.matched .grid-card-back {
+            background-color: #10B981 !important;
+            border-color: #059669 !important;
+        }
+    </style>
+</head>
+<body class="bg-[#f7f9fc] text-slate-800 min-h-screen flex flex-col selection:bg-indigo-200 pb-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-[#E0E7FF] via-[#EEF2FF] to-[#E0F2FE] border-b-4 border-dashed border-indigo-200 shadow-sm p-6 text-center rounded-b-3xl">
+        <h1 class="text-3xl md:text-4xl font-black tracking-wide drop-shadow-sm text-indigo-950">🍽️ E1_Lesson 5_Unit 5 🍽️</h1>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-4xl w-full mx-auto px-4 mt-6">
+        <div class="flex bg-indigo-100/70 p-1.5 rounded-2xl border border-indigo-200 shadow-inner overflow-x-auto">
+            <button onclick="switchTab('reference')" id="btn-reference" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center bg-white text-indigo-600 shadow-sm transition cursor-pointer whitespace-nowrap">📚 Word Bank</button>
+            <button onclick="switchTab('flashcard')" id="btn-flashcard" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition cursor-pointer whitespace-nowrap">🎴 Flashcards</button>
+            <button onclick="switchTab('matching-game')" id="btn-matching-game" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🎮 Vocabulary Game</button>
+            <button onclick="switchTab('mcq-grammar')" id="btn-mcq-grammar" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">📝 Grammar Quiz</button>
+            <button onclick="switchTab('rules-writing')" id="btn-rules-writing" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">✍️ Writing Practice</button>
+            <button onclick="switchTab('completion')" id="btn-completion" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🏆 Finish</button>
+        </div>
+    </div>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        
+        <!-- TAB 1: WORD BANK -->
+        <section id="tab-reference" class="tab-content block space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <h2 class="text-2xl font-black text-indigo-900 font-heading">📖 E1_Lesson 5_Unit 5_Summary, Vocabulary &amp; Grammar</h2>
+                    <p class="text-sm text-slate-500 mt-1">Read the summary, grammar and word list before starting the practice activities.<br>Đọc phần tóm tắt, ngữ pháp và danh sách từ vựng trước khi làm bài luyện tập.</p>
+                </div>
+
+                <!-- LESSON SUMMARY (FIRST PAGE) -->
+                <div class="bg-gradient-to-r from-indigo-50 to-sky-50 border-2 border-indigo-200 rounded-2xl p-4 space-y-2">
+                    <h3 class="text-lg font-black text-indigo-900">📋 Lesson Summary / Tóm tắt kiến thức</h3>
+                    <ul class="text-sm text-slate-700 space-y-1.5 leading-relaxed">
+                        <li>🎲 <b>Free-time activities / Hoạt động rảnh rỗi:</b> go for a walk, sit in the backyard, cook a meal, take a bath, go shopping, play chess, go to the gym.</li>
+                        <li>🍽️ <b>Meals and food groups / Bữa ăn và nhóm thực phẩm:</b> breakfast, lunch, dinner, lunch break, drinks, fruits, snacks, vegetables.</li>
+                        <li>🍎 <b>Food / Thực phẩm:</b> 28 words (apples, bread, chicken, rice, juice, cookies...).</li>
+                        <li>⏱️ <b>Adverbs of frequency / Trạng từ tần suất:</b> never, seldom, often, frequently, always.</li>
+                        <li>✍️ <b>Grammar / Ngữ pháp:</b> the simple present with adverbs of frequency.</li>
+                        <li>🎯 <b>Goal / Mục tiêu:</b> talk about your free time; talk and write about your eating habits and your favorite meal.<br><span class="text-slate-500">Nói về thời gian rảnh; nói và viết về thói quen ăn uống và bữa ăn yêu thích.</span></li>
+                    </ul>
+                </div>
+
+                <!-- GRAMMAR BOXES -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-base font-black text-indigo-900">📌 Grammar 1: Simple present</h3>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-indigo-100 leading-relaxed">
+                            I / you / we / they + <b>cook</b>, <b>play</b>, <b>go</b><br>
+                            he / she + <b>cooks</b>, <b>plays</b>, <b>goes</b><br>
+                            No / không: I <b>don't</b> play chess. She <b>doesn't</b> play chess.<br>
+                            Question: <b>Do</b> you ...? / <b>Does</b> he ...?
+                        </div>
+                        <p class="text-sm text-slate-700">He goes to the gym on Monday.<br><span class="text-slate-500">(Anh ấy đi tập gym vào thứ Hai.)</span></p>
+                        <p class="text-sm text-slate-700">Do you cook a meal at home?<br><span class="text-slate-500">(Bạn có nấu ăn ở nhà không?)</span></p>
+                    </div>
+                    <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-base font-black text-amber-800">📌 Grammar 2: Adverbs of frequency</h3>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-amber-100 leading-relaxed">
+                            <b>never</b> (0%) → <b>seldom</b> → <b>often</b> → <b>frequently</b> → <b>always</b> (100%)<br>
+                            <span class="text-slate-500">không bao giờ → hiếm khi → thường → thường xuyên → luôn luôn</span><br><br>
+                            Before a main verb: I <b>often</b> go shopping.<br>
+                            After <b>be</b>: She <b>is always</b> busy.
+                        </div>
+                        <p class="text-sm text-slate-700">I always have breakfast at home.<br><span class="text-slate-500">(Tôi luôn ăn sáng ở nhà.)</span></p>
+                        <p class="text-sm text-slate-700">He never eats broccoli.<br><span class="text-slate-500">(Anh ấy không bao giờ ăn bông cải xanh.)</span></p>
+                    </div>
+                </div>
+
+                <!-- FOOD GROUPS -->
+                <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 space-y-2">
+                    <h3 class="text-base font-black text-emerald-900">🥗 Food groups / Nhóm thực phẩm</h3>
+                    <div class="grid sm:grid-cols-2 gap-2 text-xs md:text-sm text-slate-700">
+                        <div class="bg-white rounded-xl p-2.5 border border-emerald-100"><b>🍎 Fruits:</b> apples, banana, pear, orange, grapes</div>
+                        <div class="bg-white rounded-xl p-2.5 border border-emerald-100"><b>🥦 Vegetables:</b> tomato, broccoli, cucumber, onion, potatoes, beans</div>
+                        <div class="bg-white rounded-xl p-2.5 border border-emerald-100"><b>🍗 Protein / Đạm:</b> chicken, fish, eggs, cheese</div>
+                        <div class="bg-white rounded-xl p-2.5 border border-emerald-100"><b>🍚 Grains / Tinh bột:</b> bread, cereal, noodles, pasta, rice</div>
+                        <div class="bg-white rounded-xl p-2.5 border border-emerald-100"><b>🥤 Drinks:</b> tea, milk, juice, water</div>
+                        <div class="bg-white rounded-xl p-2.5 border border-emerald-100"><b>🍪 Snacks:</b> chocolate, chips, peanuts, cookies</div>
+                    </div>
+                </div>
+
+                <!-- SPEAKING & WRITING -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-sky-50 border-2 border-sky-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-sky-900">🎤 Speaking: Free-time activities</h3>
+                        <div class="text-sm bg-white rounded-xl p-3 border border-sky-100 leading-relaxed">
+                            A: What do you do in your free time?<br>
+                            B: I often go for a walk. I seldom play chess.<br>
+                            A: How often do you go shopping?<br>
+                            B: I go shopping twice a month.
+                        </div>
+                        <p class="text-xs text-slate-500">Ask and answer with a partner.<br>Hỏi và trả lời với bạn bên cạnh.</p>
+                    </div>
+                    <div class="bg-purple-50 border-2 border-purple-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-purple-900">📝 Speaking &amp; Writing: Eating habits and favorite meal</h3>
+                        <div class="text-sm bg-white rounded-xl p-3 border border-purple-100 leading-relaxed">
+                            I always have bread and eggs for breakfast. I often eat fruits, like apples and bananas. I seldom eat chips. My favorite meal is dinner. I like rice, fish and vegetables.
+                        </div>
+                        <p class="text-xs text-slate-500">Use adverbs of frequency in your sentences.<br>Dùng trạng từ tần suất trong câu của bạn.</p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table class="w-full text-left border-collapse bg-white">
+                        <thead>
+                            <tr class="bg-indigo-50 border-b border-slate-200 text-indigo-900 text-xs uppercase tracking-wider font-black">
+                                <th class="p-3.5">Vocabulary</th>
+                                <th class="p-3.5">Meaning (Tiếng Việt)</th>
+                                <th class="p-3.5">IPA</th>
+                                <th class="p-3.5">Example Sentence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reference-table-body" class="divide-y divide-slate-100 text-xs md:text-sm">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="switchTab('flashcard')" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-sm shadow-sm transition cursor-pointer">Start Flashcards Practice ➔ Bắt đầu thẻ từ</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: FLASHCARDS -->
+        <section id="tab-flashcard" class="tab-content hidden space-y-6">
+            <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-indigo-300 shadow-sm flex justify-between items-center flex-wrap gap-2">
+                <div class="text-sm font-black text-slate-600">Remaining / Còn lại: <span id="queue-text" class="text-indigo-600 font-extrabold">0 cards</span></div>
+                <div class="w-full sm:w-1/3 bg-slate-100 h-4 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <button onclick="resetProgress()" class="text-xs text-rose-500 hover:underline font-black cursor-pointer">🔄 Reset / Làm lại</button>
+            </div>
+            <p class="text-xs text-center text-slate-500 font-medium">Think of the answer first, then tap the card. Choose "Good" or "Easy" when you remember.<br>Hãy nghĩ đáp án trước, rồi chạm vào thẻ. Chọn "Good" hoặc "Easy" khi bạn đã nhớ.</p>
+            
+            <div id="flashcard-container" class="space-y-6">
+                <div id="card-arena" class="perspective w-full max-w-md mx-auto h-[420px] cursor-pointer">
+                    <div id="flashcard-inner" onclick="flipCard()" class="card-inner w-full h-full relative border-4 border-indigo-400 rounded-3xl shadow-md bg-white">
+                        
+                        <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between items-center text-center bg-indigo-50/40 rounded-[20px]">
+                            <span id="f-badge" class="text-xs font-black text-indigo-700 uppercase tracking-widest bg-indigo-100 px-4 py-1.5 rounded-full">Prompt</span>
+                            
+                            <div class="space-y-4 my-auto w-full">
+                                <h3 id="f-prompt" class="text-2xl md:text-3xl font-black text-indigo-950"></h3>
+                                <p id="f-subtext" class="text-xs text-slate-400 font-bold">Recall the answer in your head...</p>
+                            </div>
+
+                            <p class="text-xs text-indigo-600 font-black">👉 Tap card to reveal answer / Chạm để xem đáp án 👈</p>
+                        </div>
+
+                        <div class="backface-hidden w-full h-full absolute inset-0 p-6 flex flex-col justify-between bg-slate-900 text-white rounded-[22px]" style="transform: rotateY(180deg);">
+                            <span id="b-badge" class="text-xs font-black text-indigo-400 uppercase tracking-widest bg-slate-800 px-4 py-1.5 rounded-full w-max mx-auto">Answer</span>
+                            
+                            <div class="my-auto space-y-4 text-center">
+                                <h2 id="b-answer" class="text-3xl md:text-4xl font-black text-amber-300"></h2>
+                                <div class="flex justify-center items-center space-x-2">
+                                    <span id="b-ipa" class="text-indigo-300 font-bold text-base"></span>
+                                    <button onclick="speakWord(event)" class="w-8 h-8 bg-indigo-900 hover:bg-indigo-800 text-indigo-200 rounded-full transition flex items-center justify-center text-sm cursor-pointer shadow-sm">🔊</button>
+                                </div>
+                                <p id="b-example" class="text-slate-300 text-xs md:text-sm border-t border-slate-800 pt-3 px-2 font-medium leading-relaxed"></p>
+                            </div>
+
+                            <p class="text-xs text-center text-slate-500 font-bold">Rate how well you recalled this 👇</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="w-full max-w-md mx-auto bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-4 gap-2">
+                    <button onclick="handleAnkiAction('again')" class="p-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-rose-600">Again</span>
+                        <span class="text-[10px] text-rose-400 font-bold block mt-0.5">&lt; 1m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('hard')" class="p-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-amber-600">Hard</span>
+                        <span class="text-[10px] text-amber-400 font-bold block mt-0.5">10m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('good')" class="p-2 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-indigo-600">Good</span>
+                        <span class="text-[10px] text-indigo-400 font-bold block mt-0.5">1d</span>
+                    </button>
+                    <button onclick="handleAnkiAction('easy')" class="p-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-center transition shadow-sm cursor-pointer">
+                        <span class="block text-xs font-black text-emerald-600">Easy</span>
+                        <span class="text-[10px] text-emerald-400 font-bold block mt-0.5">4d</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="flashcard-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🍎🍚🥤</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Vocabulary Mastered!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Awesome work! Now let's test your memory with a game!<br>Làm tốt lắm! Bây giờ hãy chơi trò chơi kiểm tra trí nhớ nhé!</p>
+                <button onclick="unlockAndGoToMatching()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Play Vocabulary Game ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 3: MATCHING MEMORY GAME (4 ROUNDS x 12 PAIRS) -->
+        <section id="tab-matching-game" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-indigo-100 text-indigo-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 1: Word pair match</span>
+                    <p class="text-xs text-slate-500 font-bold">Click on two cards to match each English word with its Vietnamese meaning.<br>Nhấp vào hai thẻ để ghép từ tiếng Anh với nghĩa tiếng Việt.</p>
+                </div>
+
+                <div class="flex justify-between items-center bg-indigo-50 p-3 rounded-2xl border border-indigo-100 text-xs md:text-sm font-black text-indigo-900">
+                    <span>Round: <span id="game-round" class="text-indigo-600 font-extrabold">1 / 4</span></span>
+                    <span>Matched: <span id="game-score" class="text-emerald-600">0</span> / <span id="game-total-pairs">12</span> pairs</span>
+                    <span>Turns: <span id="game-turns" class="text-indigo-600">0</span></span>
+                </div>
+
+                <div id="memory-grid" class="grid grid-cols-2 sm:grid-cols-6 gap-2.5">
+                    <!-- Dynamic Grid Cards (24 cards per round) -->
+                </div>
+            </div>
+
+            <div id="round-success-box" class="max-w-md mx-auto bg-indigo-50 border-4 border-indigo-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">⚡🎉</span>
+                <h4 class="text-2xl font-heading font-black text-indigo-950">Round Cleared!</h4>
+                <p class="text-sm text-slate-700 font-medium" id="round-success-msg">Great job! Start the next round.</p>
+                <button onclick="startNextRound()" id="next-round-btn" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Next Round ➔</button>
+            </div>
+
+            <div id="game-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🏆⭐🎉</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Game Fully Cleared!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Impressive memory! You matched all vocabulary pairs. Next, test your grammar skills.<br>Trí nhớ tuyệt vời! Tiếp theo hãy kiểm tra ngữ pháp.</p>
+                <button onclick="unlockAndGoToMCQ()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Grammar Quiz ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 4: GRAMMAR QUIZ -->
+        <section id="tab-mcq-grammar" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-amber-100 text-amber-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 2: Grammar quiz</span>
+                    <p class="text-xs text-slate-500 font-bold">Choose the correct answer for each question. You need at least 12 correct answers to continue.<br>Chọn đáp án đúng cho mỗi câu. Bạn cần đúng ít nhất 12 câu để tiếp tục.</p>
+                </div>
+
+                <div id="mcq-container" class="space-y-6">
+                    <!-- MCQs Rendered Dynamically -->
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="checkMCQAnswers()" class="px-10 py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-black text-sm rounded-xl shadow-md transition cursor-pointer">Check Answers / Kiểm tra</button>
+                </div>
+
+                <div id="mcq-feedback" class="p-4 rounded-2xl text-center font-black hidden"></div>
+            </div>
+
+            <div id="mcq-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🎯💯✨</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Grammar Mastered!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Excellent! Now write about your free time and eating habits.<br>Tuyệt vời! Bây giờ hãy viết về thời gian rảnh và thói quen ăn uống.</p>
+                <button onclick="unlockAndGoToRules()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Continue to Writing Practice ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 5: SPEAKING WARM-UP + WRITING PRACTICE -->
+        <section id="tab-rules-writing" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-purple-100 text-purple-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 3: Speaking &amp; Writing</span>
+                    <h3 class="text-2xl font-heading font-black text-slate-900">My Free Time and Eating Habits ✍️</h3>
+                    <p class="text-xs text-slate-500 font-bold">First, say your answers aloud. Then write 5 sentences with adverbs of frequency.<br>Trước tiên hãy nói to câu trả lời. Sau đó viết 5 câu có trạng từ tần suất.</p>
+                </div>
+
+                <!-- SPEAKING WARM-UP -->
+                <div class="bg-sky-50 border-2 border-sky-200 p-4 rounded-2xl space-y-2">
+                    <h4 class="text-xs uppercase font-black text-sky-800 tracking-wider">🎤 Speaking warm-up</h4>
+                    <ul class="text-xs md:text-sm text-slate-700 font-medium space-y-1 list-disc list-inside">
+                        <li>What do you do in your free time? <span class="text-slate-500">(Bạn làm gì trong thời gian rảnh?)</span></li>
+                        <li>What do you often eat for breakfast? <span class="text-slate-500">(Bạn thường ăn gì vào bữa sáng?)</span></li>
+                        <li>What food do you never eat? <span class="text-slate-500">(Bạn không bao giờ ăn món gì?)</span></li>
+                        <li>What is your favorite meal? <span class="text-slate-500">(Bữa ăn yêu thích của bạn là gì?)</span></li>
+                    </ul>
+                </div>
+
+                <div id="writing-container" class="space-y-4">
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="submitWriting()" class="px-10 py-3.5 bg-purple-600 hover:bg-purple-700 text-white font-black text-sm rounded-xl shadow-md transition cursor-pointer">Submit Writing 🚀 / Nộp bài</button>
+                </div>
+
+                <div id="writing-feedback" class="p-4 rounded-2xl text-center font-black hidden"></div>
+
+                <!-- MODEL SENTENCES AFTER SUBMISSION -->
+                <div id="suggested-models" class="hidden bg-indigo-50/80 border-2 border-indigo-200 p-6 rounded-3xl space-y-4">
+                    <h4 class="text-base font-black text-indigo-900">🌟 Suggested Sentences (Gợi ý tham khảo):</h4>
+                    <p class="text-xs text-slate-600">Compare your sentences with these models. / Hãy so sánh bài viết của bạn với các câu mẫu sau:</p>
+                    <ul class="space-y-2 text-xs md:text-sm text-slate-800 font-medium">
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">1. I <strong>often</strong> <strong>go for a walk</strong> in the evening.</li>
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">2. I <strong>seldom</strong> <strong>play chess</strong>.</li>
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">3. I <strong>always</strong> have <strong>bread</strong> and <strong>eggs</strong> for breakfast.</li>
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">4. I <strong>never</strong> eat <strong>broccoli</strong>.</li>
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">5. My favorite meal is <strong>dinner</strong>. I like <strong>rice</strong>, <strong>fish</strong> and <strong>vegetables</strong>.</li>
+                    </ul>
+                    <div class="text-center pt-2">
+                        <button onclick="unlockAndGoToCompletion()" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Finish Lesson 5 ➔ Hoàn thành bài học</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: FINISH (CONGRATULATIONS + SUMMARY) -->
+        <section id="tab-completion" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 text-white p-8 rounded-3xl max-w-lg mx-auto text-center space-y-5 shadow-xl border-4 border-amber-400">
+                <span class="text-6xl block animate-bounce">🦄🏆🌟</span>
+                <h3 class="text-3xl font-heading font-black text-amber-300">Congratulations!</h3>
+                <p class="text-slate-200 font-medium text-base leading-relaxed">You have completed E1_Lesson 5_Unit 5!<br>Chúc mừng bạn đã hoàn thành E1_Lesson 5_Unit 5!</p>
+
+                <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-left space-y-2 text-sm">
+                    <p class="text-xs text-amber-300 uppercase font-black tracking-wider text-center">📋 Lesson Summary / Tổng kết bài học</p>
+                    <p class="text-slate-200"><b class="text-amber-300">Vocabulary / Từ vựng:</b> free-time activities, meals and food groups, 28 food words, adverbs of frequency.<br><span class="text-slate-400">Hoạt động rảnh rỗi, bữa ăn và nhóm thực phẩm, 28 từ về thực phẩm, trạng từ tần suất.</span></p>
+                    <p class="text-slate-200"><b class="text-amber-300">Grammar / Ngữ pháp:</b> the simple present with never, seldom, often, frequently, always.<br><span class="text-slate-400">Thì hiện tại đơn với các trạng từ tần suất.</span></p>
+                    <p class="text-slate-200"><b class="text-amber-300">Goal / Mục tiêu:</b> You can talk about your free time, and talk and write about your eating habits and favorite meal.<br><span class="text-slate-400">Bạn đã có thể nói về thời gian rảnh, nói và viết về thói quen ăn uống và bữa ăn yêu thích.</span></p>
+                    <p class="text-emerald-300 text-center pt-1">Example: "I always have bread and eggs for breakfast."</p>
+                </div>
+
+                <p class="text-amber-200 font-bold">Great job! See you in the next lesson! 🎉<br>Làm tốt lắm! Hẹn gặp bạn ở bài học tiếp theo!</p>
+
+                <div class="pt-4 border-t border-slate-800">
+                    <button onclick="restartEntireSession()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">🔄 Restart Lesson 5 Practice</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // FULL VOCABULARY LIST LESSON 5 (48 ITEMS)
+        const vocabularyData = [
+            // Free-time activities
+            { word: "go for a walk", ipa: "/ɡəʊ fər ə wɔːk/", vi: "đi dạo", ex: "I often go for a walk in the park." },
+            { word: "sit in the backyard", ipa: "/sɪt ɪn ðə ˌbækˈjɑːd/", vi: "ngồi ở sân sau", ex: "My grandfather sits in the backyard in the evening." },
+            { word: "cook a meal", ipa: "/kʊk ə miːl/", vi: "nấu một bữa ăn", ex: "My mother always cooks a meal for us." },
+            { word: "take a bath", ipa: "/teɪk ə bɑːθ/", vi: "tắm bồn", ex: "I take a bath before bed." },
+            { word: "go shopping", ipa: "/ɡəʊ ˈʃɒpɪŋ/", vi: "đi mua sắm", ex: "She seldom goes shopping." },
+            { word: "play chess", ipa: "/pleɪ tʃes/", vi: "chơi cờ vua", ex: "My brother often plays chess." },
+            { word: "go to the gym", ipa: "/ɡəʊ tə ðə dʒɪm/", vi: "đi tập gym", ex: "He goes to the gym on Monday." },
+
+            // Meals / food groups
+            { word: "breakfast", ipa: "/ˈbrekfəst/", vi: "bữa sáng", ex: "I always have breakfast at home." },
+            { word: "lunch", ipa: "/lʌntʃ/", vi: "bữa trưa", ex: "We have lunch at twelve o'clock." },
+            { word: "dinner", ipa: "/ˈdɪnə(r)/", vi: "bữa tối", ex: "My favorite meal is dinner." },
+            { word: "lunch break", ipa: "/lʌntʃ breɪk/", vi: "giờ nghỉ trưa", ex: "Workers have a lunch break at noon." },
+            { word: "drinks", ipa: "/drɪŋks/", vi: "đồ uống", ex: "Tea and milk are drinks." },
+            { word: "fruits", ipa: "/fruːts/", vi: "trái cây", ex: "I often eat fruits after lunch." },
+            { word: "snacks", ipa: "/snæks/", vi: "đồ ăn vặt", ex: "I seldom eat snacks at night." },
+            { word: "vegetables", ipa: "/ˈvedʒtəblz/", vi: "rau củ", ex: "I eat vegetables every day." },
+
+            // Food
+            { word: "apples", ipa: "/ˈæplz/", vi: "táo", ex: "I like red apples." },
+            { word: "beans", ipa: "/biːnz/", vi: "đậu (hạt)", ex: "We often eat beans and rice." },
+            { word: "bread", ipa: "/bred/", vi: "bánh mì", ex: "I have bread for breakfast." },
+            { word: "cereal", ipa: "/ˈsɪəriəl/", vi: "ngũ cốc", ex: "My little sister eats cereal with milk." },
+            { word: "cheese", ipa: "/tʃiːz/", vi: "phô mai", ex: "He never eats cheese." },
+            { word: "chicken", ipa: "/ˈtʃɪkɪn/", vi: "thịt gà", ex: "We have chicken for dinner." },
+            { word: "eggs", ipa: "/eɡz/", vi: "trứng", ex: "I always have eggs for breakfast." },
+            { word: "fish", ipa: "/fɪʃ/", vi: "cá", ex: "My father often eats fish." },
+            { word: "noodles", ipa: "/ˈnuːdlz/", vi: "mì sợi", ex: "I eat noodles for lunch." },
+            { word: "pasta", ipa: "/ˈpæstə/", vi: "mì Ý", ex: "She likes pasta with cheese." },
+            { word: "potatoes", ipa: "/pəˈteɪtəʊz/", vi: "khoai tây", ex: "We cook potatoes for dinner." },
+            { word: "rice", ipa: "/raɪs/", vi: "gạo, cơm", ex: "We eat rice every day." },
+            { word: "banana", ipa: "/bəˈnɑːnə/", vi: "chuối", ex: "I eat a banana in the morning." },
+            { word: "pear", ipa: "/peə(r)/", vi: "lê", ex: "This pear is very sweet." },
+            { word: "orange", ipa: "/ˈɒrɪndʒ/", vi: "cam", ex: "She eats an orange after lunch." },
+            { word: "grapes", ipa: "/ɡreɪps/", vi: "nho", ex: "My children love grapes." },
+            { word: "tomato", ipa: "/təˈmɑːtəʊ/", vi: "cà chua", ex: "I put a tomato in my salad." },
+            { word: "broccoli", ipa: "/ˈbrɒkəli/", vi: "bông cải xanh", ex: "He never eats broccoli." },
+            { word: "cucumber", ipa: "/ˈkjuːkʌmbə(r)/", vi: "dưa chuột", ex: "I often eat cucumber with rice." },
+            { word: "onion", ipa: "/ˈʌnjən/", vi: "hành tây", ex: "My mother cooks with onion." },
+            { word: "tea", ipa: "/tiː/", vi: "trà", ex: "My grandmother always drinks tea." },
+            { word: "milk", ipa: "/mɪlk/", vi: "sữa", ex: "I drink milk in the morning." },
+            { word: "juice", ipa: "/dʒuːs/", vi: "nước ép", ex: "She often drinks orange juice." },
+            { word: "water", ipa: "/ˈwɔːtə(r)/", vi: "nước lọc", ex: "I always drink water after the gym." },
+            { word: "chocolate", ipa: "/ˈtʃɒklət/", vi: "sô-cô-la", ex: "He seldom eats chocolate." },
+            { word: "chips", ipa: "/tʃɪps/", vi: "khoai tây chiên", ex: "I seldom eat chips." },
+            { word: "peanuts", ipa: "/ˈpiːnʌts/", vi: "đậu phộng (lạc)", ex: "My brother likes peanuts." },
+            { word: "cookies", ipa: "/ˈkʊkiz/", vi: "bánh quy", ex: "We often eat cookies with tea." },
+
+            // Adverbs of frequency
+            { word: "never", ipa: "/ˈnevə(r)/", vi: "không bao giờ", ex: "I never eat fish." },
+            { word: "seldom", ipa: "/ˈseldəm/", vi: "hiếm khi", ex: "She seldom plays chess." },
+            { word: "often", ipa: "/ˈɒfn/", vi: "thường", ex: "We often go for a walk." },
+            { word: "frequently", ipa: "/ˈfriːkwəntli/", vi: "thường xuyên", ex: "He frequently goes to the gym." },
+            { word: "always", ipa: "/ˈɔːlweɪz/", vi: "luôn luôn", ex: "I always have breakfast at home." }
+        ];
+
+        // GRAMMAR QUIZ (15 QUESTIONS)
+        const mcqQuestions = [
+            {
+                q: "1. I don't like fish. I ______ eat it.",
+                options: ["A. always", "B. never", "C. often", "D. frequently"],
+                correct: "B",
+                exp: "'never' = không bao giờ. Người này không thích cá nên không bao giờ ăn."
+            },
+            {
+                q: "2. My mother cooks dinner every day. She ______ cooks dinner.",
+                options: ["A. never", "B. seldom", "C. always", "D. frequently not"],
+                correct: "C",
+                exp: "'every day' (mỗi ngày) = 'always' (luôn luôn)."
+            },
+            {
+                q: "3. He eats chocolate only one or two times a year. He ______ eats chocolate.",
+                options: ["A. always", "B. seldom", "C. frequently", "D. often"],
+                correct: "B",
+                exp: "'seldom' = hiếm khi, chỉ rất ít lần."
+            },
+            {
+                q: "4. Choose the correct sentence.",
+                options: ["A. I have always breakfast.", "B. I always have breakfast.", "C. Always I have breakfast.", "D. Always have I breakfast."],
+                correct: "B",
+                exp: "Trạng từ tần suất đứng TRƯỚC động từ thường: I always have breakfast."
+            },
+            {
+                q: "5. My brother ______ to the gym after work.",
+                options: ["A. go", "B. goes", "C. going", "D. gos"],
+                correct: "B",
+                exp: "Chủ ngữ 'my brother' (he) nên động từ thêm -es: goes."
+            },
+            {
+                q: "6. She ______ take a bath in the morning.",
+                options: ["A. don't", "B. doesn't", "C. isn't", "D. not"],
+                correct: "B",
+                exp: "Phủ định với she dùng 'doesn't' + động từ nguyên mẫu."
+            },
+            {
+                q: "7. ______ you play chess on weekends?",
+                options: ["A. Does", "B. Do", "C. Are", "D. Is"],
+                correct: "B",
+                exp: "Câu hỏi với 'you' dùng 'Do'."
+            },
+            {
+                q: "8. ______ he cook a meal every evening?",
+                options: ["A. Do", "B. Is", "C. Does", "D. Are"],
+                correct: "C",
+                exp: "Câu hỏi với 'he' dùng 'Does'."
+            },
+            {
+                q: "9. How often do you go shopping? - I go shopping ______.",
+                options: ["A. twice a month", "B. last week", "C. tomorrow", "D. now"],
+                correct: "A",
+                exp: "'How often' hỏi về tần suất, nên trả lời bằng 'twice a month' (hai lần một tháng)."
+            },
+            {
+                q: "10. Apples, bananas and grapes are ______.",
+                options: ["A. vegetables", "B. drinks", "C. fruits", "D. snacks"],
+                correct: "C",
+                exp: "Apples, bananas, grapes là trái cây (fruits)."
+            },
+            {
+                q: "11. Broccoli, onions and cucumbers are ______.",
+                options: ["A. vegetables", "B. fruits", "C. drinks", "D. snacks"],
+                correct: "A",
+                exp: "Broccoli, onions, cucumbers là rau củ (vegetables)."
+            },
+            {
+                q: "12. Workers have a ______ break at noon.",
+                options: ["A. breakfast", "B. dinner", "C. lunch", "D. snacks"],
+                correct: "C",
+                exp: "'lunch break' = giờ nghỉ trưa."
+            },
+            {
+                q: "13. They ______ in the backyard on Sunday afternoon.",
+                options: ["A. sits", "B. sit", "C. sitting", "D. is sit"],
+                correct: "B",
+                exp: "Chủ ngữ 'they' dùng động từ nguyên mẫu: sit."
+            },
+            {
+                q: "14. My sister never ______ cheese.",
+                options: ["A. eat", "B. eats", "C. eating", "D. is eat"],
+                correct: "B",
+                exp: "Chủ ngữ 'my sister' (she) nên động từ thêm -s: eats. Trạng từ 'never' đứng trước động từ."
+            },
+            {
+                q: "15. How ______ do you go for a walk? - Twice a week.",
+                options: ["A. long", "B. far", "C. often", "D. many"],
+                correct: "C",
+                exp: "'How often' hỏi về tần suất."
+            }
+        ];
+
+        let gameUnlocked = false;
+        let mcqUnlocked = false;
+        let rulesUnlocked = false;
+        let completionUnlocked = false;
+
+        let cardQueue = vocabularyData.map(v => ({ 
+            ...v, 
+            mode: Math.random() > 0.5 ? 'vi-en' : 'en-vi' 
+        }));
+        let currentCard = null;
+        let totalMastered = 0;
+        const totalVocabularyCount = vocabularyData.length;
+
+        // MATCHING GAME VARIABLES (12 PAIRS PER ROUND)
+        const ROUND_SIZE = 12;
+        const TOTAL_ROUNDS = Math.ceil(vocabularyData.length / ROUND_SIZE);
+        let currentRound = 1;
+        let gameCards = [];
+        let flippedCards = [];
+        let matchedCount = 0;
+        let turnsCount = 0;
+        let currentPoolSize = 0;
+
+        window.onload = function() {
+            renderReferenceTable();
+            renderMCQs();
+            renderWritingInputs();
+            loadNextFlashcard();
+        };
+
+        function renderReferenceTable() {
+            const tbody = document.getElementById('reference-table-body');
+            tbody.innerHTML = vocabularyData.map(v => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3.5 font-black text-indigo-950">${v.word}</td>
+                    <td class="p-3.5 font-bold text-slate-700">${v.vi}</td>
+                    <td class="p-3.5 text-indigo-600 font-bold">${v.ipa}</td>
+                    <td class="p-3.5 text-slate-600">${v.ex}</td>
+                </tr>
+            `).join('');
+        }
+
+        function switchTab(tabId) {
+            if (tabId === 'matching-game' && !gameUnlocked) return;
+            if (tabId === 'mcq-grammar' && !mcqUnlocked) return;
+            if (tabId === 'rules-writing' && !rulesUnlocked) return;
+            if (tabId === 'completion' && !completionUnlocked) return;
+
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-white', 'text-indigo-600', 'shadow-sm');
+                el.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            activeBtn.classList.add('bg-white', 'text-indigo-600', 'shadow-sm');
+            activeBtn.classList.remove('text-slate-500');
+
+            if (tabId === 'matching-game' && gameCards.length === 0) {
+                initMatchingGame(1);
+            }
+        }
+
+        function loadNextFlashcard() {
+            document.getElementById('flashcard-inner').classList.remove('card-flipped');
+
+            if (cardQueue.length === 0) {
+                document.getElementById('flashcard-container').classList.add('hidden');
+                document.getElementById('flashcard-success-box').classList.remove('hidden');
+                document.getElementById('queue-text').innerText = "0 cards (All Mastered!)";
+                document.getElementById('progress-bar').style.width = "100%";
+                
+                gameUnlocked = true;
+                document.getElementById('btn-matching-game').classList.remove('disabled-tab');
+                return;
+            }
+
+            document.getElementById('flashcard-container').classList.remove('hidden');
+            document.getElementById('flashcard-success-box').classList.add('hidden');
+
+            currentCard = cardQueue[0];
+
+            document.getElementById('queue-text').innerText = `${cardQueue.length} card(s) remaining`;
+            const progressPercent = Math.min(100, Math.round((totalMastered / totalVocabularyCount) * 100));
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+            if (currentCard.mode === 'vi-en') {
+                document.getElementById('f-badge').innerText = "🇻🇳 Vietnamese Prompt";
+                document.getElementById('f-prompt').innerText = currentCard.vi;
+                document.getElementById('f-subtext').innerText = "Recall the English phrase in your head... / Hãy nhớ từ tiếng Anh...";
+
+                document.getElementById('b-badge').innerText = "🇬🇧 English Phrase";
+                document.getElementById('b-answer').innerText = currentCard.word;
+                document.getElementById('b-ipa').innerText = currentCard.ipa;
+                document.getElementById('b-example').innerText = `Example: ${currentCard.ex}`;
+            } else {
+                document.getElementById('f-badge').innerText = "🇬🇧 English Prompt";
+                document.getElementById('f-prompt').innerText = currentCard.word;
+                document.getElementById('f-subtext').innerText = "Recall the Vietnamese meaning in your head... / Hãy nhớ nghĩa tiếng Việt...";
+
+                document.getElementById('b-badge').innerText = "🇻🇳 Vietnamese Meaning";
+                document.getElementById('b-answer').innerText = currentCard.vi;
+                document.getElementById('b-ipa').innerText = currentCard.ipa;
+                document.getElementById('b-example').innerText = `Example: ${currentCard.ex}`;
+            }
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard-inner').classList.toggle('card-flipped');
+        }
+
+        function speakWord(e) {
+            e.stopPropagation();
+            if ('speechSynthesis' in window && currentCard) {
+                const utterance = new SpeechSynthesisUtterance(currentCard.word);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function handleAnkiAction(rating) {
+            const card = cardQueue.shift();
+
+            if (rating === 'again') {
+                cardQueue.push(card);
+            } else if (rating === 'hard') {
+                const mid = Math.floor(cardQueue.length / 2);
+                cardQueue.splice(mid, 0, card);
+            } else if (rating === 'good' || rating === 'easy') {
+                totalMastered++;
+            }
+
+            loadNextFlashcard();
+        }
+
+        function resetProgress() {
+            totalMastered = 0;
+            cardQueue = vocabularyData.map(v => ({ 
+                ...v, 
+                mode: Math.random() > 0.5 ? 'vi-en' : 'en-vi' 
+            }));
+            loadNextFlashcard();
+        }
+
+        // TAB 3: MATCHING MEMORY GAME
+        function initMatchingGame(roundNumber) {
+            currentRound = roundNumber;
+            matchedCount = 0;
+            turnsCount = 0;
+            flippedCards = [];
+
+            const start = (currentRound - 1) * ROUND_SIZE;
+            const pool = vocabularyData.slice(start, start + ROUND_SIZE);
+            currentPoolSize = pool.length;
+
+            document.getElementById('game-round').innerText = `${currentRound} / ${TOTAL_ROUNDS}`;
+            document.getElementById('game-score').innerText = '0';
+            document.getElementById('game-turns').innerText = '0';
+            document.getElementById('game-total-pairs').innerText = currentPoolSize.toString();
+            document.getElementById('round-success-box').classList.add('hidden');
+            document.getElementById('game-success-box').classList.add('hidden');
+
+            let rawCards = [];
+            pool.forEach((item, idx) => {
+                rawCards.push({ type: 'en', text: item.word, pairId: idx });
+                rawCards.push({ type: 'vi', text: item.vi, pairId: idx });
+            });
+
+            gameCards = rawCards.sort(() => Math.random() - 0.5);
+
+            const grid = document.getElementById('memory-grid');
+            grid.innerHTML = gameCards.map((card, index) => `
+                <div class="grid-card" id="gcard-${index}" onclick="handleCardClick(${index})">
+                    <div class="grid-card-inner">
+                        <div class="grid-card-front font-black">🍽️</div>
+                        <div class="grid-card-back font-bold text-xs flex items-center justify-center text-center p-1.5 leading-tight">${card.text}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleCardClick(index) {
+            const cardEl = document.getElementById(`gcard-${index}`);
+            if (cardEl.classList.contains('flipped') || cardEl.classList.contains('matched') || flippedCards.length >= 2) {
+                return;
+            }
+
+            cardEl.classList.add('flipped');
+            flippedCards.push({ index, card: gameCards[index] });
+
+            if (flippedCards.length === 2) {
+                turnsCount++;
+                document.getElementById('game-turns').innerText = turnsCount;
+
+                const [c1, c2] = flippedCards;
+                if (c1.card.pairId === c2.card.pairId && c1.card.type !== c2.card.type) {
+                    document.getElementById(`gcard-${c1.index}`).classList.add('matched');
+                    document.getElementById(`gcard-${c2.index}`).classList.add('matched');
+                    matchedCount++;
+                    document.getElementById('game-score').innerText = matchedCount;
+                    flippedCards = [];
+
+                    if (matchedCount === currentPoolSize) {
+                        setTimeout(() => {
+                            if (currentRound < TOTAL_ROUNDS) {
+                                document.getElementById('round-success-msg').innerText = `Great job! You matched ${currentPoolSize} pairs. Round ${currentRound + 1} is next! / Làm tốt lắm! Tiếp theo là vòng ${currentRound + 1}.`;
+                                document.getElementById('next-round-btn').innerText = `Start Round ${currentRound + 1} ➔`;
+                                document.getElementById('round-success-box').classList.remove('hidden');
+                            } else {
+                                document.getElementById('game-success-box').classList.remove('hidden');
+                                mcqUnlocked = true;
+                                document.getElementById('btn-mcq-grammar').classList.remove('disabled-tab');
+                            }
+                        }, 500);
+                    }
+                } else {
+                    setTimeout(() => {
+                        document.getElementById(`gcard-${c1.index}`).classList.remove('flipped');
+                        document.getElementById(`gcard-${c2.index}`).classList.remove('flipped');
+                        flippedCards = [];
+                    }, 900);
+                }
+            }
+        }
+
+        function startNextRound() {
+            initMatchingGame(currentRound + 1);
+        }
+
+        function unlockAndGoToMatching() {
+            gameUnlocked = true;
+            document.getElementById('btn-matching-game').classList.remove('disabled-tab');
+            switchTab('matching-game');
+        }
+
+        function unlockAndGoToMCQ() {
+            mcqUnlocked = true;
+            document.getElementById('btn-mcq-grammar').classList.remove('disabled-tab');
+            switchTab('mcq-grammar');
+        }
+
+        function unlockAndGoToRules() {
+            rulesUnlocked = true;
+            document.getElementById('btn-rules-writing').classList.remove('disabled-tab');
+            switchTab('rules-writing');
+        }
+
+        // TAB 4: GRAMMAR QUIZ RENDER & CHECK
+        function renderMCQs() {
+            const container = document.getElementById('mcq-container');
+            container.innerHTML = mcqQuestions.map((item, index) => `
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3" id="mcq-box-${index}">
+                    <p class="font-black text-indigo-950 text-sm md:text-base">${item.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs md:text-sm">
+                        ${item.options.map(opt => `
+                            <label class="flex items-center space-x-2 p-2.5 bg-white border border-slate-200 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition">
+                                <input type="radio" name="mcq-${index}" value="${opt.charAt(0)}" class="text-indigo-600 focus:ring-indigo-500">
+                                <span class="font-bold text-slate-700">${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div id="mcq-exp-${index}" class="hidden text-xs bg-amber-50 text-amber-900 border border-amber-200 p-2.5 rounded-xl font-bold">
+                        💡 Explanation: ${item.exp}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function checkMCQAnswers() {
+            let correctCount = 0;
+
+            mcqQuestions.forEach((item, index) => {
+                const selected = document.querySelector(`input[name="mcq-${index}"]:checked`);
+                const box = document.getElementById(`mcq-box-${index}`);
+                const expBox = document.getElementById(`mcq-exp-${index}`);
+
+                expBox.classList.remove('hidden');
+
+                if (selected && selected.value === item.correct) {
+                    box.classList.remove('border-slate-200', 'border-rose-300', 'bg-rose-50/50');
+                    box.classList.add('border-emerald-400', 'bg-emerald-50/40');
+                    correctCount++;
+                } else {
+                    box.classList.remove('border-slate-200', 'border-emerald-400', 'bg-emerald-50/40');
+                    box.classList.add('border-rose-300', 'bg-rose-50/50');
+                }
+            });
+
+            const feedback = document.getElementById('mcq-feedback');
+            feedback.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+
+            if (correctCount >= 12) {
+                feedback.classList.add('bg-emerald-100', 'text-emerald-800');
+                feedback.innerText = `🎉 Excellent! You scored ${correctCount}/15 on the Grammar Quiz! / Xuất sắc! Bạn đúng ${correctCount}/15 câu!`;
+                document.getElementById('mcq-success-box').classList.remove('hidden');
+                rulesUnlocked = true;
+                document.getElementById('btn-rules-writing').classList.remove('disabled-tab');
+            } else {
+                feedback.classList.add('bg-rose-100', 'text-rose-800');
+                feedback.innerText = `You scored ${correctCount}/15. Read the explanations above and try to get at least 12 correct! / Bạn đúng ${correctCount}/15. Hãy đọc giải thích và làm lại để đúng ít nhất 12 câu!`;
+            }
+        }
+
+        // TAB 5: WRITING INPUTS
+        function renderWritingInputs() {
+            const container = document.getElementById('writing-container');
+            const prompts = [
+                { title: "Sentence 1: A free-time activity you OFTEN or ALWAYS do / Hoạt động rảnh rỗi bạn thường làm", ph: "e.g., I often go for a walk in the evening." },
+                { title: "Sentence 2: A free-time activity you SELDOM or NEVER do / Hoạt động bạn hiếm khi làm", ph: "e.g., I seldom play chess." },
+                { title: "Sentence 3: What you eat or drink for breakfast / Bạn ăn uống gì vào bữa sáng", ph: "e.g., I always have bread and eggs for breakfast." },
+                { title: "Sentence 4: A food you NEVER or SELDOM eat / Món bạn không bao giờ hoặc hiếm khi ăn", ph: "e.g., I never eat broccoli." },
+                { title: "Sentence 5: Your favorite meal / Bữa ăn yêu thích của bạn", ph: "e.g., My favorite meal is dinner. I like rice and fish." }
+            ];
+
+            container.innerHTML = prompts.map((item, i) => `
+                <div class="p-4 bg-purple-50/60 border border-purple-200 rounded-2xl space-y-2">
+                    <label class="block text-xs md:text-sm font-black text-purple-900">${i + 1}. ${item.title}</label>
+                    <input type="text" id="writing-input-${i+1}" class="w-full border-2 border-purple-200 rounded-xl px-3.5 py-2.5 text-purple-950 bg-white focus:outline-none focus:border-purple-500 font-bold text-sm" placeholder="${item.ph}">
+                </div>
+            `).join('');
+        }
+
+        function submitWriting() {
+            let filledCount = 0;
+            for (let i = 1; i <= 5; i++) {
+                const val = document.getElementById(`writing-input-${i}`).value.trim();
+                if (val.length >= 5) filledCount++;
+            }
+
+            const feedback = document.getElementById('writing-feedback');
+            feedback.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+
+            if (filledCount === 5) {
+                feedback.classList.add('bg-emerald-100', 'text-emerald-800');
+                feedback.innerText = "🚀 Submitted! Compare your sentences with the models below. / Đã nộp bài! Hãy so sánh với các câu mẫu bên dưới.";
+                document.getElementById('suggested-models').classList.remove('hidden');
+            } else {
+                feedback.classList.add('bg-rose-100', 'text-rose-800');
+                feedback.innerText = `Please write all 5 sentences before submitting. (${filledCount}/5) / Hãy viết đủ 5 câu trước khi nộp.`;
+            }
+        }
+
+        function unlockAndGoToCompletion() {
+            completionUnlocked = true;
+            document.getElementById('btn-completion').classList.remove('disabled-tab');
+            switchTab('completion');
+        }
+
+        function restartEntireSession() {
+            resetProgress();
+            gameCards = [];
+            currentRound = 1;
+            renderMCQs();
+            renderWritingInputs();
+            ['mcq-feedback', 'mcq-success-box', 'writing-feedback', 'suggested-models', 'round-success-box', 'game-success-box'].forEach(id => document.getElementById(id).classList.add('hidden'));
+            switchTab('reference');
+        }
+    </script>
+</body>
+</html>
