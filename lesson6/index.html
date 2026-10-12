@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English 1_Lesson 6_Unit 6</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        *, body, html, button, span, h1, h2, h3, p, div, input, select, textarea { 
+            font-family: 'Quicksand', sans-serif; 
+            font-weight: 600;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .perspective { perspective: 1000px; }
+        .backface-hidden { backface-visibility: hidden; }
+        .card-inner { transition: transform 0.5s; transform-style: preserve-3d; }
+        .card-flipped { transform: rotateY(180deg); }
+        .disabled-tab { opacity: 0.4; cursor: not-allowed !important; pointer-events: none; }
+    </style>
+</head>
+<body class="bg-[#f7f9fc] text-slate-800 min-h-screen flex flex-col selection:bg-indigo-200 pb-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-[#E0E7FF] via-[#EEF2FF] to-[#E0F2FE] border-b-4 border-dashed border-indigo-200 shadow-sm p-6 text-center rounded-b-3xl">
+        <h1 class="text-3xl md:text-4xl font-black tracking-wide drop-shadow-sm text-indigo-950">🏙️ English 1_Lesson 6_Unit 6 🏠</h1>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-4xl w-full mx-auto px-4 mt-6">
+        <div class="flex bg-indigo-100/70 p-1.5 rounded-2xl border border-indigo-200 shadow-inner overflow-x-auto">
+            <button onclick="switchTab('reference')" id="btn-reference" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center bg-white text-indigo-600 shadow-sm transition cursor-pointer whitespace-nowrap">📚 Word Bank</button>
+            <button onclick="switchTab('flashcard')" id="btn-flashcard" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition cursor-pointer whitespace-nowrap">🎴 Flashcards</button>
+            <button onclick="switchTab('listening-game')" id="btn-listening-game" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🎧 Listening Practice</button>
+            <button onclick="switchTab('sentence-builder')" id="btn-sentence-builder" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🧩 Sentence Builder</button>
+            <button onclick="switchTab('completion')" id="btn-completion" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🎉 Completion</button>
+        </div>
+    </div>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        
+        <!-- TAB 1: WORD BANK -->
+        <section id="tab-reference" class="tab-content block space-y-6">
+
+            <div>
+                <h2 class="text-2xl md:text-3xl font-black text-indigo-900 font-heading">📖 E1_Lesson 6_Unit 6_Summary, Vocabulary &amp; Grammar</h2>
+                <p class="text-xs md:text-sm text-slate-500 font-medium mt-1">Read the summary, grammar and word list before starting the practice activities.<br>Đọc phần tóm tắt, ngữ pháp và danh sách từ vựng trước khi làm bài luyện tập.</p>
+            </div>
+
+            <!-- LESSON SUMMARY -->
+            <div class="bg-indigo-50/70 border-4 border-indigo-200 p-6 rounded-3xl space-y-3 text-sm text-slate-700">
+                <h3 class="text-xl font-black text-indigo-900 font-heading">📋 Lesson Summary / Tóm tắt kiến thức</h3>
+                <p>🏙️ <b>Places in town / Địa điểm trong thành phố:</b> art gallery, cafe, hotel, market, museum, park, restaurant, store, station, theater.</p>
+                <p>🌉 <b>Topical vocabulary / Từ vựng chủ đề:</b> boat, bridge, building, canal.</p>
+                <p>🏠 <b>Rooms / Các phòng:</b> bathroom, kitchen, living room.</p>
+                <p>🛋️ <b>Furniture / Đồ nội thất:</b> 18 words (bed, chair, desk, lamp, fridge, couch, mirror, window...).</p>
+                <p>📍 <b>Prepositions of place / Giới từ chỉ nơi chốn:</b> in, on, under.</p>
+                <p>✍️ <b>Grammar / Ngữ pháp:</b> there is / there are; some / any; Is there...? / Are there...?; because.</p>
+                <p>🎯 <b>Goal / Mục tiêu:</b> talk about places for everyday life, weekend fun, food and drinks; write a review of a cafe using “because”; describe your room.<br>
+                <span class="text-slate-500">Nói về các địa điểm cho cuộc sống hằng ngày, giải trí cuối tuần, ăn uống; viết bài đánh giá một quán cà phê dùng “because”; mô tả căn phòng của bạn.</span></p>
+            </div>
+
+            <!-- GRAMMAR CARDS -->
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-indigo-50/60 border-4 border-indigo-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-indigo-900 font-heading">📌 Grammar 1: There is / There are</h3>
+                    <div class="bg-white rounded-2xl border border-indigo-100 p-4 space-y-1">
+                        <p>There is + a / an + singular noun (1 cái)</p>
+                        <p>There are + plural noun (nhiều cái)</p>
+                        <p>No / không: There isn't a... / There aren't any...</p>
+                    </div>
+                    <p>There is a park in my town.<br><span class="text-slate-500">(Có một công viên trong thị trấn của tôi.)</span></p>
+                    <p>There are two hotels near the station.<br><span class="text-slate-500">(Có hai khách sạn gần nhà ga.)</span></p>
+                </div>
+
+                <div class="bg-amber-50 border-4 border-amber-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-amber-800 font-heading">📌 Grammar 2: Some / Any</h3>
+                    <div class="bg-white rounded-2xl border border-amber-100 p-4 space-y-1">
+                        <p><b>some</b> → câu khẳng định (+)</p>
+                        <p><b>any</b> → câu phủ định (–) và câu hỏi (?)</p>
+                    </div>
+                    <p>There are some chairs in the kitchen.<br><span class="text-slate-500">(Có vài cái ghế trong bếp.)</span></p>
+                    <p>There aren't any mirrors in the bathroom.<br><span class="text-slate-500">(Không có cái gương nào trong phòng tắm.)</span></p>
+                    <p>Are there any museums in your city?<br><span class="text-slate-500">(Thành phố bạn có bảo tàng nào không?)</span></p>
+                </div>
+
+                <div class="bg-sky-50 border-4 border-sky-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-sky-900 font-heading">📌 Grammar 3: Is there...? / Are there...?</h3>
+                    <div class="bg-white rounded-2xl border border-sky-100 p-4 space-y-1">
+                        <p>Is there + a / an + singular noun?</p>
+                        <p>Are there + any + plural noun?</p>
+                        <p>Yes, there is. / No, there isn't.</p>
+                        <p>Yes, there are. / No, there aren't.</p>
+                    </div>
+                    <p>Is there a fridge in the kitchen? – Yes, there is.<br><span class="text-slate-500">(Có tủ lạnh trong bếp không? – Có.)</span></p>
+                    <p>Are there any hotels near the park? – No, there aren't.<br><span class="text-slate-500">(Có khách sạn nào gần công viên không? – Không.)</span></p>
+                </div>
+
+                <div class="bg-emerald-50 border-4 border-emerald-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-emerald-900 font-heading">📌 Grammar 4: in / on / under &amp; because</h3>
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4 space-y-1">
+                        <p><b>in</b> = trong &nbsp; <b>on</b> = trên &nbsp; <b>under</b> = dưới</p>
+                        <p><b>because</b> + reason (bởi vì + lý do)</p>
+                    </div>
+                    <p>The book is on the desk. The shoes are under the bed.<br><span class="text-slate-500">(Quyển sách ở trên bàn. Đôi giày ở dưới giường.)</span></p>
+                    <p>I like this cafe because it is cheap.<br><span class="text-slate-500">(Tôi thích quán cà phê này vì nó rẻ.)</span></p>
+                </div>
+            </div>
+
+            <!-- VOCABULARY GROUPS -->
+            <div class="bg-emerald-50/70 border-4 border-emerald-200 p-6 rounded-3xl space-y-3">
+                <h3 class="text-xl font-black text-emerald-900 font-heading">🥗 Vocabulary groups / Nhóm từ vựng</h3>
+                <div class="grid md:grid-cols-2 gap-3 text-sm text-slate-700">
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4">🏙️ <b>Places in town / Địa điểm:</b> art gallery, cafe, hotel, market, museum, park, restaurant, store, station, theater</div>
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4">🌉 <b>Topical vocab / Chủ đề:</b> boat, bridge, building, canal</div>
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4">🏠 <b>Rooms / Phòng:</b> bathroom, kitchen, living room</div>
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4">📍 <b>Prepositions / Giới từ:</b> in, on, under</div>
+                    <div class="bg-white rounded-2xl border border-emerald-100 p-4 md:col-span-2">🛋️ <b>Furniture / Đồ nội thất:</b> coffee table, couch, fridge, mirror, oven, rug, shower, toilet, bed, bookshelf, chair, clock, closet, cushion, desk, lamp, wall, window</div>
+                </div>
+            </div>
+
+            <!-- SPEAKING & WRITING -->
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-sky-50 border-4 border-sky-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-sky-900 font-heading">🎤 Speaking 1: Places for everyday life, weekend fun, food and drinks</h3>
+                    <div class="bg-white rounded-2xl border border-sky-100 p-4 space-y-1">
+                        <p>A: What places are there in your town?</p>
+                        <p>B: There is a big park and there are two cafes.</p>
+                        <p>A: Is there a museum?</p>
+                        <p>B: Yes, there is. I go there at the weekend.</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Ask and answer with a partner.<br>Hỏi và trả lời với bạn bên cạnh.</p>
+                </div>
+
+                <div class="bg-purple-50 border-4 border-purple-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-purple-900 font-heading">📝 Writing | Review: A review of a cafe</h3>
+                    <div class="bg-white rounded-2xl border border-purple-100 p-4">
+                        <p>Sunny Cafe is my favorite cafe. I like it because it is cheap. The coffee is good because it is fresh. There are some tables near the window. I go there at the weekend.</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Use “because” in your sentences.<br>Dùng “because” trong câu của bạn.</p>
+                </div>
+
+                <div class="bg-rose-50 border-4 border-rose-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700 md:col-span-2">
+                    <h3 class="text-lg font-black text-rose-900 font-heading">🛏️ Speaking 2: Your room</h3>
+                    <div class="bg-white rounded-2xl border border-rose-100 p-4 space-y-1">
+                        <p>There is a bed in my room. There is a desk under the window.</p>
+                        <p>There is a lamp on the desk. There aren't any sofas in my room.</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Describe your room to a partner. Use there is / there are, some / any, in / on / under.<br>Mô tả căn phòng của bạn cho bạn bên cạnh.</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <h2 class="text-2xl font-black text-indigo-900 font-heading">📖 Vocabulary list / Danh sách từ vựng</h2>
+                    <p class="text-xs md:text-sm text-slate-500 font-medium mt-1">Read the words and their meanings. / Hãy đọc các từ và nghĩa của chúng.</p>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table class="w-full text-left border-collapse bg-white">
+                        <thead>
+                            <tr class="bg-indigo-50 border-b border-slate-200 text-indigo-900 text-xs uppercase tracking-wider font-black">
+                                <th class="p-3.5">Vocabulary</th>
+                                <th class="p-3.5">Meaning</th>
+                                <th class="p-3.5">IPA</th>
+                                <th class="p-3.5">Example Sentence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reference-table-body" class="divide-y divide-slate-100 text-xs md:text-sm">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="switchTab('flashcard')" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-sm shadow-sm transition cursor-pointer">Start Flashcards Practice ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: FLASHCARDS -->
+        <section id="tab-flashcard" class="tab-content hidden space-y-6">
+            <p class="text-center text-xs md:text-sm text-slate-500 font-medium">Tap the card to see the answer, then choose how well you remember. / Chạm vào thẻ để xem đáp án, sau đó chọn mức độ nhớ của bạn.</p>
+            <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-indigo-300 shadow-sm flex justify-between items-center flex-wrap gap-2">
+                <div class="text-sm font-black text-slate-600">Remaining Queue: <span id="queue-text" class="text-indigo-600 font-extrabold">0 cards</span></div>
+                <div class="w-full sm:w-1/3 bg-slate-100 h-4 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <button onclick="resetProgress()" class="text-xs text-rose-500 hover:underline font-black cursor-pointer">🔄 Reset Session</button>
+            </div>
+            
+            <div id="flashcard-container" class="space-y-6">
+                <div id="card-arena" class="perspective w-full max-w-md mx-auto h-[420px] cursor-pointer">
+                    <div id="flashcard-inner" onclick="flipCard()" class="card-inner w-full h-full relative border-4 border-indigo-400 rounded-3xl shadow-md bg-white">
+                        
+                        <!-- FRONT SIDE -->
+                        <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between items-center text-center bg-indigo-50/40 rounded-[20px]">
+                            <span id="f-badge" class="text-xs font-black text-indigo-700 uppercase tracking-widest bg-indigo-100 px-4 py-1.5 rounded-full">Prompt</span>
+                            
+                            <div class="space-y-3 my-auto w-full">
+                                <h3 id="f-prompt" class="text-2xl md:text-3xl font-black text-indigo-950"></h3>
+                                
+                                <div id="f-extra-content" class="hidden space-y-2 pt-2 border-t border-indigo-200/60">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <span id="f-ipa" class="text-indigo-600 font-bold text-sm font-mono"></span>
+                                        <button id="f-audio-btn" onclick="speakText(currentCard.word, event)" class="w-7 h-7 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full transition flex items-center justify-center text-xs cursor-pointer shadow-sm">🔊</button>
+                                    </div>
+                                    <p id="f-example" class="text-slate-600 text-xs px-2 font-medium leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-indigo-600 font-black">👉 Tap card to reveal answer 👈</p>
+                        </div>
+
+                        <!-- BACK SIDE -->
+                        <div class="backface-hidden w-full h-full absolute inset-0 p-6 flex flex-col justify-between bg-slate-900 text-white rounded-[22px]" style="transform: rotateY(180deg);">
+                            <span id="b-badge" class="text-xs font-black text-indigo-400 uppercase tracking-widest bg-slate-800 px-4 py-1.5 rounded-full w-max mx-auto">Answer</span>
+                            
+                            <div class="my-auto space-y-3 text-center">
+                                <h2 id="b-answer" class="text-3xl md:text-4xl font-black text-amber-300"></h2>
+                                
+                                <div id="b-extra-content" class="space-y-2 border-t border-slate-800 pt-3">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <span id="b-ipa" class="text-indigo-300 font-bold text-sm font-mono"></span>
+                                        <button id="b-audio-btn" onclick="speakText(currentCard.word, event)" class="w-7 h-7 bg-indigo-900 hover:bg-indigo-800 text-indigo-200 rounded-full transition flex items-center justify-center text-xs cursor-pointer shadow-sm">🔊</button>
+                                    </div>
+                                    <p id="b-example" class="text-slate-300 text-xs px-2 font-medium leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-center text-slate-500 font-bold">Rate how well you recalled this 👇</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="w-full max-w-md mx-auto bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-4 gap-2">
+                    <button onclick="handleAnkiAction('again')" class="p-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-rose-600">Again</span>
+                        <span class="text-[10px] text-rose-400 font-bold block mt-0.5">&lt; 1m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('hard')" class="p-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-amber-600">Hard</span>
+                        <span class="text-[10px] text-amber-400 font-bold block mt-0.5">10m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('good')" class="p-2 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-indigo-600">Good</span>
+                        <span class="text-[10px] text-indigo-400 font-bold block mt-0.5">1d</span>
+                    </button>
+                    <button onclick="handleAnkiAction('easy')" class="p-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-center transition shadow-sm cursor-pointer">
+                        <span class="block text-xs font-black text-emerald-600">Easy</span>
+                        <span class="text-[10px] text-emerald-400 font-bold block mt-0.5">4d</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="flashcard-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🏙️🏠✨</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Vocabulary Mastered!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Awesome work! You completed all flashcards. Let's test your listening now! / Tuyệt vời! Bạn đã học xong tất cả thẻ từ. Giờ hãy luyện nghe nhé!</p>
+                <button onclick="unlockAndGoToListening()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Listening Practice ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 3: LISTENING PRACTICE -->
+        <section id="tab-listening-game" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-indigo-100 text-indigo-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 1: Listening Practice</span>
+                    <p class="text-xs md:text-sm text-slate-500 font-medium">Listen and choose the correct picture. / Hãy nghe và chọn hình đúng.</p>
+                </div>
+
+                <div class="flex justify-between items-center bg-indigo-50 p-3 rounded-2xl border border-indigo-100 text-xs md:text-sm font-black text-indigo-900 max-w-xl mx-auto">
+                    <span>Item: <span id="listen-current-index" class="text-indigo-600 font-extrabold">1</span> / <span id="listen-total-items">20</span></span>
+                    <button onclick="playListeningAudio()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-sm transition flex items-center gap-2 cursor-pointer">
+                        <span class="text-base">🔊</span> Play Audio
+                    </button>
+                </div>
+
+                <div id="listening-options-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                </div>
+
+                <div id="listening-feedback" class="p-4 rounded-2xl text-center font-black hidden max-w-xl mx-auto"></div>
+            </div>
+
+            <div id="listening-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🎧🎉🏆</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Listening Mastered!</h4>
+                <p class="text-sm text-slate-700 font-medium">Great job recognizing all the words! Now build sentences with them. / Giỏi lắm! Giờ hãy xếp câu nhé.</p>
+                <button onclick="unlockAndGoToSentenceBuilder()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Sentence Builder ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 4: SENTENCE BUILDER -->
+        <section id="tab-sentence-builder" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-purple-100 text-purple-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 2: Sentence Builder</span>
+                    <p class="text-xs md:text-sm text-slate-500 font-medium">Look at the picture and build the sentence step by step. / Nhìn hình và xếp câu từng bước.</p>
+                </div>
+
+                <div class="flex justify-between items-center bg-purple-50 p-3 rounded-2xl border border-purple-100 text-xs md:text-sm font-black text-purple-900 max-w-xl mx-auto">
+                    <span>Progress: <span id="builder-current-index" class="text-purple-600 font-extrabold">1</span> / <span id="builder-total-items">15</span></span>
+                    <span>Step: <span id="builder-current-step" class="text-amber-600">1 / 3</span></span>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 max-w-xl mx-auto text-center space-y-3">
+                    <div id="builder-image-box" class="text-5xl md:text-6xl py-4 bg-white rounded-xl border border-slate-100 shadow-inner flex justify-center items-center gap-2">
+                    </div>
+                    
+                    <div class="bg-white p-3 rounded-xl border-2 border-dashed border-purple-300 min-h-[50px] flex items-center justify-center">
+                        <p id="constructed-sentence" class="text-lg font-black text-purple-950">
+                            <span id="slot-1" class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 1 ]</span> 
+                            <span id="slot-2" class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 2 ]</span> 
+                            <span id="slot-3" class="text-slate-300 border-b-2 border-slate-300 px-2">[ Part 3 ]</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="step-choices-container" class="grid grid-cols-2 gap-3 max-w-xl mx-auto">
+                </div>
+
+                <div id="builder-feedback" class="p-3 rounded-2xl text-center font-black hidden max-w-xl mx-auto"></div>
+            </div>
+
+            <div id="builder-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🧩💯🌟</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Sentence Builder Complete!</h4>
+                <p class="text-sm text-slate-700 font-medium">You constructed all 15 sentences correctly. Proceed to completion! / Bạn đã xếp đúng cả 15 câu!</p>
+                <button onclick="unlockAndGoToCompletion()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">View Completion Summary ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 5: COMPLETION / SUMMARY -->
+        <section id="tab-completion" class="tab-content hidden space-y-6">
+            <div class="max-w-2xl mx-auto bg-white border-4 border-indigo-300 p-8 rounded-3xl space-y-6 shadow-xl text-center">
+                <div class="space-y-2">
+                    <span class="text-6xl block animate-bounce">🎓🎉🥳</span>
+                    <h3 class="text-3xl font-heading font-black text-indigo-950">Chúc Mừng Bạn Đã Hoàn Thành Bài 6!</h3>
+                    <p class="text-sm text-slate-600 font-bold">Congratulations! You have completed <span class="text-indigo-600 font-black">English 1_Lesson 6_Unit 6</span>. Bạn đã hoàn thành tất cả nội dung luyện tập của bài học này.</p>
+                </div>
+
+                <div class="bg-indigo-50/50 p-5 rounded-2xl border border-indigo-200 space-y-3 text-left">
+                    <h4 class="text-base font-black text-indigo-900 border-b border-indigo-200 pb-2">💡 Tóm tắt nội dung bài học / Lesson summary:</h4>
+                    <ul class="space-y-2.5 text-xs md:text-sm text-slate-700 font-bold">
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">1.</span> <span><b>Places in town (Địa điểm trong thành phố):</b> art gallery, cafe, hotel, market, museum, park, restaurant, store, station, theater. <i>Từ vựng thêm:</i> boat, bridge, building, canal.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">2.</span> <span><b>Rooms &amp; Furniture (Phòng &amp; đồ nội thất):</b> bathroom, kitchen, living room; bed, chair, desk, lamp, fridge, couch, mirror, window...</span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">3.</span> <span><b>There is / There are:</b> <i>There is a park.</i> / <i>There are two hotels.</i> (có...)</span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">4.</span> <span><b>Some / Any:</b> <i>some</i> dùng trong câu khẳng định; <i>any</i> dùng trong câu phủ định và câu hỏi.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">5.</span> <span><b>Is there...? / Are there...?:</b> <i>Is there a fridge?</i> – <i>Yes, there is. / No, there isn't.</i></span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">6.</span> <span><b>Prepositions of place (Giới từ chỉ nơi chốn):</b> <i>in</i> (trong), <i>on</i> (trên), <i>under</i> (dưới).</span></li>
+                        <li class="flex items-start gap-2"><span class="text-indigo-600 font-black">7.</span> <span><b>Because (bởi vì):</b> dùng để nêu lý do, ví dụ: <i>I like this cafe because it is cheap.</i></span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200 space-y-2 text-left">
+                    <h4 class="text-base font-black text-amber-800 border-b border-amber-200 pb-2">🗣️ Speaking &amp; ✍️ Writing – Hãy thực hành tiếp:</h4>
+                    <ul class="space-y-2 text-xs md:text-sm text-slate-700 font-bold list-disc pl-5">
+                        <li><b>Speaking:</b> Talk about places for everyday life, weekend fun, and food and drinks. / Nói về các địa điểm cho cuộc sống hằng ngày, giải trí cuối tuần, ăn uống.</li>
+                        <li><b>Writing:</b> Write a review of a cafe using “because”. / Viết bài đánh giá về một quán cà phê, dùng “because”.</li>
+                        <li><b>Speaking:</b> Describe your room. / Mô tả căn phòng của bạn.</li>
+                    </ul>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="location.reload()" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm">🔄 Ôn tập lại từ đầu</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // VOCABULARY LIST LESSON 6 (38 ITEMS)
+        const vocabularyData = [
+            { word: "art gallery", ipa: "/ˈɑːt ˌɡæləri/", vi: "phòng trưng bày tranh", ex: "There is an art gallery in my town.", icon: "🖼️" },
+            { word: "cafe", ipa: "/ˈkæfeɪ/", vi: "quán cà phê", ex: "I like this cafe.", icon: "☕" },
+            { word: "hotel", ipa: "/həʊˈtel/", vi: "khách sạn", ex: "There is a hotel near the park.", icon: "🏨" },
+            { word: "market", ipa: "/ˈmɑːkɪt/", vi: "chợ", ex: "The market is big.", icon: "🛒" },
+            { word: "museum", ipa: "/mjuˈziːəm/", vi: "bảo tàng", ex: "There is a museum in the city.", icon: "🏛️" },
+            { word: "park", ipa: "/pɑːk/", vi: "công viên", ex: "The park is green.", icon: "🌳" },
+            { word: "restaurant", ipa: "/ˈrestrɒnt/", vi: "nhà hàng", ex: "The restaurant is good.", icon: "🍽️" },
+            { word: "store", ipa: "/stɔː(r)/", vi: "cửa hàng", ex: "There is a store near my house.", icon: "🏪" },
+            { word: "station", ipa: "/ˈsteɪʃn/", vi: "nhà ga", ex: "The station is near the hotel.", icon: "🚉" },
+            { word: "theater", ipa: "/ˈθɪətə(r)/", vi: "rạp hát", ex: "There is a theater in the city.", icon: "🎭" },
+            { word: "boat", ipa: "/bəʊt/", vi: "thuyền", ex: "There is a boat on the canal.", icon: "⛵" },
+            { word: "bridge", ipa: "/brɪdʒ/", vi: "cây cầu", ex: "There is a bridge in my town.", icon: "🌉" },
+            { word: "building", ipa: "/ˈbɪldɪŋ/", vi: "tòa nhà", ex: "The building is very tall.", icon: "🏢" },
+            { word: "canal", ipa: "/kəˈnæl/", vi: "kênh đào", ex: "There is a canal in the city.", icon: "🏞️" },
+            { word: "bathroom", ipa: "/ˈbɑːθruːm/", vi: "phòng tắm", ex: "There is a mirror in the bathroom.", icon: "🛁" },
+            { word: "kitchen", ipa: "/ˈkɪtʃɪn/", vi: "nhà bếp", ex: "There is a fridge in the kitchen.", icon: "🍳" },
+            { word: "living room", ipa: "/ˈlɪvɪŋ ruːm/", vi: "phòng khách", ex: "There is a couch in the living room.", icon: "🏠" },
+            { word: "coffee table", ipa: "/ˈkɒfi ˌteɪbl/", vi: "bàn trà (bàn thấp)", ex: "The coffee table is small.", icon: "☕🟫" },
+            { word: "couch", ipa: "/kaʊtʃ/", vi: "ghế sofa", ex: "The couch is soft.", icon: "🛋️" },
+            { word: "fridge", ipa: "/frɪdʒ/", vi: "tủ lạnh", ex: "The fridge is in the kitchen.", icon: "🧊" },
+            { word: "mirror", ipa: "/ˈmɪrə(r)/", vi: "cái gương", ex: "There is a mirror on the wall.", icon: "🪞" },
+            { word: "oven", ipa: "/ˈʌvn/", vi: "lò nướng", ex: "There is an oven in the kitchen.", icon: "🍗🔥" },
+            { word: "rug", ipa: "/rʌɡ/", vi: "tấm thảm", ex: "There is a rug under the table.", icon: "🧶" },
+            { word: "shower", ipa: "/ˈʃaʊə(r)/", vi: "vòi hoa sen", ex: "There is a shower in the bathroom.", icon: "🚿" },
+            { word: "toilet", ipa: "/ˈtɔɪlət/", vi: "bồn cầu / nhà vệ sinh", ex: "The toilet is in the bathroom.", icon: "🚽" },
+            { word: "bed", ipa: "/bed/", vi: "cái giường", ex: "There is a bed in my room.", icon: "🛏️" },
+            { word: "bookshelf", ipa: "/ˈbʊkʃelf/", vi: "kệ sách", ex: "There are many books on the bookshelf.", icon: "📚" },
+            { word: "chair", ipa: "/tʃeə(r)/", vi: "cái ghế", ex: "There are two chairs in the kitchen.", icon: "🪑" },
+            { word: "clock", ipa: "/klɒk/", vi: "đồng hồ treo tường", ex: "There is a clock on the wall.", icon: "🕒" },
+            { word: "closet", ipa: "/ˈklɒzɪt/", vi: "tủ quần áo", ex: "My clothes are in the closet.", icon: "👚" },
+            { word: "cushion", ipa: "/ˈkʊʃn/", vi: "cái gối tựa", ex: "The cushions are on the couch.", icon: "💜" },
+            { word: "desk", ipa: "/desk/", vi: "bàn học / bàn làm việc", ex: "The book is on the desk.", icon: "🖥️" },
+            { word: "lamp", ipa: "/læmp/", vi: "cái đèn", ex: "There is a lamp on the desk.", icon: "💡" },
+            { word: "wall", ipa: "/wɔːl/", vi: "bức tường", ex: "There is a clock on the wall.", icon: "🧱" },
+            { word: "window", ipa: "/ˈwɪndəʊ/", vi: "cửa sổ", ex: "There is a window in my room.", icon: "🪟" },
+            { word: "in", ipa: "/ɪn/", vi: "trong", ex: "The cat is in the box.", icon: "📥" },
+            { word: "on", ipa: "/ɒn/", vi: "trên (có tiếp xúc)", ex: "The book is on the desk.", icon: "🔛" },
+            { word: "under", ipa: "/ˈʌndə(r)/", vi: "dưới", ex: "The shoes are under the bed.", icon: "⬇️" }
+        ];
+
+        // 20 LISTENING ITEMS
+        const listeningItems = [
+            { word: "art gallery", icon: "🖼️", vi: "phòng trưng bày tranh" },
+            { word: "cafe", icon: "☕", vi: "quán cà phê" },
+            { word: "hotel", icon: "🏨", vi: "khách sạn" },
+            { word: "market", icon: "🛒", vi: "chợ" },
+            { word: "museum", icon: "🏛️", vi: "bảo tàng" },
+            { word: "park", icon: "🌳", vi: "công viên" },
+            { word: "restaurant", icon: "🍽️", vi: "nhà hàng" },
+            { word: "station", icon: "🚉", vi: "nhà ga" },
+            { word: "theater", icon: "🎭", vi: "rạp hát" },
+            { word: "bridge", icon: "🌉", vi: "cây cầu" },
+            { word: "boat", icon: "⛵", vi: "thuyền" },
+            { word: "kitchen", icon: "🍳", vi: "nhà bếp" },
+            { word: "bathroom", icon: "🛁", vi: "phòng tắm" },
+            { word: "couch", icon: "🛋️", vi: "ghế sofa" },
+            { word: "fridge", icon: "🧊", vi: "tủ lạnh" },
+            { word: "mirror", icon: "🪞", vi: "cái gương" },
+            { word: "bed", icon: "🛏️", vi: "cái giường" },
+            { word: "lamp", icon: "💡", vi: "cái đèn" },
+            { word: "clock", icon: "🕒", vi: "đồng hồ" },
+            { word: "window", icon: "🪟", vi: "cửa sổ" }
+        ];
+
+        // 15 SENTENCE BUILDER ITEMS (first option is the answer; choices are shuffled when shown)
+        const sentenceBuilderItems = [
+            { icon: "🌳 1️⃣", step1: ["There is", "There are", "They are"], step2: ["a park", "parks", "an parks"], step3: ["in my town.", "on my town.", "under my town."], target: ["There is", "a park", "in my town."] },
+            { icon: "🏨 🏨 🚉", step1: ["There are", "There is", "It is"], step2: ["two hotels", "a hotel", "hotel two"], step3: ["near the station.", "in the lamp.", "on the hotel."], target: ["There are", "two hotels", "near the station."] },
+            { icon: "🛏️ 1️⃣", step1: ["There is", "There are", "They are"], step2: ["a bed", "beds", "two bed"], step3: ["in my room.", "under the sun.", "on the cold."], target: ["There is", "a bed", "in my room."] },
+            { icon: "🌉 🏞️", step1: ["There is", "There are", "There"], step2: ["a bridge", "bridges", "bridge"], step3: ["near the canal.", "under the cafe.", "in the canal bridge."], target: ["There is", "a bridge", "near the canal."] },
+            { icon: "🪑 🪑 🍳", step1: ["There are", "There is", "Is there"], step2: ["some chairs", "any chairs", "a chairs"], step3: ["in the kitchen.", "in the kitchens.", "on kitchen."], target: ["There are", "some chairs", "in the kitchen."] },
+            { icon: "🪞 ❌ 🛁", step1: ["There aren't", "There isn't", "There not"], step2: ["any mirrors", "some mirrors", "a mirrors"], step3: ["in the bathroom.", "in the bathrooms.", "on bathroom."], target: ["There aren't", "any mirrors", "in the bathroom."] },
+            { icon: "❓ 🧊 🍳", step1: ["Is there", "Are there", "There is"], step2: ["a fridge", "any fridge", "fridges"], step3: ["in the kitchen?", "in the kitchen.", "on the kitchens?"], target: ["Is there", "a fridge", "in the kitchen?"] },
+            { icon: "❓ 🏛️ 🏛️ 🌆", step1: ["Are there", "Is there", "There are"], step2: ["any museums", "a museum", "some museum"], step3: ["in your city?", "in your city.", "on your cities?"], target: ["Are there", "any museums", "in your city?"] },
+            { icon: "📖 🔝 🖥️", step1: ["The book", "The books", "Book"], step2: ["is", "are", "am"], step3: ["on the desk.", "in the desk.", "under the desk."], target: ["The book", "is", "on the desk."] },
+            { icon: "👟 ⬇️ 🛏️", step1: ["The shoes", "The shoe", "Shoes"], step2: ["are", "is", "am"], step3: ["under the bed.", "on the bed.", "in the bed."], target: ["The shoes", "are", "under the bed."] },
+            { icon: "💜 💜 🔝 🛋️", step1: ["The cushions", "The cushion", "A cushions"], step2: ["are", "is", "am"], step3: ["on the couch.", "in the couch.", "under couch."], target: ["The cushions", "are", "on the couch."] },
+            { icon: "🕒 🧱", step1: ["There is", "There are", "It is"], step2: ["a clock", "clocks", "two clock"], step3: ["on the wall.", "in the wall clock.", "under wall."], target: ["There is", "a clock", "on the wall."] },
+            { icon: "☕ 👍 💲", step1: ["I like this cafe", "I likes this cafe", "I like this cafes"], step2: ["because", "so", "but"], step3: ["it is cheap.", "cheap is.", "it cheap."], target: ["I like this cafe", "because", "it is cheap."] },
+            { icon: "🌳 😌 🤫", step1: ["The park is nice", "The park nice", "The parks is nice"], step2: ["because", "so", "but"], step3: ["it is quiet.", "is quiet it.", "it quiet."], target: ["The park is nice", "because", "it is quiet."] },
+            { icon: "🍽️ 👍 🍜", step1: ["The restaurant is good", "The restaurant good", "The restaurants is good"], step2: ["because", "so", "but"], step3: ["the food is nice.", "food nice is.", "the food nice."], target: ["The restaurant is good", "because", "the food is nice."] }
+        ];
+
+        // STATE MANAGEMENT
+        let currentTab = 'reference';
+        let flashcardQueue = [];
+        let currentCard = null;
+        let isFlipped = false;
+        let initialQueueLength = 0;
+
+        let listenIndex = 0;
+        let listenCurrentItem = null;
+
+        let builderIndex = 0;
+        let currentStep = 1;
+        let userChoices = ["", "", ""];
+
+        function speakText(text, e) {
+            if (e) e.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-indigo-600', 'shadow-sm');
+                btn.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-500');
+                activeBtn.classList.add('bg-white', 'text-indigo-600', 'shadow-sm');
+            }
+            currentTab = tabId;
+
+            if (tabId === 'listening-game' && listenIndex === 0) {
+                initListeningGame();
+            } else if (tabId === 'sentence-builder' && builderIndex === 0) {
+                initSentenceBuilder();
+            }
+        }
+
+        // 1. VOCABULARY TABLE
+        function renderWordBank() {
+            const tbody = document.getElementById('reference-table-body');
+            tbody.innerHTML = vocabularyData.map(item => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3.5 font-bold text-indigo-950 flex items-center gap-2"><span>${item.icon || '📌'}</span> ${item.word}</td>
+                    <td class="p-3.5 text-slate-600">${item.vi}</td>
+                    <td class="p-3.5 text-indigo-500 font-mono">${item.ipa}</td>
+                    <td class="p-3.5 text-slate-600 font-normal">${item.ex}</td>
+                </tr>
+            `).join('');
+        }
+
+        // 2. MIXED FLASHCARDS LOGIC
+        function initFlashcards() {
+            flashcardQueue = vocabularyData.map(item => ({
+                ...item,
+                frontType: Math.random() < 0.5 ? 'vi' : 'en'
+            }));
+            initialQueueLength = flashcardQueue.length;
+            updateQueueUI();
+            nextCard();
+        }
+
+        function updateQueueUI() {
+            document.getElementById('queue-text').innerText = `${flashcardQueue.length} cards`;
+            const percent = ((initialQueueLength - flashcardQueue.length) / initialQueueLength) * 100;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+        }
+
+        function nextCard() {
+            if (flashcardQueue.length === 0) {
+                document.getElementById('flashcard-container').classList.add('hidden');
+                document.getElementById('flashcard-success-box').classList.remove('hidden');
+                return;
+            }
+            currentCard = flashcardQueue[0];
+            isFlipped = false;
+            
+            const cardInner = document.getElementById('flashcard-inner');
+            cardInner.classList.remove('card-flipped');
+
+            setTimeout(() => {
+                const fExtra = document.getElementById('f-extra-content');
+                const bExtra = document.getElementById('b-extra-content');
+
+                if (currentCard.frontType === 'vi') {
+                    document.getElementById('f-prompt').innerText = `${currentCard.icon || ''} ${currentCard.vi}`;
+                    fExtra.classList.add('hidden');
+
+                    document.getElementById('b-answer').innerText = currentCard.word;
+                    document.getElementById('b-ipa').innerText = currentCard.ipa;
+                    document.getElementById('b-example').innerText = `"${currentCard.ex}"`;
+                    bExtra.classList.remove('hidden');
+                } else {
+                    document.getElementById('f-prompt').innerText = `${currentCard.icon || ''} ${currentCard.word}`;
+                    document.getElementById('f-ipa').innerText = currentCard.ipa;
+                    document.getElementById('f-example').innerText = `"${currentCard.ex}"`;
+                    fExtra.classList.remove('hidden');
+
+                    document.getElementById('b-answer').innerText = currentCard.vi;
+                    bExtra.classList.add('hidden');
+                }
+            }, 150);
+        }
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            const cardInner = document.getElementById('flashcard-inner');
+            if (isFlipped) {
+                cardInner.classList.add('card-flipped');
+            } else {
+                cardInner.classList.remove('card-flipped');
+            }
+        }
+
+        function handleAnkiAction(action) {
+            if (!currentCard) return;
+            if (action === 'again') {
+                const card = flashcardQueue.shift();
+                flashcardQueue.push(card);
+            } else {
+                flashcardQueue.shift();
+            }
+            updateQueueUI();
+            nextCard();
+        }
+
+        function resetProgress() {
+            document.getElementById('flashcard-container').classList.remove('hidden');
+            document.getElementById('flashcard-success-box').classList.add('hidden');
+            initFlashcards();
+        }
+
+        function unlockAndGoToListening() {
+            const btn = document.getElementById('btn-listening-game');
+            btn.classList.remove('disabled-tab');
+            switchTab('listening-game');
+        }
+
+        // 3. LISTENING GAME
+        function initListeningGame() {
+            listenIndex = 0;
+            loadListeningQuestion();
+        }
+
+        function loadListeningQuestion() {
+            if (listenIndex >= listeningItems.length) {
+                document.getElementById('listening-options-grid').classList.add('hidden');
+                document.getElementById('listening-success-box').classList.remove('hidden');
+                return;
+            }
+
+            listenCurrentItem = listeningItems[listenIndex];
+            document.getElementById('listen-current-index').innerText = listenIndex + 1;
+            document.getElementById('listen-total-items').innerText = listeningItems.length;
+
+            const feedback = document.getElementById('listening-feedback');
+            feedback.classList.add('hidden');
+
+            let distractors = listeningItems.filter(item => item.word !== listenCurrentItem.word);
+            distractors = distractors.sort(() => 0.5 - Math.random()).slice(0, 3);
+            
+            let options = [listenCurrentItem, ...distractors];
+            options.sort(() => 0.5 - Math.random());
+
+            const grid = document.getElementById('listening-options-grid');
+            grid.innerHTML = options.map(opt => `
+                <div onclick="checkListeningChoice('${opt.word}')" class="bg-indigo-50/50 hover:bg-indigo-100/80 border-2 border-indigo-200 rounded-2xl p-4 text-center cursor-pointer transition transform hover:-translate-y-1 shadow-sm flex flex-col items-center justify-center space-y-2 h-36">
+                    <span class="text-5xl">${opt.icon}</span>
+                </div>
+            `).join('');
+
+            playListeningAudio();
+        }
+
+        function playListeningAudio() {
+            if (listenCurrentItem) {
+                speakText(listenCurrentItem.word);
+            }
+        }
+
+        function checkListeningChoice(selectedWord) {
+            const feedback = document.getElementById('listening-feedback');
+            feedback.classList.remove('hidden');
+
+            if (selectedWord === listenCurrentItem.word) {
+                feedback.className = "p-4 rounded-2xl text-center font-black bg-emerald-100 text-emerald-800 max-w-xl mx-auto";
+                feedback.innerHTML = `✨ Correct! <b>"${listenCurrentItem.word}"</b> (${listenCurrentItem.vi})`;
+                
+                setTimeout(() => {
+                    listenIndex++;
+                    loadListeningQuestion();
+                }, 1200);
+            } else {
+                feedback.className = "p-4 rounded-2xl text-center font-black bg-rose-100 text-rose-800 max-w-xl mx-auto";
+                feedback.innerHTML = `❌ Try again! Listen carefully. / Thử lại nhé! Hãy nghe kỹ.`;
+                playListeningAudio();
+            }
+        }
+
+        function unlockAndGoToSentenceBuilder() {
+            const btn = document.getElementById('btn-sentence-builder');
+            btn.classList.remove('disabled-tab');
+            switchTab('sentence-builder');
+        }
+
+        // 4. SENTENCE BUILDER
+        function initSentenceBuilder() {
+            builderIndex = 0;
+            loadBuilderQuestion();
+        }
+
+        function loadBuilderQuestion() {
+            if (builderIndex >= sentenceBuilderItems.length) {
+                document.getElementById('step-choices-container').classList.add('hidden');
+                document.getElementById('builder-success-box').classList.remove('hidden');
+                return;
+            }
+
+            currentStep = 1;
+            userChoices = ["", "", ""];
+            const item = sentenceBuilderItems[builderIndex];
+
+            document.getElementById('builder-current-index').innerText = builderIndex + 1;
+            document.getElementById('builder-total-items').innerText = sentenceBuilderItems.length;
+            document.getElementById('builder-current-step').innerText = `${currentStep} / 3`;
+            document.getElementById('builder-image-box').innerText = item.icon;
+
+            updateSentenceDisplay();
+            renderStepChoices();
+
+            const feedback = document.getElementById('builder-feedback');
+            feedback.classList.add('hidden');
+        }
+
+        function updateSentenceDisplay() {
+            const labels = ["[ Part 1 ]", "[ Part 2 ]", "[ Part 3 ]"];
+            [0, 1, 2].forEach(i => {
+                document.getElementById(`slot-${i + 1}`).innerHTML = userChoices[i]
+                    ? `<span class="text-indigo-600">${userChoices[i]}</span>`
+                    : `<span class="text-slate-300 border-b-2 border-slate-300 px-2">${labels[i]}</span>`;
+            });
+        }
+
+        function renderStepChoices() {
+            const item = sentenceBuilderItems[builderIndex];
+            let choices = [];
+            if (currentStep === 1) choices = item.step1;
+            else if (currentStep === 2) choices = item.step2;
+            else if (currentStep === 3) choices = item.step3;
+            choices = [...choices].sort(() => 0.5 - Math.random());
+
+            const container = document.getElementById('step-choices-container');
+            container.innerHTML = choices.map((choice, idx) => `
+                <button id="choice-btn-${idx}" onclick="makeStepChoice('${choice.replace(/'/g, "\\'")}', ${idx})" class="p-3 bg-purple-50 hover:bg-purple-100 border-2 border-purple-200 rounded-xl text-purple-900 font-black text-sm transition cursor-pointer shadow-sm">
+                    ${choice}
+                </button>
+            `).join('');
+        }
+
+        function makeStepChoice(choice, btnIndex) {
+            const item = sentenceBuilderItems[builderIndex];
+            const targetChoice = item.target[currentStep - 1];
+            const feedback = document.getElementById('builder-feedback');
+
+            if (choice === targetChoice) {
+                userChoices[currentStep - 1] = choice;
+                updateSentenceDisplay();
+
+                if (currentStep < 3) {
+                    currentStep++;
+                    document.getElementById('builder-current-step').innerText = `${currentStep} / 3`;
+                    feedback.classList.add('hidden');
+                    renderStepChoices();
+                } else {
+                    feedback.classList.remove('hidden');
+                    feedback.className = "p-3 rounded-2xl text-center font-black bg-emerald-100 text-emerald-800 max-w-xl mx-auto";
+                    feedback.innerText = "🎉 Correct sentence! / Câu đúng rồi!";
+
+                    speakText(`${userChoices[0]} ${userChoices[1]} ${userChoices[2]}`);
+
+                    setTimeout(() => {
+                        builderIndex++;
+                        loadBuilderQuestion();
+                    }, 1400);
+                }
+            } else {
+                feedback.classList.remove('hidden');
+                feedback.className = "p-3 rounded-2xl text-center font-black bg-rose-100 text-rose-800 max-w-xl mx-auto";
+                feedback.innerText = "❌ Try another option! / Thử lại nhé!";
+
+                const wrongBtn = document.getElementById(`choice-btn-${btnIndex}`);
+                if (wrongBtn) {
+                    wrongBtn.disabled = true;
+                    wrongBtn.className = "p-3 bg-slate-100 border-2 border-slate-200 rounded-xl text-slate-400 font-black text-sm cursor-not-allowed opacity-60";
+                }
+            }
+        }
+
+        function unlockAndGoToCompletion() {
+            const btn = document.getElementById('btn-completion');
+            btn.classList.remove('disabled-tab');
+            switchTab('completion');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderWordBank();
+            initFlashcards();
+        });
+    </script>
+</body>
+</html>
