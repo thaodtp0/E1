@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E1_Lesson 2_Unit 2</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        *, body, html, button, span, h1, h2, h3, p, div, input, textarea, select { 
+            font-family: 'Quicksand', sans-serif; 
+            font-weight: 600;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .perspective { perspective: 1000px; }
+        .backface-hidden { backface-visibility: hidden; }
+        .card-inner { transition: transform 0.5s; transform-style: preserve-3d; }
+        .card-flipped { transform: rotateY(180deg); }
+        .disabled-tab { opacity: 0.4; cursor: not-allowed !important; pointer-events: none; }
+    </style>
+</head>
+<body class="bg-[#f7f9fc] text-slate-800 min-h-screen flex flex-col selection:bg-indigo-200 pb-12">
+
+    <!-- CLASSROOM HEADER -->
+    <header class="bg-gradient-to-r from-[#FFDEE9] via-[#FFE5E5] to-[#B5FFFC] border-b-4 border-dashed border-amber-200 shadow-sm p-6 text-center rounded-b-3xl">
+        <h1 class="text-3xl md:text-4xl font-black tracking-wide drop-shadow-sm text-indigo-900">✨ E1_Lesson 2_Unit 2 ✨</h1>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-4xl w-full mx-auto px-4 mt-6">
+        <div class="flex bg-amber-100/70 p-1.5 rounded-2xl border border-amber-200 shadow-inner overflow-x-auto">
+            <button onclick="switchTab('reference')" id="btn-reference" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center bg-white text-amber-600 shadow-sm transition cursor-pointer whitespace-nowrap">📚 Word Bank</button>
+            <button onclick="switchTab('flashcard')" id="btn-flashcard" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition cursor-pointer whitespace-nowrap">🎴 Flashcards</button>
+            <button onclick="switchTab('sentence')" id="btn-sentence" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">✍️ Sentence Building</button>
+            <button onclick="switchTab('writing')" id="btn-writing" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">💻 My Blog</button>
+            <button onclick="switchTab('finish')" id="btn-finish" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🏆 Finish</button>
+        </div>
+    </div>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        
+        <!-- SECTION 0: VOCABULARY REFERENCE TABLE -->
+        <section id="tab-reference" class="tab-content block space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <h2 class="text-2xl font-black text-indigo-900 font-heading">📖 E1_Lesson 2_Unit 2_Summary, Vocabulary &amp; Grammar</h2>
+                    <p class="text-sm text-slate-500 mt-1">Read the summary, grammar and word list before starting the practice activities.<br>Đọc phần tóm tắt, ngữ pháp và danh sách từ vựng trước khi làm bài luyện tập.</p>
+                </div>
+
+                <!-- LESSON SUMMARY (FIRST PAGE) -->
+                <div class="bg-gradient-to-r from-indigo-50 to-sky-50 border-2 border-indigo-200 rounded-2xl p-4 space-y-2">
+                    <h3 class="text-lg font-black text-indigo-900">📋 Lesson Summary / Tóm tắt kiến thức</h3>
+                    <ul class="text-sm text-slate-700 space-y-1.5 leading-relaxed">
+                        <li>🌍 <b>Countries / Quốc gia:</b> Algeria, Chile, Denmark, Italy, Lebanon, Morocco, Russia, Scotland, Venezuela, Vietnam.</li>
+                        <li>🔢 <b>Numbers 11-100 / Số 11-100:</b> eleven ... nineteen, twenty, thirty ... ninety, one hundred.</li>
+                        <li>📅 <b>Days of the week / Các thứ:</b> Monday ... Sunday.</li>
+                        <li>🎸 <b>Evening classes / Lớp buổi tối:</b> guitar class, drum workshop, yoga.</li>
+                        <li>✍️ <b>Grammar / Ngữ pháp:</b> possessive adjectives (my, your, his, her, our, their) and the simple present.</li>
+                        <li>🎯 <b>Goal / Mục tiêu:</b> talk about your favorite musician or band, and write an online self-introduction.<br><span class="text-slate-500">Nói về nhạc sĩ hoặc ban nhạc yêu thích, và viết bài tự giới thiệu trên mạng.</span></li>
+                    </ul>
+                </div>
+
+                <!-- GRAMMAR BOX -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-indigo-900">📌 Grammar 1: Possessive adjectives</h3>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-indigo-100 leading-relaxed">
+                            I → <b>my</b> · you → <b>your</b> · he → <b>his</b><br>
+                            she → <b>her</b> · we → <b>our</b> · they → <b>their</b>
+                        </div>
+                        <p class="text-sm text-slate-700">My favorite band is from Denmark. <span class="text-slate-500">(Ban nhạc yêu thích của tôi đến từ Đan Mạch.)</span></p>
+                        <p class="text-sm text-slate-700">Her teacher is from Chile. <span class="text-slate-500">(Giáo viên của cô ấy đến từ Chi-lê.)</span></p>
+                        <p class="text-xs text-slate-500">Use a possessive adjective before a noun. / Dùng tính từ sở hữu trước danh từ.</p>
+                    </div>
+                    <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-amber-800">📌 Grammar 2: Simple present</h3>
+                        <div class="text-xs bg-white rounded-xl p-3 border border-amber-100 leading-relaxed">
+                            I / you / we / they + <b>play</b>, <b>like</b>, <b>listen</b><br>
+                            he / she / it + <b>plays</b>, <b>likes</b>, <b>listens</b> (add <b>-s</b>)
+                        </div>
+                        <p class="text-sm text-slate-700">I play the guitar on Monday. <span class="text-slate-500">(Tôi chơi ghi-ta vào thứ Hai.)</span></p>
+                        <p class="text-sm text-slate-700">She listens to music every evening. <span class="text-slate-500">(Cô ấy nghe nhạc mỗi tối.)</span></p>
+                        <p class="text-xs text-slate-500">Use <b>on</b> + day: on Monday. / Dùng <b>on</b> + thứ: on Monday.</p>
+                    </div>
+                </div>
+
+                <!-- NUMBERS TIP -->
+                <div class="bg-rose-50 border-2 border-rose-200 rounded-2xl p-4 text-sm text-slate-700 leading-relaxed">
+                    <h3 class="text-lg font-black text-rose-800 mb-1">🔢 Numbers tip / Mẹo về số</h3>
+                    13-19 end in <b>-teen</b> (thirteen, fourteen). 20-90 end in <b>-ty</b> (thirty, forty). Say 21 as <b>twenty-one</b>.<br>
+                    <span class="text-slate-500">Số 13-19 tận cùng là -teen, số tròn chục tận cùng là -ty. Số 21 đọc là twenty-one.</span>
+                </div>
+
+                <!-- SPEAKING & WRITING -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-emerald-900">🎤 Speaking: Your favorite musician or band</h3>
+                        <p class="text-sm text-slate-700">Who is your favorite musician or band?<br><span class="text-slate-500">Nhạc sĩ hoặc ban nhạc yêu thích của bạn là ai?</span></p>
+                        <p class="text-sm text-slate-700">Where is he / she / are they from?<br><span class="text-slate-500">Họ đến từ đâu?</span></p>
+                        <div class="text-sm bg-white rounded-xl p-3 border border-emerald-100 leading-relaxed">
+                            <b>Model:</b> My favorite band is Coldplay. Their country is Britain. I listen to their music every evening.
+                        </div>
+                    </div>
+                    <div class="bg-sky-50 border-2 border-sky-200 rounded-2xl p-4 space-y-2">
+                        <h3 class="text-lg font-black text-sky-900">💻 Writing: An online self-introduction</h3>
+                        <div class="text-sm bg-white rounded-xl p-3 border border-sky-100 leading-relaxed">
+                            Hi! I'm Lan. I'm from Vietnam. I'm a student. My favorite band is from Denmark. I listen to music every evening. I have a guitar class on Monday and a yoga class on Friday.
+                        </div>
+                        <p class="text-xs text-slate-500">Write short sentences about your name, country, job, music and weekly classes.<br>Viết câu ngắn về tên, quốc gia, nghề nghiệp, âm nhạc và lớp học trong tuần.</p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table class="w-full text-left border-collapse bg-white">
+                        <thead>
+                            <tr class="bg-indigo-50 border-b border-slate-200 text-indigo-900 text-xs uppercase tracking-wider font-black">
+                                <th class="p-3.5">Vocabulary</th>
+                                <th class="p-3.5">Meaning (Tiếng Việt)</th>
+                                <th class="p-3.5">IPA</th>
+                                <th class="p-3.5">Example Sentence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reference-table-body" class="divide-y divide-slate-100 text-xs md:text-sm">
+                            <!-- Dynamic Content Inserted Here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="switchTab('flashcard')" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl text-sm shadow-sm transition cursor-pointer">Start Flashcards ➔ Bắt đầu thẻ từ</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: FLASHCARDS -->
+        <section id="tab-flashcard" class="tab-content hidden space-y-6">
+            <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-amber-300 shadow-sm flex justify-between items-center flex-wrap gap-2">
+                <div class="text-sm font-black text-slate-600">Progress / Tiến độ: <span id="progress-text" class="text-amber-500">0/0</span></div>
+                <div class="w-full sm:w-1/3 bg-slate-100 h-4 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <button onclick="resetProgress()" class="text-xs text-rose-500 hover:underline font-black cursor-pointer">🔄 Reset / Làm lại</button>
+            </div>
+            <p class="text-xs text-center text-slate-500 font-medium">Tap the card to see the meaning. Choose "Good" or "Easy" when you remember the word.<br>Chạm vào thẻ để xem nghĩa. Chọn "Good" hoặc "Easy" khi bạn đã nhớ từ.</p>
+            
+            <div id="flashcard-container">
+                <div id="card-arena" class="perspective w-full max-w-md mx-auto h-[420px] cursor-pointer">
+                    <div id="flashcard-inner" onclick="flipCard()" class="card-inner w-full h-full relative border-4 border-amber-400 rounded-3xl shadow-md bg-white">
+                        <!-- Front View -->
+                        <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between items-center text-center bg-amber-50/30 rounded-[20px]">
+                            <span class="text-xs font-black text-amber-600 uppercase tracking-widest bg-amber-100 px-4 py-1.5 rounded-full">English Word</span>
+                            <div class="space-y-4 my-auto w-full">
+                                <h2 id="f-word" class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"></h2>
+                                <div class="flex justify-center items-center space-x-2">
+                                    <span id="f-ipa" class="text-indigo-600 font-bold text-base md:text-lg"></span>
+                                    <button onclick="speakWord(event)" class="w-10 h-10 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition flex items-center justify-center text-lg cursor-pointer shadow-sm">🔊</button>
+                                </div>
+                                <p id="f-example" class="text-slate-700 text-sm md:text-base border-t-2 border-dashed border-amber-200 pt-4 px-2 leading-relaxed font-medium bg-white rounded-xl p-3 shadow-sm"></p>
+                            </div>
+                            <p class="text-xs text-slate-400 font-bold">👉 Tap card to flip! / Chạm để lật thẻ 👈</p>
+                        </div>
+                        <!-- Back View -->
+                        <div class="backface-hidden w-full h-full absolute inset-0 p-6 flex flex-col justify-between bg-slate-900 text-white rounded-[22px]" style="transform: rotateY(180deg);">
+                            <span class="text-xs font-black text-amber-400 uppercase tracking-widest bg-slate-800 px-4 py-1.5 rounded-full w-max mx-auto">Vietnamese Meaning</span>
+                            <div class="my-auto space-y-5 text-center">
+                                <div>
+                                    <span class="text-xs uppercase font-black text-slate-400 block mb-1 tracking-wider">Meaning / Nghĩa:</span>
+                                    <h3 id="f-vi" class="text-2xl md:text-3xl font-black text-amber-300"></h3>
+                                </div>
+                            </div>
+                            <p class="text-xs text-center text-slate-500 font-bold">Tap again to flip back / Chạm lần nữa để lật lại</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anki Controls -->
+                <div id="anki-controls" class="w-full max-w-md mx-auto bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-4 gap-2 mt-6">
+                    <button onclick="handleAnkiAction('again')" class="p-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-center transition cursor-pointer"><span class="block text-xs font-black text-rose-600">Again</span><span class="text-[10px] text-rose-400 font-bold block mt-0.5">&lt;1m</span></button>
+                    <button onclick="handleAnkiAction('hard')" class="p-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-center transition cursor-pointer"><span class="block text-xs font-black text-amber-600">Hard</span><span class="text-[10px] text-amber-400 font-bold block mt-0.5">&lt;10m</span></button>
+                    <button onclick="handleAnkiAction('good')" class="p-2 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl text-center transition cursor-pointer"><span class="block text-xs font-black text-indigo-600">Good</span><span class="text-[10px] text-indigo-400 font-bold block mt-0.5">1d</span></button>
+                    <button onclick="handleAnkiAction('easy')" class="p-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-center transition shadow-sm cursor-pointer"><span class="block text-xs font-black text-emerald-600">Easy</span><span class="text-[10px] text-emerald-400 font-bold block mt-0.5">4d</span></button>
+                </div>
+            </div>
+
+            <!-- Flashcard Completion Screen -->
+            <div id="flashcard-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🎈🦄🎈</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Flashcards Completed!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Awesome! You have reviewed all flashcards. Let's build sentences!<br>Tuyệt vời! Bạn đã ôn xong tất cả thẻ từ. Hãy viết câu nhé!</p>
+                <button onclick="unlockAndGoToSentence()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Sentence Building ➔</button>
+            </div>
+        </section>
+
+        <!-- TASK 2: SENTENCE BUILDING -->
+        <section id="tab-sentence" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-indigo-100 text-indigo-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 2: Sentence Building</span>
+                    <h3 class="text-2xl font-heading font-black text-slate-900">Build Correct Sentences ✍️</h3>
+                    <p class="text-sm text-slate-500 font-medium max-w-xl mx-auto">Use the prompt words to write a complete sentence. Change the verb if needed (be → am / is / are, play → plays).<br>Dùng các từ gợi ý để viết thành câu hoàn chỉnh. Hãy chia động từ nếu cần (be → am / is / are, play → plays).</p>
+                </div>
+
+                <div id="sentence-prompts-container" class="space-y-6">
+                    <!-- Dynamic Sentence Prompts -->
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="checkSentenceAnswers()" class="px-10 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm rounded-xl shadow-md transition cursor-pointer">Check Sentences / Kiểm tra</button>
+                </div>
+
+                <div id="sentence-feedback" class="p-4 rounded-2xl text-center font-black hidden"></div>
+            </div>
+
+            <div id="sentence-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🎯📝✨</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Great Sentence Building!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">All sentences are correct! Now, write your own online self-introduction.<br>Tất cả các câu đều đúng! Bây giờ hãy viết bài tự giới thiệu của bạn.</p>
+                <button onclick="unlockAndGoToWriting()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Write My Blog ➔</button>
+            </div>
+        </section>
+
+        <!-- TASK 3: SPEAKING WARM-UP + BLOG WRITING -->
+        <section id="tab-writing" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs uppercase bg-amber-100 text-amber-700 font-black px-4 py-1.5 rounded-full tracking-wide">Task 3: Speaking &amp; Writing</span>
+                    <h3 class="text-2xl font-heading font-black text-slate-900">An online self-introduction 💻</h3>
+                    <p class="text-sm text-slate-500 font-medium max-w-xl mx-auto">First, say your answers aloud. Then write 5 sentences for your blog post.<br>Trước tiên hãy nói to câu trả lời. Sau đó viết 5 câu cho bài blog của bạn.</p>
+                </div>
+
+                <!-- SPEAKING WARM-UP -->
+                <div class="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-2xl space-y-2">
+                    <h4 class="text-xs uppercase font-black text-emerald-800 tracking-wider">🎤 Speaking warm-up: Your favorite musician or band</h4>
+                    <ul class="text-xs md:text-sm text-slate-700 font-medium space-y-1 list-disc list-inside">
+                        <li>Who is your favorite musician or band? <span class="text-slate-500">(Nhạc sĩ hoặc ban nhạc yêu thích của bạn là ai?)</span></li>
+                        <li>Where is he / she / are they from? <span class="text-slate-500">(Họ đến từ đâu?)</span></li>
+                        <li>When do you listen to their music? <span class="text-slate-500">(Bạn nghe nhạc của họ khi nào?)</span></li>
+                    </ul>
+                    <p class="text-xs text-emerald-900 bg-white rounded-xl p-2 border border-emerald-100"><b>Model:</b> My favorite band is Coldplay. They're from Britain. I listen to their music every evening.</p>
+                </div>
+
+                <!-- EXAMPLES FOR STUDENTS -->
+                <div class="bg-amber-50/70 border-2 border-dashed border-amber-300 p-4 rounded-2xl space-y-2">
+                    <h4 class="text-xs uppercase font-black text-amber-800 tracking-wider">💡 Examples / Câu mẫu tham khảo:</h4>
+                    <ul class="text-xs md:text-sm text-slate-700 font-medium space-y-1 list-disc list-inside">
+                        <li><strong>Example 1:</strong> Hi! I'm Lan and I'm from Vietnam.</li>
+                        <li><strong>Example 2:</strong> My favorite singer is from Denmark.</li>
+                    </ul>
+                </div>
+
+                <!-- 5 WRITING INPUT LINES -->
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-7 h-7 bg-indigo-100 text-indigo-700 text-xs font-black rounded-full flex items-center justify-center shrink-0">1</span>
+                        <input type="text" id="write-1" placeholder="Sentence 1: Your name and country (I'm ... I'm from ...)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs md:text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="w-7 h-7 bg-indigo-100 text-indigo-700 text-xs font-black rounded-full flex items-center justify-center shrink-0">2</span>
+                        <input type="text" id="write-2" placeholder="Sentence 2: Your job (I'm a student / I'm a ...)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs md:text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="w-7 h-7 bg-indigo-100 text-indigo-700 text-xs font-black rounded-full flex items-center justify-center shrink-0">3</span>
+                        <input type="text" id="write-3" placeholder="Sentence 3: Your favorite musician or band (My favorite band is ... They're from ...)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs md:text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="w-7 h-7 bg-indigo-100 text-indigo-700 text-xs font-black rounded-full flex items-center justify-center shrink-0">4</span>
+                        <input type="text" id="write-4" placeholder="Sentence 4: Your evening class and day (I have a ... class on ...)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs md:text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="w-7 h-7 bg-indigo-100 text-indigo-700 text-xs font-black rounded-full flex items-center justify-center shrink-0">5</span>
+                        <input type="text" id="write-5" placeholder="Sentence 5: Your age and a family member (I'm eighteen. My father is fifty.)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs md:text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="submitWriting()" class="px-10 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm rounded-xl shadow-md transition cursor-pointer">Submit Writing 🚀 / Nộp bài</button>
+                </div>
+
+                <div id="writing-feedback" class="p-4 rounded-2xl text-center font-black hidden"></div>
+
+                <!-- SUGGESTED MODEL ANSWERS DISPLAYED AFTER SUBMISSION -->
+                <div id="suggested-models" class="hidden bg-indigo-50/80 border-2 border-indigo-200 p-6 rounded-3xl space-y-4">
+                    <h4 class="text-base font-black text-indigo-900">🌟 Suggested Sentences (Gợi ý tham khảo):</h4>
+                    <p class="text-xs text-slate-600">Compare your sentences with these models. / Hãy so sánh bài viết của bạn với các câu mẫu sau:</p>
+                    <ul class="space-y-2 text-xs md:text-sm text-slate-800 font-medium">
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">1. Hi! I'm <strong>Lan</strong> and I'm <strong>from</strong> Vietnam.</li>
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">2. I'm <strong>a</strong> student at a university in Hanoi.</li>
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">3. <strong>My</strong> favorite band is Coldplay. <strong>Their</strong> music is great.</li>
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">4. I have a <strong>guitar class</strong> <strong>on</strong> Monday and a <strong>yoga</strong> class on Friday.</li>
+                        <li class="bg-white p-3 rounded-xl border border-indigo-100">5. I'm <strong>eighteen</strong>. <strong>My</strong> father is <strong>fifty</strong>.</li>
+                    </ul>
+                    <div class="text-center pt-2">
+                        <button onclick="unlockAndGoToFinish()" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Finish Lesson 2 ➔ Hoàn thành bài học</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL: COMPLETION + SUMMARY -->
+        <section id="tab-finish" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 text-white p-8 rounded-3xl max-w-lg mx-auto text-center space-y-5 shadow-xl border-4 border-amber-400">
+                <span class="text-6xl block animate-bounce">🦄🏆🌟</span>
+                <h3 class="text-3xl font-heading font-black text-amber-300">Congratulations!</h3>
+                <p class="text-slate-200 font-medium text-base leading-relaxed">You have completed E1_Lesson 2_Unit 2!<br>Chúc mừng bạn đã hoàn thành E1_Lesson 2_Unit 2!</p>
+
+                <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-left space-y-2 text-sm">
+                    <p class="text-xs text-amber-300 uppercase font-black tracking-wider text-center">📋 Lesson Summary / Tổng kết bài học</p>
+                    <p class="text-slate-200"><b class="text-amber-300">Vocabulary / Từ vựng:</b> 10 countries, numbers 11-100, days of the week, evening classes (guitar class, drum workshop, yoga).<br><span class="text-slate-400">10 quốc gia, số 11-100, các thứ trong tuần, lớp buổi tối.</span></p>
+                    <p class="text-slate-200"><b class="text-amber-300">Grammar / Ngữ pháp:</b> possessive adjectives (my, your, his, her, our, their) and the simple present.<br><span class="text-slate-400">Tính từ sở hữu và thì hiện tại đơn.</span></p>
+                    <p class="text-slate-200"><b class="text-amber-300">Goal / Mục tiêu:</b> You can talk about your favorite musician or band, and write an online self-introduction.<br><span class="text-slate-400">Bạn đã có thể nói về nhạc sĩ hoặc ban nhạc yêu thích và viết bài tự giới thiệu trên mạng.</span></p>
+                    <p class="text-emerald-300 text-center pt-1">Example: "My favorite band is from Denmark. I listen to their music every evening."</p>
+                </div>
+
+                <p class="text-amber-200 font-bold">Great job! See you in the next lesson! 🎉<br>Làm tốt lắm! Hẹn gặp bạn ở bài học tiếp theo!</p>
+
+                <div class="pt-4 border-t border-slate-800">
+                    <button onclick="restartEntireSession()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">🔄 Restart Lesson 2 Practice</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // MASTER VOCABULARY LIST (E1_Lesson 2_Unit 2)
+        const vocabularyData = [
+            // Countries
+            { word: "Algeria", ipa: "/ælˈdʒɪəriə/", vi: "An-giê-ri", ex: "My favorite singer is from Algeria." },
+            { word: "Chile", ipa: "/ˈtʃɪli/", vi: "Chi-lê", ex: "She is from Chile. She's Chilean." },
+            { word: "Denmark", ipa: "/ˈdenmɑːk/", vi: "Đan Mạch", ex: "My favorite band is from Denmark." },
+            { word: "Italy", ipa: "/ˈɪtəli/", vi: "nước Ý", ex: "His favorite musician is from Italy." },
+            { word: "Lebanon", ipa: "/ˈlebənən/", vi: "Li-băng", ex: "Her favorite singer is from Lebanon." },
+            { word: "Morocco", ipa: "/məˈrɒkəʊ/", vi: "Ma-rốc", ex: "Their guitar teacher is from Morocco." },
+            { word: "Russia", ipa: "/ˈrʌʃə/", vi: "nước Nga", ex: "Moscow is a city in Russia." },
+            { word: "Scotland", ipa: "/ˈskɒtlənd/", vi: "Scotland (Xcốt-len)", ex: "Edinburgh is a city in Scotland." },
+            { word: "Venezuela", ipa: "/ˌvenəˈzweɪlə/", vi: "Vê-nê-xuê-la", ex: "He is from Venezuela. He plays the guitar." },
+            { word: "Vietnam", ipa: "/ˌvjetˈnæm/", vi: "Việt Nam", ex: "I'm from Vietnam. I love music." },
+
+            // Numbers 11-100
+            { word: "eleven", ipa: "/ɪˈlevn/", vi: "số 11", ex: "There are eleven students in my class." },
+            { word: "twelve", ipa: "/twelv/", vi: "số 12", ex: "My class has twelve students." },
+            { word: "thirteen", ipa: "/ˌθɜːˈtiːn/", vi: "số 13", ex: "My sister is thirteen." },
+            { word: "fourteen", ipa: "/ˌfɔːˈtiːn/", vi: "số 14", ex: "There are fourteen songs on this album." },
+            { word: "fifteen", ipa: "/ˌfɪfˈtiːn/", vi: "số 15", ex: "I have fifteen songs on my phone." },
+            { word: "sixteen", ipa: "/ˌsɪksˈtiːn/", vi: "số 16", ex: "She is sixteen years old." },
+            { word: "seventeen", ipa: "/ˌsevnˈtiːn/", vi: "số 17", ex: "He is seventeen years old." },
+            { word: "eighteen", ipa: "/ˌeɪˈtiːn/", vi: "số 18", ex: "I'm eighteen. I'm a student." },
+            { word: "nineteen", ipa: "/ˌnaɪnˈtiːn/", vi: "số 19", ex: "My brother is nineteen." },
+            { word: "twenty", ipa: "/ˈtwenti/", vi: "số 20", ex: "There are twenty students in the yoga class." },
+            { word: "thirty", ipa: "/ˈθɜːti/", vi: "số 30", ex: "The band has thirty songs." },
+            { word: "forty", ipa: "/ˈfɔːti/", vi: "số 40", ex: "My teacher is forty years old." },
+            { word: "fifty", ipa: "/ˈfɪfti/", vi: "số 50", ex: "My father is fifty." },
+            { word: "sixty", ipa: "/ˈsɪksti/", vi: "số 60", ex: "My grandmother is sixty." },
+            { word: "seventy", ipa: "/ˈsevnti/", vi: "số 70", ex: "My grandfather is seventy." },
+            { word: "eighty", ipa: "/ˈeɪti/", vi: "số 80", ex: "The singer is eighty years old." },
+            { word: "ninety", ipa: "/ˈnaɪnti/", vi: "số 90", ex: "Her grandmother is ninety." },
+            { word: "one hundred", ipa: "/wʌn ˈhʌndrəd/", vi: "số 100", ex: "There are one hundred fans at the show." },
+
+            // Days of the week
+            { word: "Monday", ipa: "/ˈmʌndeɪ/", vi: "thứ Hai", ex: "I have a guitar class on Monday." },
+            { word: "Tuesday", ipa: "/ˈtjuːzdeɪ/", vi: "thứ Ba", ex: "My drum workshop is on Tuesday." },
+            { word: "Wednesday", ipa: "/ˈwenzdeɪ/", vi: "thứ Tư", ex: "We have English class on Wednesday." },
+            { word: "Thursday", ipa: "/ˈθɜːzdeɪ/", vi: "thứ Năm", ex: "She has a yoga class on Thursday." },
+            { word: "Friday", ipa: "/ˈfraɪdeɪ/", vi: "thứ Sáu", ex: "I listen to music on Friday evening." },
+            { word: "Saturday", ipa: "/ˈsætədeɪ/", vi: "thứ Bảy", ex: "The band plays on Saturday." },
+            { word: "Sunday", ipa: "/ˈsʌndeɪ/", vi: "Chủ nhật", ex: "I relax on Sunday." },
+
+            // Adult evening classes
+            { word: "guitar class", ipa: "/ɡɪˈtɑː klɑːs/", vi: "lớp học ghi-ta", ex: "My guitar class is on Monday evening." },
+            { word: "drum workshop", ipa: "/drʌm ˈwɜːkʃɒp/", vi: "buổi học trống", ex: "He has a drum workshop on Tuesday." },
+            { word: "yoga", ipa: "/ˈjəʊɡə/", vi: "yoga", ex: "She does yoga on Friday evening." }
+        ];
+
+        // TASK 2: SENTENCE BUILDING PROMPTS (starter level, with accepted variants)
+        const sentencePrompts = [
+            {
+                id: 1,
+                prompt: "I / be / from / Vietnam",
+                targets: ["i am from vietnam", "i'm from vietnam"],
+                hint: "Chủ ngữ I đi với am (I'm)."
+            },
+            {
+                id: 2,
+                prompt: "My favorite band / be / from Denmark",
+                targets: ["my favorite band is from denmark"],
+                hint: "Chủ ngữ số ít (band) đi với is."
+            },
+            {
+                id: 3,
+                prompt: "Her favorite singer / be / from Lebanon",
+                targets: ["her favorite singer is from lebanon"],
+                hint: "Her = của cô ấy. Chủ ngữ số ít đi với is."
+            },
+            {
+                id: 4,
+                prompt: "Their favorite musician / be / from Italy",
+                targets: ["their favorite musician is from italy"],
+                hint: "Their = của họ, nhưng chủ ngữ là musician (số ít) nên dùng is."
+            },
+            {
+                id: 5,
+                prompt: "He / play / the guitar / on Monday",
+                targets: ["he plays the guitar on monday", "on monday he plays the guitar"],
+                hint: "He đi với động từ thêm -s (plays). Dùng on + thứ."
+            },
+            {
+                id: 6,
+                prompt: "We / have / a drum workshop / on Tuesday",
+                targets: ["we have a drum workshop on tuesday", "on tuesday we have a drum workshop"],
+                hint: "We đi với have (không thêm -s). Dùng a trước drum workshop."
+            },
+            {
+                id: 7,
+                prompt: "She / listen / to music / every evening",
+                targets: ["she listens to music every evening", "every evening she listens to music"],
+                hint: "She đi với động từ thêm -s (listens). Nhớ có to sau listens."
+            },
+            {
+                id: 8,
+                prompt: "There / be / twenty students / in our class",
+                targets: ["there are twenty students in our class"],
+                hint: "Twenty students là số nhiều nên dùng are. Our = của chúng tôi."
+            },
+            {
+                id: 9,
+                prompt: "My teacher / be / forty / years old",
+                targets: ["my teacher is forty years old", "my teacher is forty"],
+                hint: "Nói tuổi: be + số + years old. Chủ ngữ số ít đi với is."
+            },
+            {
+                id: 10,
+                prompt: "I / have / yoga class / on Friday",
+                targets: ["i have a yoga class on friday", "i have yoga class on friday", "on friday i have a yoga class"],
+                hint: "I đi với have. Có thể dùng a trước yoga class."
+            }
+        ];
+
+        // UNLOCK STATES
+        let sentenceUnlocked = false;
+        let writingUnlocked = false;
+        let finishUnlocked = false;
+
+        let flashcardStates = vocabularyData.map(v => ({ word: v.word, done: false }));
+        let currentFlashcardIndex = 0;
+
+        window.onload = function() {
+            renderReferenceTable();
+            renderSentencePrompts();
+            updateFlashcardUI();
+        };
+
+        function renderReferenceTable() {
+            const tbody = document.getElementById('reference-table-body');
+            tbody.innerHTML = vocabularyData.map(v => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3.5 font-black text-indigo-950">${v.word}</td>
+                    <td class="p-3.5 font-bold text-slate-700">${v.vi}</td>
+                    <td class="p-3.5 text-indigo-600 font-bold">${v.ipa}</td>
+                    <td class="p-3.5 text-slate-600">${v.ex}</td>
+                </tr>
+            `).join('');
+        }
+
+        function switchTab(tabId) {
+            if (tabId === 'sentence' && !sentenceUnlocked) return;
+            if (tabId === 'writing' && !writingUnlocked) return;
+            if (tabId === 'finish' && !finishUnlocked) return;
+
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-white', 'text-amber-600', 'shadow-sm');
+                el.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            activeBtn.classList.add('bg-white', 'text-amber-600', 'shadow-sm');
+            activeBtn.classList.remove('text-slate-500');
+        }
+
+        /* --- FLASHCARD SYSTEM --- */
+        function updateFlashcardUI() {
+            const undoneCards = flashcardStates.filter(c => !c.done);
+            const total = flashcardStates.length;
+            const completed = total - undoneCards.length;
+            
+            document.getElementById('progress-text').innerText = `${completed}/${total}`;
+            document.getElementById('progress-bar').style.width = `${(completed / total) * 100}%`;
+
+            if (undoneCards.length === 0) {
+                document.getElementById('flashcard-container').classList.add('hidden');
+                document.getElementById('flashcard-success-box').classList.remove('hidden');
+                sentenceUnlocked = true;
+                document.getElementById('btn-sentence').classList.remove('disabled-tab');
+                return;
+            }
+
+            document.getElementById('flashcard-container').classList.remove('hidden');
+            document.getElementById('flashcard-success-box').classList.add('hidden');
+
+            const item = vocabularyData.find(v => v.word === undoneCards[currentFlashcardIndex % undoneCards.length].word);
+
+            document.getElementById('f-word').innerText = item.word;
+            document.getElementById('f-ipa').innerText = item.ipa;
+            document.getElementById('f-example').innerText = item.ex;
+            document.getElementById('f-vi').innerText = item.vi;
+
+            document.getElementById('flashcard-inner').classList.remove('card-flipped');
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard-inner').classList.toggle('card-flipped');
+        }
+
+        function handleAnkiAction(type) {
+            const undoneCards = flashcardStates.filter(c => !c.done);
+            if (undoneCards.length === 0) return;
+
+            const currentWord = undoneCards[currentFlashcardIndex % undoneCards.length].word;
+
+            if (type === 'good' || type === 'easy') {
+                const target = flashcardStates.find(c => c.word === currentWord);
+                if (target) target.done = true;
+            } else {
+                currentFlashcardIndex++;
+            }
+
+            updateFlashcardUI();
+        }
+
+        function resetProgress() {
+            flashcardStates.forEach(c => c.done = false);
+            currentFlashcardIndex = 0;
+            updateFlashcardUI();
+        }
+
+        function speakWord(e) {
+            if (e) e.stopPropagation();
+            const text = document.getElementById('f-word').innerText;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function unlockAndGoToSentence() {
+            sentenceUnlocked = true;
+            document.getElementById('btn-sentence').classList.remove('disabled-tab');
+            switchTab('sentence');
+        }
+
+        /* --- TASK 2: SENTENCE BUILDING WITH DYNAMIC FEEDBACK --- */
+        function renderSentencePrompts() {
+            const container = document.getElementById('sentence-prompts-container');
+            container.innerHTML = sentencePrompts.map((p, idx) => `
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3" id="sentence-card-${p.id}">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <span class="text-xs font-black bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">Sentence ${idx + 1}</span>
+                        <span class="text-xs font-bold text-amber-700 italic">💡 ${p.hint}</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 text-sm font-black text-indigo-950 tracking-wide">
+                        Prompt: <span class="text-amber-600">${p.prompt}</span>
+                    </div>
+                    <input type="text" id="sentence-input-${p.id}" placeholder="Type full sentence here... / Gõ câu hoàn chỉnh..." class="w-full p-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-indigo-500 font-medium transition">
+                    <div id="sentence-err-${p.id}" class="text-xs font-bold text-rose-600 hidden mt-1"></div>
+                </div>
+            `).join('');
+        }
+
+        // Standardize text for checking (strip punctuation, normalize apostrophes)
+        function cleanText(str) {
+            return str
+                .toLowerCase()
+                .replace(/[’'`]/g, "'")
+                .replace(/[^a-z0-9' ]/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        // Levenshtein distance for spelling error detection
+        function getLevenshteinDistance(a, b) {
+            const matrix = [];
+            for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+            for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+            for (let i = 1; i <= b.length; i++) {
+                for (let j = 1; j <= a.length; j++) {
+                    if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1,
+                            matrix[i][j - 1] + 1,
+                            matrix[i - 1][j] + 1
+                        );
+                    }
+                }
+            }
+            return matrix[b.length][a.length];
+        }
+
+        // Dynamic error analysis (messages in Vietnamese for starter students)
+        function analyzeUserError(userRaw, targetList, generalHint) {
+            if (!userRaw || userRaw.trim() === '') {
+                return "⚠️ Bạn chưa nhập câu trả lời! (You have not typed an answer.)";
+            }
+
+            const cleanedUser = cleanText(userRaw);
+            const userWords = cleanedUser.split(' ');
+            const primaryTarget = cleanText(targetList[0]);
+            const targetWords = primaryTarget.split(' ');
+
+            // 1a. Verb ending -s (he / she + verb-s)
+            for (let uWord of userWords) {
+                if (targetWords.includes(uWord)) continue;
+                if (targetWords.includes(uWord + 's')) {
+                    return `⚠️ Lỗi ngữ pháp: Với he / she / it, hãy thêm -s vào động từ ("${uWord}" → "${uWord}s").`;
+                }
+                if (targetWords.includes(uWord.replace(/s$/, '')) && uWord.endsWith('s') && uWord.length > 3) {
+                    return `⚠️ Lỗi ngữ pháp: Với I / you / we / they, không thêm -s vào động từ ("${uWord}").`;
+                }
+            }
+
+            // 1b. Spelling mistakes (compare with target words the student has not typed correctly)
+            const missingTargets = targetWords.filter(t => !userWords.includes(t));
+            for (let uWord of userWords) {
+                if (uWord.length <= 3 || uWord === "i'm" || targetWords.includes(uWord)) continue;
+                for (let tWord of missingTargets) {
+                    if (tWord.length > 3 && Math.abs(uWord.length - tWord.length) <= 2) {
+                        const dist = getLevenshteinDistance(uWord, tWord);
+                        if (dist > 0 && dist <= 2) {
+                            return `⚠️ Lỗi chính tả: Bạn có thể đã gõ sai từ "${uWord}". Hãy kiểm tra lại từ này!`;
+                        }
+                    }
+                }
+            }
+
+            // 2. Missing key words
+            const keyGrammarWords = ["is", "are", "am", "a", "the", "in", "on", "to", "my", "your", "his", "her", "our", "their", "have", "plays", "listens", "years", "old", "there", "from"];
+            for (let tWord of targetWords) {
+                if (keyGrammarWords.includes(tWord) && !userWords.includes(tWord)) {
+                    if (tWord === "am" && userWords.some(w => w.includes("'m"))) continue;
+                    // yoga class sentence: article is optional
+                    if (tWord === "a" && targetList.some(t => !cleanText(t).split(' ').includes('a'))) continue;
+                    return `⚠️ Thiếu từ/cấu trúc quan trọng: Hãy kiểm tra xem bạn đã có từ "${tWord}" chưa?`;
+                }
+            }
+
+            // 3. Fallback
+            return `⚠️ Cấu trúc câu chưa chính xác. Gợi ý: ${generalHint}`;
+        }
+
+        function checkSentenceAnswers() {
+            let correctCount = 0;
+
+            sentencePrompts.forEach(p => {
+                const inputEl = document.getElementById(`sentence-input-${p.id}`);
+                const errEl = document.getElementById(`sentence-err-${p.id}`);
+                const cardEl = document.getElementById(`sentence-card-${p.id}`);
+                
+                const userRaw = inputEl.value;
+                const cleanedUser = cleanText(userRaw);
+                const isCorrect = p.targets.some(target => cleanText(target) === cleanedUser);
+
+                if (isCorrect) {
+                    correctCount++;
+                    inputEl.classList.remove('border-rose-500', 'bg-rose-50');
+                    inputEl.classList.add('border-emerald-500', 'bg-emerald-50');
+                    cardEl.classList.remove('border-rose-300', 'bg-rose-50/30');
+                    errEl.classList.add('hidden');
+                } else {
+                    inputEl.classList.remove('border-emerald-500', 'bg-emerald-50');
+                    inputEl.classList.add('border-rose-500', 'bg-rose-50');
+                    cardEl.classList.add('border-rose-300', 'bg-rose-50/30');
+                    errEl.innerText = analyzeUserError(userRaw, p.targets, p.hint);
+                    errEl.classList.remove('hidden');
+                }
+            });
+
+            const feedbackEl = document.getElementById('sentence-feedback');
+            feedbackEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-amber-100', 'text-amber-800');
+
+            if (correctCount === sentencePrompts.length) {
+                feedbackEl.classList.add('bg-emerald-100', 'text-emerald-800');
+                feedbackEl.innerText = `🎉 Perfect! You built all ${correctCount}/${sentencePrompts.length} sentences correctly! / Xuất sắc!`;
+
+                setTimeout(() => {
+                    document.getElementById('sentence-success-box').classList.remove('hidden');
+                    writingUnlocked = true;
+                    document.getElementById('btn-writing').classList.remove('disabled-tab');
+                }, 800);
+            } else {
+                feedbackEl.classList.add('bg-amber-100', 'text-amber-800');
+                feedbackEl.innerText = `You built ${correctCount}/${sentencePrompts.length} sentences correctly. Fix the red sentences and follow the hints! / Hãy sửa các câu màu đỏ theo gợi ý!`;
+            }
+        }
+
+        function unlockAndGoToWriting() {
+            writingUnlocked = true;
+            document.getElementById('btn-writing').classList.remove('disabled-tab');
+            switchTab('writing');
+        }
+
+        /* --- TASK 3: BLOG WRITING & MODEL ANSWERS --- */
+        function submitWriting() {
+            let filledCount = 0;
+            for (let i = 1; i <= 5; i++) {
+                const val = document.getElementById(`write-${i}`).value.trim();
+                if (val.length > 3) filledCount++;
+            }
+
+            const feedbackEl = document.getElementById('writing-feedback');
+            feedbackEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+
+            if (filledCount < 5) {
+                feedbackEl.classList.add('bg-rose-100', 'text-rose-800');
+                feedbackEl.innerText = `Please write all 5 sentences before submitting! (${filledCount}/5) / Hãy viết đủ 5 câu trước khi nộp!`;
+                return;
+            }
+
+            feedbackEl.classList.add('bg-emerald-100', 'text-emerald-800');
+            feedbackEl.innerText = `🚀 Writing submitted! Compare your blog with the model sentences below. / Đã nộp bài! Hãy so sánh với các câu mẫu bên dưới.`;
+            document.getElementById('suggested-models').classList.remove('hidden');
+        }
+
+        function unlockAndGoToFinish() {
+            finishUnlocked = true;
+            document.getElementById('btn-finish').classList.remove('disabled-tab');
+            switchTab('finish');
+        }
+
+        function restartEntireSession() {
+            resetProgress();
+            renderSentencePrompts();
+            document.getElementById('sentence-feedback').classList.add('hidden');
+            document.getElementById('sentence-success-box').classList.add('hidden');
+            for (let i = 1; i <= 5; i++) document.getElementById(`write-${i}`).value = '';
+            document.getElementById('writing-feedback').classList.add('hidden');
+            document.getElementById('suggested-models').classList.add('hidden');
+            switchTab('reference');
+        }
+    </script>
+</body>
+</html>
