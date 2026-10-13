@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English 1_Lesson 13_Unit 11</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        *, body, html, button, span, h1, h2, h3, p, div, input, select, textarea { 
+            font-family: 'Quicksand', sans-serif; 
+            font-weight: 600;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .perspective { perspective: 1000px; }
+        .backface-hidden { backface-visibility: hidden; }
+        .card-inner { transition: transform 0.5s; transform-style: preserve-3d; }
+        .card-flipped { transform: rotateY(180deg); }
+        .disabled-tab { opacity: 0.4; cursor: not-allowed !important; pointer-events: none; }
+        
+        .board-cell {
+            transition: all 0.3s ease;
+        }
+        .board-cell.active-cell {
+            box-shadow: 0 0 15px #10b981;
+            border-color: #059669 !important;
+        }
+    </style>
+</head>
+<body class="bg-[#f7f9fc] text-slate-800 min-h-screen flex flex-col selection:bg-emerald-200 pb-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-[#D1FAE5] via-[#ECFDF5] to-[#E0F2FE] border-b-4 border-dashed border-emerald-200 shadow-sm p-6 text-center rounded-b-3xl">
+        <h1 class="text-3xl md:text-4xl font-black tracking-wide drop-shadow-sm text-emerald-950">🎬 English 1_Lesson 13_Unit 11 ⚽</h1>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-4xl w-full mx-auto px-4 mt-6">
+        <div class="flex bg-emerald-100/70 p-1.5 rounded-2xl border border-emerald-200 shadow-inner overflow-x-auto">
+            <button onclick="switchTab('reference')" id="btn-reference" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center bg-white text-emerald-600 shadow-sm transition cursor-pointer whitespace-nowrap">📚 Word Bank</button>
+            <button onclick="switchTab('flashcard')" id="btn-flashcard" class="tab-btn flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition cursor-pointer whitespace-nowrap">🎴 Flashcards</button>
+            <button onclick="switchTab('hangman-game')" id="btn-hangman-game" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🔤 Hangman Vocab</button>
+            <button onclick="switchTab('board-game')" id="btn-board-game" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🎲 Board Game Grammar</button>
+            <button onclick="switchTab('completion')" id="btn-completion" class="tab-btn disabled-tab flex-1 py-3 px-2 text-xs md:text-sm font-black rounded-xl text-center text-slate-500 transition whitespace-nowrap">🎉 Completion</button>
+        </div>
+    </div>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6">
+        
+        <!-- TAB 1: WORD BANK -->
+        <section id="tab-reference" class="tab-content block space-y-6">
+
+            <div>
+                <h2 class="text-2xl md:text-3xl font-black text-emerald-900 font-heading">📖 E1_Lesson 13_Unit 11_Summary, Vocabulary &amp; Grammar</h2>
+                <p class="text-xs md:text-sm text-slate-500 font-medium mt-1">Read the summary, grammar and word list before starting the practice activities.<br>Đọc phần tóm tắt, ngữ pháp và danh sách từ vựng trước khi làm bài luyện tập.</p>
+            </div>
+
+            <!-- LESSON SUMMARY -->
+            <div class="bg-emerald-50/70 border-4 border-emerald-200 p-6 rounded-3xl space-y-3 text-sm text-slate-700">
+                <h3 class="text-xl font-black text-emerald-900 font-heading">📋 Lesson Summary / Tóm tắt kiến thức</h3>
+                <p>🛋️ <b>Recreational activities / Hoạt động giải trí:</b> get takeout food, go to a concert, go to a soccer game, go to a restaurant, listen to music, watch soccer on TV, spend time with family, go to the park, watch TV, watch a video online, spend time with friends, go to a museum.</p>
+                <p>🎵 <b>Music / Âm nhạc:</b> classical, jazz, pop, rock, pop star, concert, band.</p>
+                <p>⚽ <b>Sports / Thể thao:</b> tennis, soccer, baseball, basketball, stadium, player, game.</p>
+                <p>🎬 <b>Movies / Phim ảnh:</b> horror, action, sci-fi, comedy, movie theater, movie star, premiere, actor.</p>
+                <p>✍️ <b>Grammar / Ngữ pháp:</b> like / love / hate / enjoy + V-ing; object pronouns (me, you, him, her, it, us, them); linking result with <i>so</i>.</p>
+                <p>🎯 <b>Goal / Mục tiêu:</b> talk and write about your free time activities and your favorite sports, music and movies (using <i>so</i>).<br>
+                <span class="text-slate-500">Nói và viết về những hoạt động lúc rảnh rỗi, môn thể thao, thể loại nhạc và phim yêu thích của bạn (dùng <i>so</i>).</span></p>
+            </div>
+
+            <!-- GRAMMAR CARDS -->
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-amber-50 border-4 border-amber-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-amber-800 font-heading">📌 Grammar 1: like / love / hate / enjoy + V-ing</h3>
+                    <p class="text-xs text-slate-500">Sau like, love, hate, enjoy dùng động từ thêm -ing.</p>
+                    <div class="bg-white rounded-2xl border border-amber-100 p-4 space-y-1">
+                        <p>I like / love / enjoy + V-ing</p>
+                        <p>I hate + V-ing</p>
+                        <p>(–) I don't like watching horror movies.</p>
+                        <p>(?) Do you enjoy going to the park?</p>
+                        <p>✏️ listen → listening, go → going, get → getting (gấp đôi t)</p>
+                    </div>
+                    <p>I love listening to music.<br><span class="text-slate-500">(Tôi rất thích nghe nhạc.)</span></p>
+                    <p>She hates getting takeout food.<br><span class="text-slate-500">(Cô ấy ghét mua đồ ăn mang đi.)</span></p>
+                </div>
+
+                <div class="bg-sky-50 border-4 border-sky-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-sky-900 font-heading">📌 Grammar 2: Object pronouns</h3>
+                    <p class="text-xs text-slate-500">Đại từ tân ngữ đứng sau động từ hoặc giới từ.</p>
+                    <div class="bg-white rounded-2xl border border-sky-100 p-4 space-y-1">
+                        <p>I → <b>me</b> &nbsp; you → <b>you</b></p>
+                        <p>he → <b>him</b> &nbsp; she → <b>her</b> &nbsp; it → <b>it</b></p>
+                        <p>we → <b>us</b> &nbsp; they → <b>them</b></p>
+                    </div>
+                    <p>Tom is an actor. I love <b>him</b>.<br><span class="text-slate-500">(Tom là diễn viên. Tôi rất thích anh ấy.)</span></p>
+                    <p>My friends like soccer. I play with <b>them</b>.<br><span class="text-slate-500">(Bạn tôi thích bóng đá. Tôi chơi cùng họ.)</span></p>
+                </div>
+
+                <div class="bg-emerald-50 border-4 border-emerald-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700 md:col-span-2">
+                    <h3 class="text-lg font-black text-emerald-900 font-heading">📌 Grammar 3: so (vì vậy, nên)</h3>
+                    <div class="grid md:grid-cols-2 gap-3">
+                        <div class="bg-white rounded-2xl border border-emerald-100 p-4 space-y-1">
+                            <p>reason (lý do), <b>so</b> result (kết quả)</p>
+                            <p>I love music, <b>so</b> I go to a concert every month.</p>
+                            <p>She hates horror movies, <b>so</b> she watches comedies.</p>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-emerald-100 p-4 space-y-1">
+                            <p>(Tôi thích âm nhạc, nên tôi đi xem hòa nhạc mỗi tháng.)</p>
+                            <p>(Cô ấy ghét phim kinh dị, nên cô ấy xem phim hài.)</p>
+                            <p>⚠️ Có dấu phẩy (,) trước <b>so</b>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VOCABULARY GROUPS -->
+            <div class="bg-white border-4 border-emerald-200 p-6 rounded-3xl space-y-3">
+                <h3 class="text-xl font-black text-emerald-900 font-heading">🗂️ Vocabulary groups / Nhóm từ vựng</h3>
+                <div class="grid md:grid-cols-2 gap-3 text-sm text-slate-700">
+                    <div class="bg-emerald-50/60 rounded-2xl border border-emerald-100 p-4 md:col-span-2">🛋️ <b>Recreational activities / Hoạt động giải trí:</b> get takeout food, go to a concert, go to a soccer game, go to a restaurant, listen to music, watch soccer on TV, spend time with family, go to the park, watch TV, watch a video online, spend time with friends, go to a museum</div>
+                    <div class="bg-emerald-50/60 rounded-2xl border border-emerald-100 p-4">🎵 <b>Music / Âm nhạc:</b> classical, jazz, pop, rock, pop star, concert, band</div>
+                    <div class="bg-emerald-50/60 rounded-2xl border border-emerald-100 p-4">⚽ <b>Sports / Thể thao:</b> tennis, soccer, baseball, basketball, stadium, player, game</div>
+                    <div class="bg-emerald-50/60 rounded-2xl border border-emerald-100 p-4 md:col-span-2">🎬 <b>Movies / Phim ảnh:</b> horror, action, sci-fi, comedy, movie theater, movie star, premiere, actor</div>
+                </div>
+            </div>
+
+            <!-- SPEAKING & WRITING -->
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-rose-50 border-4 border-rose-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-rose-900 font-heading">🎤 Speaking: Free time activities / Things you like doing</h3>
+                    <div class="bg-white rounded-2xl border border-rose-100 p-4 space-y-1">
+                        <p>A: What do you like doing in your free time?</p>
+                        <p>B: I love listening to music and I enjoy watching movies.</p>
+                        <p>A: Do you like sports?</p>
+                        <p>B: Yes, I like soccer. I love watching it on TV. I hate playing tennis, so I don't play it.</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Ask and answer with a partner.<br>Hỏi và trả lời với bạn bên cạnh.</p>
+                </div>
+
+                <div class="bg-purple-50 border-4 border-purple-200 p-5 rounded-3xl space-y-3 text-sm text-slate-700">
+                    <h3 class="text-lg font-black text-purple-900 font-heading">📝 Writing: Favorite sports, music and movies (using so)</h3>
+                    <div class="bg-white rounded-2xl border border-purple-100 p-4">
+                        <p>My name is Nam. In my free time, I love listening to pop music, so I go to a concert every month. My favorite sport is soccer. I enjoy watching the players on TV. I like action movies, but I hate horror movies, so I never watch them.</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Use like / love / hate / enjoy + V-ing, object pronouns and so.<br>Dùng like / love / hate / enjoy + V-ing, đại từ tân ngữ và so.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <h2 class="text-2xl font-black text-emerald-900 font-heading">📖 Vocabulary List / Danh sách từ vựng</h2>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table class="w-full text-left border-collapse bg-white">
+                        <thead>
+                            <tr class="bg-emerald-50 border-b border-slate-200 text-emerald-900 text-xs uppercase tracking-wider font-black">
+                                <th class="p-3.5">Vocabulary</th>
+                                <th class="p-3.5">Meaning</th>
+                                <th class="p-3.5">IPA</th>
+                                <th class="p-3.5">Example Sentence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reference-table-body" class="divide-y divide-slate-100 text-xs md:text-sm">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="switchTab('flashcard')" class="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl text-sm shadow-sm transition cursor-pointer">Start Flashcards Practice ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: FLASHCARDS -->
+        <section id="tab-flashcard" class="tab-content hidden space-y-6">
+            <p class="text-center text-xs md:text-sm text-slate-500 font-medium">Tap the card to see the answer, then choose how well you remember. / Chạm vào thẻ để xem đáp án, sau đó chọn mức độ nhớ của bạn.</p>
+            <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-emerald-300 shadow-sm flex justify-between items-center flex-wrap gap-2">
+                <div class="text-sm font-black text-slate-600">Remaining Queue: <span id="queue-text" class="text-emerald-600 font-extrabold">0 cards</span></div>
+                <div class="w-full sm:w-1/3 bg-slate-100 h-4 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <button onclick="resetProgress()" class="text-xs text-rose-500 hover:underline font-black cursor-pointer">🔄 Reset Session</button>
+            </div>
+            
+            <div id="flashcard-container" class="space-y-6">
+                <div id="card-arena" class="perspective w-full max-w-md mx-auto h-[420px] cursor-pointer">
+                    <div id="flashcard-inner" onclick="flipCard()" class="card-inner w-full h-full relative border-4 border-emerald-400 rounded-3xl shadow-md bg-white">
+                        
+                        <!-- FRONT SIDE -->
+                        <div class="backface-hidden absolute inset-0 p-6 flex flex-col justify-between items-center text-center bg-emerald-50/40 rounded-[20px]">
+                            <span id="f-badge" class="text-xs font-black text-emerald-700 uppercase tracking-widest bg-emerald-100 px-4 py-1.5 rounded-full">Prompt</span>
+                            
+                            <div class="space-y-3 my-auto w-full">
+                                <h3 id="f-prompt" class="text-2xl md:text-3xl font-black text-emerald-950"></h3>
+                                
+                                <div id="f-extra-content" class="hidden space-y-2 pt-2 border-t border-emerald-200/60">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <span id="f-ipa" class="text-emerald-600 font-bold text-sm font-mono"></span>
+                                        <button id="f-audio-btn" onclick="speakText(currentCard.word, event)" class="w-7 h-7 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full transition flex items-center justify-center text-xs cursor-pointer shadow-sm">🔊</button>
+                                    </div>
+                                    <p id="f-example" class="text-slate-600 text-xs px-2 font-medium leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-emerald-600 font-black">👉 Tap card to reveal answer 👈</p>
+                        </div>
+
+                        <!-- BACK SIDE -->
+                        <div class="backface-hidden w-full h-full absolute inset-0 p-6 flex flex-col justify-between bg-slate-900 text-white rounded-[22px]" style="transform: rotateY(180deg);">
+                            <span id="b-badge" class="text-xs font-black text-emerald-400 uppercase tracking-widest bg-slate-800 px-4 py-1.5 rounded-full w-max mx-auto">Answer</span>
+                            
+                            <div class="my-auto space-y-3 text-center">
+                                <h2 id="b-answer" class="text-3xl md:text-4xl font-black text-amber-300"></h2>
+                                
+                                <div id="b-extra-content" class="space-y-2 border-t border-slate-800 pt-3">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <span id="b-ipa" class="text-emerald-300 font-bold text-sm font-mono"></span>
+                                        <button id="b-audio-btn" onclick="speakText(currentCard.word, event)" class="w-7 h-7 bg-emerald-900 hover:bg-emerald-800 text-emerald-200 rounded-full transition flex items-center justify-center text-xs cursor-pointer shadow-sm">🔊</button>
+                                    </div>
+                                    <p id="b-example" class="text-slate-300 text-xs px-2 font-medium leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-center text-slate-500 font-bold">Rate how well you recalled this 👇</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="w-full max-w-md mx-auto bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-4 gap-2">
+                    <button onclick="handleAnkiAction('again')" class="p-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-rose-600">Again</span>
+                        <span class="text-[10px] text-rose-400 font-bold block mt-0.5">&lt; 1m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('hard')" class="p-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-amber-600">Hard</span>
+                        <span class="text-[10px] text-amber-400 font-bold block mt-0.5">10m</span>
+                    </button>
+                    <button onclick="handleAnkiAction('good')" class="p-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-center transition cursor-pointer">
+                        <span class="block text-xs font-black text-emerald-600">Good</span>
+                        <span class="text-[10px] text-emerald-400 font-bold block mt-0.5">1d</span>
+                    </button>
+                    <button onclick="handleAnkiAction('easy')" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-xl text-center transition shadow-sm cursor-pointer">
+                        <span class="block text-xs font-black text-teal-600">Easy</span>
+                        <span class="text-[10px] text-teal-400 font-bold block mt-0.5">4d</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="flashcard-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🎵🎬⚽</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Vocabulary Mastered!</h4>
+                <p class="text-sm text-slate-700 font-medium leading-relaxed">Awesome work! You completed all flashcards. Ready for the Hangman Challenge?<br><span class="text-xs text-slate-500">(Tuyệt vời! Bạn đã học xong tất cả thẻ từ. Sẵn sàng chơi Hangman chưa?)</span></p>
+                <button onclick="unlockAndGoToHangman()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Hangman Game ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 3: HANGMAN GAME -->
+        <section id="tab-hangman-game" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-1">
+                    <span class="text-xs uppercase bg-amber-100 text-amber-800 font-black px-4 py-1.5 rounded-full tracking-wide">Task 1: Vocabulary Hangman</span>
+                    <h3 class="text-xl font-heading font-black text-slate-800 pt-2">Guess the Entertainment Word!</h3>
+                    <p class="text-xs text-slate-500 font-medium">Click the letters to guess the English word. You can make 6 mistakes. / Bấm vào các chữ cái để đoán từ tiếng Anh. Bạn được sai tối đa 6 lần.</p>
+                    <p class="text-xs text-slate-500 font-medium">Word <span id="hangman-current-index" class="text-emerald-600 font-extrabold">1</span> of <span id="hangman-total-items">15</span></p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center max-w-2xl mx-auto bg-amber-50/50 p-4 rounded-2xl border border-amber-200">
+                    <div class="flex justify-center items-center">
+                        <svg id="hangman-svg" class="w-44 h-44 bg-white rounded-xl border border-amber-200 shadow-inner" viewBox="0 0 200 200">
+                            <line x1="20" y1="180" x2="180" y2="180" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="50" y1="180" x2="50" y2="20" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="47" y1="20" x2="130" y2="20" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="130" y1="20" x2="130" y2="45" stroke="#78350f" stroke-width="4"/>
+                            
+                            <circle id="hang-head" cx="130" cy="60" r="15" stroke="#e11d48" stroke-width="4" fill="none" class="hidden"/>
+                            <line id="hang-body" x1="130" y1="75" x2="130" y2="120" stroke="#e11d48" stroke-width="4" stroke-linecap="round" class="hidden"/>
+                            <line id="hang-arm-l" x1="130" y1="85" x2="105" y2="105" stroke="#e11d48" stroke-width="4" stroke-linecap="round" class="hidden"/>
+                            <line id="hang-arm-r" x1="130" y1="85" x2="155" y2="105" stroke="#e11d48" stroke-width="4" stroke-linecap="round" class="hidden"/>
+                            <line id="hang-leg-l" x1="130" y1="120" x2="110" y2="155" stroke="#e11d48" stroke-width="4" stroke-linecap="round" class="hidden"/>
+                            <line id="hang-leg-r" x1="130" y1="120" x2="150" y2="155" stroke="#e11d48" stroke-width="4" stroke-linecap="round" class="hidden"/>
+                        </svg>
+                    </div>
+
+                    <div class="space-y-3 text-center md:text-left flex flex-col items-center md:items-start">
+                        <div class="w-full h-32 rounded-xl border-2 border-amber-300 shadow-sm bg-white flex items-center justify-center">
+                            <span id="hangman-icon" class="text-7xl">🎵</span>
+                        </div>
+                        <div>
+                            <span class="text-xs font-black text-amber-800 uppercase tracking-wide block">Gợi ý (Nghĩa tiếng Việt):</span>
+                            <p id="hangman-clue-vi" class="text-base font-extrabold text-emerald-950 mt-0.5"></p>
+                        </div>
+                        <div class="text-xs text-rose-600 font-black">
+                            Mistakes Allowed: <span id="hangman-wrong-count" class="text-base font-extrabold">0</span> / 6
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hangman-word-slots" class="flex justify-center items-center flex-wrap gap-2 py-4">
+                </div>
+
+                <div id="hangman-keyboard" class="grid grid-cols-7 sm:grid-cols-9 gap-1.5 max-w-xl mx-auto">
+                </div>
+
+                <div id="hangman-feedback" class="p-3.5 rounded-2xl text-center font-black hidden max-w-xl mx-auto text-sm"></div>
+            </div>
+
+            <div id="hangman-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🏆🎸🏀</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Hangman Master!</h4>
+                <p class="text-sm text-slate-700 font-medium">You found all 15 entertainment words! Next, let's play the Grammar Board Game.<br><span class="text-xs text-slate-500">(Bạn đã đoán đúng cả 15 từ! Tiếp theo là trò chơi ngữ pháp.)</span></p>
+                <button onclick="unlockAndGoToBoardGame()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">Start Board Game ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 4: BOARD GAME -->
+        <section id="tab-board-game" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="text-center space-y-1">
+                    <span class="text-xs uppercase bg-teal-100 text-teal-800 font-black px-4 py-1.5 rounded-full tracking-wide">Task 2: Grammar Board Game</span>
+                    <h3 class="text-xl font-heading font-black text-emerald-950 pt-2">🎬 Free Time Quest</h3>
+                    <p class="text-xs text-slate-500 font-medium">Roll the dice to move! Answer correctly to stay, or go back to START if you make a mistake!<br>(Tung xúc xắc để di chuyển! Trả lời đúng để ở lại ô, trả lời sai sẽ quay về ô XUẤT PHÁT!)</p>
+                </div>
+
+                <div class="flex justify-between items-center bg-emerald-50 p-4 rounded-2xl border border-emerald-200 max-w-xl mx-auto">
+                    <div class="flex items-center gap-3">
+                        <button id="roll-dice-btn" onclick="rollDice()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl text-xs md:text-sm shadow-md transition cursor-pointer active:scale-95">🎲 Roll Dice</button>
+                        <div class="text-xs text-emerald-900 font-bold">Dice Result: <span id="dice-value" class="text-2xl font-black text-emerald-700 ml-1">-</span></div>
+                    </div>
+                    <div class="text-xs font-black text-slate-600">
+                        Position: <span id="board-position-text" class="text-emerald-700 font-extrabold text-sm">Start (Tile 0)</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 sm:grid-cols-5 gap-2 max-w-3xl mx-auto bg-slate-100 p-3 rounded-2xl border border-slate-200">
+                    <div id="cell-0" class="board-cell bg-emerald-500 text-white p-2 rounded-xl border-2 border-emerald-600 text-center font-black relative min-h-[65px] flex flex-col items-center justify-center">
+                        <span class="text-[9px] uppercase tracking-wider block">START</span>
+                        <span class="text-base">🏁</span>
+                        <div id="player-token" class="absolute -top-2 -right-2 bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full shadow border border-amber-600 animate-bounce">YOU 🏃</div>
+                    </div>
+                    <div id="board-cells" class="contents"></div>
+                    <div id="cell-16" class="board-cell bg-amber-400 text-slate-900 p-2 rounded-xl border-2 border-amber-500 text-center font-black relative min-h-[65px] flex flex-col items-center justify-center col-span-2 sm:col-span-1">
+                        <span class="text-[9px] uppercase tracking-wider block">FINISH</span>
+                        <span class="text-base">🏆</span>
+                    </div>
+                </div>
+
+                <div id="board-challenge-box" class="hidden max-w-xl mx-auto bg-slate-50 p-5 rounded-2xl border-2 border-emerald-300 space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="text-xs font-black text-emerald-800 uppercase" id="challenge-tile-title">Tile Challenge</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full font-bold" id="challenge-grammar-tag">Grammar</span>
+                    </div>
+
+                    <p id="challenge-question-text" class="text-sm md:text-base font-black text-slate-800 leading-snug"></p>
+
+                    <div id="challenge-options-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    </div>
+
+                    <div id="board-feedback" class="p-3 rounded-xl text-center font-black hidden text-xs sm:text-sm"></div>
+                </div>
+            </div>
+
+            <div id="board-success-box" class="max-w-md mx-auto bg-emerald-50 border-4 border-emerald-300 p-6 rounded-3xl text-center space-y-4 hidden shadow-sm">
+                <span class="text-5xl block animate-bounce">🎉🏆🎬</span>
+                <h4 class="text-2xl font-heading font-black text-emerald-900">Quest Completed!</h4>
+                <p class="text-sm text-slate-700 font-medium">You reached the FINISH tile and mastered the grammar challenges!<br><span class="text-xs text-slate-500">(Bạn đã về đích và hoàn thành các thử thách ngữ pháp!)</span></p>
+                <button onclick="unlockAndGoToCompletion()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm tracking-wide">View Completion Summary ➔</button>
+            </div>
+        </section>
+
+        <!-- TAB 5: COMPLETION / SUMMARY -->
+        <section id="tab-completion" class="tab-content hidden space-y-6">
+            <div class="max-w-2xl mx-auto bg-white border-4 border-emerald-300 p-8 rounded-3xl space-y-6 shadow-xl text-center">
+                <div class="space-y-2">
+                    <span class="text-6xl block animate-bounce">🎓🎉🥳</span>
+                    <h3 class="text-3xl font-heading font-black text-emerald-950">Chúc Mừng Bạn Đã Hoàn Thành Bài 13!</h3>
+                    <p class="text-sm text-slate-600 font-bold">Congratulations! You have completed <span class="text-emerald-600 font-black">English 1_Lesson 13_Unit 11</span>. Bạn đã hoàn thành tất cả nội dung luyện tập của bài học này.</p>
+                </div>
+
+                <div class="bg-emerald-50/60 p-5 rounded-2xl border border-emerald-200 space-y-3 text-left">
+                    <h4 class="text-base font-black text-emerald-900 border-b border-emerald-200 pb-2">💡 Tóm tắt nội dung bài học / Lesson summary:</h4>
+                    <ul class="space-y-2.5 text-xs md:text-sm text-slate-700 font-bold">
+                        <li class="flex items-start gap-2"><span class="text-emerald-600 font-black">1.</span> <span><b>Recreational activities (Hoạt động giải trí):</b> get takeout food, go to a concert, go to a soccer game, go to a restaurant, listen to music, watch TV, spend time with family / friends, go to the park / a museum...</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-600 font-black">2.</span> <span><b>Entertainment (Giải trí):</b> <i>music</i> (classical, jazz, pop, rock, band...), <i>sports</i> (tennis, soccer, baseball, basketball, stadium...), <i>movies</i> (horror, action, sci-fi, comedy, actor...).</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-600 font-black">3.</span> <span><b>like / love / hate / enjoy + V-ing:</b> Ví dụ: <i>I love listening to music. She enjoys going to the park.</i></span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-600 font-black">4.</span> <span><b>Object pronouns (Đại từ tân ngữ):</b> <i>me, you, him, her, it, us, them</i>. Ví dụ: <i>I love him. Play with us.</i></span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-600 font-black">5.</span> <span><b>so (nên, vì vậy):</b> nối kết quả. Ví dụ: <i>I love music, so I go to a concert every month.</i></span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200 space-y-2 text-left">
+                    <h4 class="text-base font-black text-amber-800 border-b border-amber-200 pb-2">🗣️ Speaking &amp; ✍️ Writing – Hãy thực hành tiếp:</h4>
+                    <ul class="space-y-2 text-xs md:text-sm text-slate-700 font-bold list-disc pl-5">
+                        <li><b>Speaking:</b> Talk about your free time activities and things you like doing. / Nói về các hoạt động lúc rảnh rỗi và những điều bạn thích làm.</li>
+                        <li><b>Writing:</b> Write about your favorite sports, music and movies using “so”. / Viết về môn thể thao, thể loại nhạc và phim yêu thích, dùng “so”.</li>
+                    </ul>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="location.reload()" class="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl shadow-md transition cursor-pointer text-sm">🔄 Restart Lesson / Ôn lại từ đầu</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // VOCABULARY DATA LESSON 13 (34 ITEMS)
+        const vocabularyData = [
+            { word: "get takeout food", ipa: "/ɡet ˈteɪkaʊt fuːd/", vi: "mua đồ ăn mang đi", ex: "I sometimes get takeout food on Friday.", icon: "🥡" },
+            { word: "go to a concert", ipa: "/ɡəʊ tə ə ˈkɒnsət/", vi: "đi xem hòa nhạc", ex: "We love going to a concert.", icon: "🎤" },
+            { word: "go to a soccer game", ipa: "/ɡəʊ tə ə ˈsɒkə ɡeɪm/", vi: "đi xem trận bóng đá", ex: "My dad goes to a soccer game on Sunday.", icon: "⚽" },
+            { word: "go to a restaurant", ipa: "/ɡəʊ tə ə ˈrestrɒnt/", vi: "đi nhà hàng", ex: "We go to a restaurant on Saturday.", icon: "🍽️" },
+            { word: "listen to music", ipa: "/ˈlɪsn tə ˈmjuːzɪk/", vi: "nghe nhạc", ex: "I love listening to music.", icon: "🎧" },
+            { word: "watch soccer on TV", ipa: "/wɒtʃ ˈsɒkə ɒn ˌtiː ˈviː/", vi: "xem bóng đá trên TV", ex: "He enjoys watching soccer on TV.", icon: "📺" },
+            { word: "spend time with family", ipa: "/spend taɪm wɪð ˈfæməli/", vi: "dành thời gian cho gia đình", ex: "I like spending time with my family.", icon: "👨‍👩‍👧" },
+            { word: "go to the park", ipa: "/ɡəʊ tə ðə pɑːk/", vi: "đi công viên", ex: "She enjoys going to the park.", icon: "🌳" },
+            { word: "watch TV", ipa: "/wɒtʃ ˌtiː ˈviː/", vi: "xem TV", ex: "My brother hates watching TV.", icon: "🛋️" },
+            { word: "watch a video online", ipa: "/wɒtʃ ə ˈvɪdiəʊ ˌɒnˈlaɪn/", vi: "xem video trực tuyến", ex: "I watch a video online every night.", icon: "💻" },
+            { word: "spend time with friends", ipa: "/spend taɪm wɪð frendz/", vi: "dành thời gian cho bạn bè", ex: "I love spending time with friends.", icon: "🧑‍🤝‍🧑" },
+            { word: "go to a museum", ipa: "/ɡəʊ tə ə mjuˈziːəm/", vi: "đi bảo tàng", ex: "We enjoy going to a museum.", icon: "🏛️" },
+            { word: "classical", ipa: "/ˈklæsɪkl/", vi: "nhạc cổ điển", ex: "My grandmother likes classical music.", icon: "🎻" },
+            { word: "jazz", ipa: "/dʒæz/", vi: "nhạc jazz", ex: "I love jazz.", icon: "🎷" },
+            { word: "pop", ipa: "/pɒp/", vi: "nhạc pop", ex: "She likes pop music.", icon: "🎶" },
+            { word: "rock", ipa: "/rɒk/", vi: "nhạc rock", ex: "He hates rock music.", icon: "🎸" },
+            { word: "pop star", ipa: "/ˈpɒp stɑː(r)/", vi: "ngôi sao nhạc pop", ex: "She wants to be a pop star.", icon: "🌟" },
+            { word: "concert", ipa: "/ˈkɒnsət/", vi: "buổi hòa nhạc", ex: "The concert is on Saturday.", icon: "🎫" },
+            { word: "band", ipa: "/bænd/", vi: "ban nhạc", ex: "I like this band.", icon: "🥁" },
+            { word: "tennis", ipa: "/ˈtenɪs/", vi: "quần vợt", ex: "I play tennis on Sunday.", icon: "🎾" },
+            { word: "soccer", ipa: "/ˈsɒkə(r)/", vi: "bóng đá", ex: "Soccer is my favorite sport.", icon: "⚽" },
+            { word: "baseball", ipa: "/ˈbeɪsbɔːl/", vi: "bóng chày", ex: "Do you like baseball?", icon: "⚾" },
+            { word: "basketball", ipa: "/ˈbɑːskɪtbɔːl/", vi: "bóng rổ", ex: "He loves playing basketball.", icon: "🏀" },
+            { word: "stadium", ipa: "/ˈsteɪdiəm/", vi: "sân vận động", ex: "The stadium is very big.", icon: "🏟️" },
+            { word: "player", ipa: "/ˈpleɪə(r)/", vi: "cầu thủ, người chơi", ex: "He is a good soccer player.", icon: "🏃" },
+            { word: "game", ipa: "/ɡeɪm/", vi: "trận đấu", ex: "The game starts at 7 p.m.", icon: "🎮" },
+            { word: "horror", ipa: "/ˈhɒrə(r)/", vi: "phim kinh dị", ex: "I hate horror movies.", icon: "👻" },
+            { word: "action", ipa: "/ˈækʃn/", vi: "phim hành động", ex: "My brother loves action movies.", icon: "💥" },
+            { word: "sci-fi", ipa: "/ˌsaɪ ˈfaɪ/", vi: "phim khoa học viễn tưởng", ex: "I enjoy watching sci-fi movies.", icon: "🚀" },
+            { word: "comedy", ipa: "/ˈkɒmədi/", vi: "phim hài", ex: "She likes comedy because it is funny.", icon: "😂" },
+            { word: "movie theater", ipa: "/ˈmuːvi ˈθɪətə(r)/", vi: "rạp chiếu phim", ex: "We go to the movie theater on Friday.", icon: "🍿" },
+            { word: "movie star", ipa: "/ˈmuːvi stɑː(r)/", vi: "ngôi sao điện ảnh", ex: "I love this movie star.", icon: "⭐" },
+            { word: "premiere", ipa: "/ˈpremɪeə(r)/", vi: "buổi công chiếu", ex: "The premiere of the movie is tonight.", icon: "🎞️" },
+            { word: "actor", ipa: "/ˈæktə(r)/", vi: "diễn viên", ex: "He is a famous actor.", icon: "🎭" }
+        ];
+
+        // HANGMAN ITEMS (15 WORDS, EMOJI + VIETNAMESE CLUE)
+        const hangmanItems = [
+            { word: "CLASSICAL", vi: "Nhạc cổ điển", icon: "🎻" },
+            { word: "JAZZ", vi: "Nhạc jazz", icon: "🎷" },
+            { word: "CONCERT", vi: "Buổi hòa nhạc", icon: "🎫" },
+            { word: "BAND", vi: "Ban nhạc", icon: "🥁" },
+            { word: "TENNIS", vi: "Quần vợt", icon: "🎾" },
+            { word: "SOCCER", vi: "Bóng đá", icon: "⚽" },
+            { word: "BASEBALL", vi: "Bóng chày", icon: "⚾" },
+            { word: "BASKETBALL", vi: "Bóng rổ", icon: "🏀" },
+            { word: "STADIUM", vi: "Sân vận động (nơi diễn ra các trận đấu lớn)", icon: "🏟️" },
+            { word: "PLAYER", vi: "Cầu thủ, người chơi", icon: "🏃" },
+            { word: "HORROR", vi: "Phim kinh dị", icon: "👻" },
+            { word: "ACTION", vi: "Phim hành động", icon: "💥" },
+            { word: "COMEDY", vi: "Phim hài", icon: "😂" },
+            { word: "PREMIERE", vi: "Buổi công chiếu phim", icon: "🎞️" },
+            { word: "ACTOR", vi: "Diễn viên", icon: "🎭" }
+        ];
+
+        // BOARD CELLS (TILES 1-15)
+        const boardCells = [
+            ["🎵", "Music"], ["🎬", "Movie"], ["⚽", "Soccer"], ["🎤", "Concert"], ["🍿", "Cinema"],
+            ["🏟️", "Stadium"], ["🎸", "Rock"], ["🎷", "Jazz"], ["🏀", "Basketball"], ["🌳", "Park"],
+            ["🥡", "Takeout"], ["🏛️", "Museum"], ["📺", "TV"], ["👨‍👩‍👧", "Family"], ["🎞️", "Premiere"]
+        ];
+
+        // 15 BOARD GAME CHALLENGES
+        const boardChallenges = {
+            1: { title: "Tile 1 Challenge (like + V-ing)", grammar: "like / love / hate / enjoy + V-ing", q: "I like ______ to music in my free time.", options: ["listening", "listen", "listened", "listens"], answer: "listening" },
+            2: { title: "Tile 2 Challenge (love + V-ing)", grammar: "like / love / hate / enjoy + V-ing", q: "She loves ______ soccer on TV.", options: ["watching", "watch", "watched", "watches"], answer: "watching" },
+            3: { title: "Tile 3 Challenge (hate + V-ing)", grammar: "like / love / hate / enjoy + V-ing", q: "They hate ______ homework on Saturday.", options: ["doing", "do", "did", "does"], answer: "doing" },
+            4: { title: "Tile 4 Challenge (enjoy + V-ing)", grammar: "like / love / hate / enjoy + V-ing", q: "We enjoy ______ time with our family.", options: ["spending", "spend", "spent", "spends"], answer: "spending" },
+            5: { title: "Tile 5 Challenge (enjoy + V-ing)", grammar: "like / love / hate / enjoy + V-ing", q: "Do you enjoy ______ to concerts?", options: ["going", "go", "went", "goes"], answer: "going" },
+            6: { title: "Tile 6 Challenge (Object pronouns)", grammar: "Object pronouns", q: "Anna is my friend. I often play tennis with ______.", options: ["her", "she", "he", "they"], answer: "her" },
+            7: { title: "Tile 7 Challenge (Object pronouns)", grammar: "Object pronouns", q: "My brothers love basketball. I play with ______ after school.", options: ["them", "they", "their", "it"], answer: "them" },
+            8: { title: "Tile 8 Challenge (Object pronouns)", grammar: "Object pronouns", q: "This movie is great. I love ______!", options: ["it", "them", "him", "us"], answer: "it" },
+            9: { title: "Tile 9 Challenge (Object pronouns)", grammar: "Object pronouns", q: "Tom is a famous actor. We love ______.", options: ["him", "he", "his", "her"], answer: "him" },
+            10: { title: "Tile 10 Challenge (Object pronouns)", grammar: "Object pronouns", q: "Please help ______. I can't find the stadium.", options: ["me", "I", "my", "mine"], answer: "me" },
+            11: { title: "Tile 11 Challenge (Object pronouns)", grammar: "Object pronouns", q: "My friends and I like jazz. Our teacher plays jazz music for ______.", options: ["us", "we", "our", "them"], answer: "us" },
+            12: { title: "Tile 12 Challenge (Object pronouns)", grammar: "Object pronouns", q: "Hi Anna, I want to go to the park with ______. Are you free?", options: ["you", "your", "I", "he"], answer: "you" },
+            13: { title: "Tile 13 Challenge (so)", grammar: "so", q: "I love music, ______ I go to a concert every month.", options: ["so", "because", "but", "or"], answer: "so" },
+            14: { title: "Tile 14 Challenge (so)", grammar: "so", q: "The stadium was full, ______ we could not get tickets.", options: ["so", "because", "but", "or"], answer: "so" },
+            15: { title: "Tile 15 Challenge (so)", grammar: "so", q: "She hates horror movies, ______ she watches comedies.", options: ["so", "because", "but", "or"], answer: "so" }
+        };
+
+        // STATE MANAGEMENT
+        let currentTab = 'reference';
+        let flashcardQueue = [];
+        let currentCard = null;
+        let isFlipped = false;
+        let initialQueueLength = 0;
+
+        // HANGMAN STATE
+        let hangmanIndex = 0;
+        let hangmanWrongCount = 0;
+        let hangmanGuessedLetters = [];
+        const maxHangmanWrong = 6;
+
+        // BOARD GAME STATE
+        let playerPos = 0;
+        let isRolling = false;
+
+        function speakText(text, e) {
+            if (e) e.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-emerald-600', 'shadow-sm');
+                btn.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-500');
+                activeBtn.classList.add('bg-white', 'text-emerald-600', 'shadow-sm');
+            }
+            currentTab = tabId;
+
+            if (tabId === 'hangman-game' && hangmanIndex === 0) {
+                initHangmanGame();
+            } else if (tabId === 'board-game' && playerPos === 0) {
+                initBoardGame();
+            }
+        }
+
+        // 1. VOCABULARY TABLE
+        function renderWordBank() {
+            const tbody = document.getElementById('reference-table-body');
+            tbody.innerHTML = vocabularyData.map(item => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3.5 font-bold text-emerald-950 flex items-center gap-2"><span>${item.icon || '📌'}</span> ${item.word}</td>
+                    <td class="p-3.5 text-slate-600">${item.vi}</td>
+                    <td class="p-3.5 text-emerald-600 font-mono">${item.ipa}</td>
+                    <td class="p-3.5 text-slate-600 font-normal">${item.ex}</td>
+                </tr>
+            `).join('');
+        }
+
+        // 2. FLASHCARDS LOGIC
+        function initFlashcards() {
+            flashcardQueue = vocabularyData.map(item => ({
+                ...item,
+                frontType: Math.random() < 0.5 ? 'vi' : 'en'
+            }));
+            initialQueueLength = flashcardQueue.length;
+            updateQueueUI();
+            nextCard();
+        }
+
+        function updateQueueUI() {
+            document.getElementById('queue-text').innerText = `${flashcardQueue.length} cards`;
+            const percent = ((initialQueueLength - flashcardQueue.length) / initialQueueLength) * 100;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+        }
+
+        function nextCard() {
+            if (flashcardQueue.length === 0) {
+                document.getElementById('flashcard-container').classList.add('hidden');
+                document.getElementById('flashcard-success-box').classList.remove('hidden');
+                return;
+            }
+            currentCard = flashcardQueue[0];
+            isFlipped = false;
+            
+            const cardInner = document.getElementById('flashcard-inner');
+            cardInner.classList.remove('card-flipped');
+
+            setTimeout(() => {
+                const fExtra = document.getElementById('f-extra-content');
+                const bExtra = document.getElementById('b-extra-content');
+
+                if (currentCard.frontType === 'vi') {
+                    document.getElementById('f-prompt').innerText = `${currentCard.icon || ''} ${currentCard.vi}`;
+                    fExtra.classList.add('hidden');
+
+                    document.getElementById('b-answer').innerText = currentCard.word;
+                    document.getElementById('b-ipa').innerText = currentCard.ipa;
+                    document.getElementById('b-example').innerText = `"${currentCard.ex}"`;
+                    bExtra.classList.remove('hidden');
+                } else {
+                    document.getElementById('f-prompt').innerText = `${currentCard.icon || ''} ${currentCard.word}`;
+                    document.getElementById('f-ipa').innerText = currentCard.ipa;
+                    document.getElementById('f-example').innerText = `"${currentCard.ex}"`;
+                    fExtra.classList.remove('hidden');
+
+                    document.getElementById('b-answer').innerText = currentCard.vi;
+                    bExtra.classList.add('hidden');
+                }
+            }, 150);
+        }
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            const cardInner = document.getElementById('flashcard-inner');
+            if (isFlipped) {
+                cardInner.classList.add('card-flipped');
+            } else {
+                cardInner.classList.remove('card-flipped');
+            }
+        }
+
+        function handleAnkiAction(action) {
+            if (!currentCard) return;
+            const card = flashcardQueue.shift();
+            if (action === 'again') {
+                flashcardQueue.push(card);
+            } else if (action === 'hard') {
+                flashcardQueue.splice(Math.min(3, flashcardQueue.length), 0, card);
+            }
+            updateQueueUI();
+            nextCard();
+        }
+
+        function resetProgress() {
+            document.getElementById('flashcard-container').classList.remove('hidden');
+            document.getElementById('flashcard-success-box').classList.add('hidden');
+            initFlashcards();
+        }
+
+        function unlockAndGoToHangman() {
+            const btn = document.getElementById('btn-hangman-game');
+            btn.classList.remove('disabled-tab');
+            switchTab('hangman-game');
+        }
+
+        // 3. HANGMAN GAME LOGIC
+        function initHangmanGame() {
+            hangmanIndex = 0;
+            loadHangmanWord();
+        }
+
+        function loadHangmanWord() {
+            if (hangmanIndex >= hangmanItems.length) {
+                document.getElementById('hangman-word-slots').classList.add('hidden');
+                document.getElementById('hangman-keyboard').classList.add('hidden');
+                document.getElementById('hangman-success-box').classList.remove('hidden');
+                return;
+            }
+
+            const item = hangmanItems[hangmanIndex];
+            hangmanWrongCount = 0;
+            hangmanGuessedLetters = [];
+
+            document.getElementById('hangman-current-index').innerText = hangmanIndex + 1;
+            document.getElementById('hangman-total-items').innerText = hangmanItems.length;
+            
+            document.getElementById('hangman-clue-vi').innerText = item.vi;
+            document.getElementById('hangman-icon').innerText = item.icon;
+            document.getElementById('hangman-wrong-count').innerText = hangmanWrongCount;
+
+            document.getElementById('hangman-feedback').classList.add('hidden');
+
+            resetHangmanDrawing();
+            renderWordSlots();
+            renderOnscreenKeyboard();
+        }
+
+        function resetHangmanDrawing() {
+            const parts = ['hang-head', 'hang-body', 'hang-arm-l', 'hang-arm-r', 'hang-leg-l', 'hang-leg-r'];
+            parts.forEach(part => {
+                document.getElementById(part).classList.add('hidden');
+            });
+        }
+
+        function updateHangmanDrawing() {
+            const parts = ['hang-head', 'hang-body', 'hang-arm-l', 'hang-arm-r', 'hang-leg-l', 'hang-leg-r'];
+            for (let i = 0; i < hangmanWrongCount; i++) {
+                if (parts[i]) document.getElementById(parts[i]).classList.remove('hidden');
+            }
+        }
+
+        function renderWordSlots() {
+            const item = hangmanItems[hangmanIndex];
+            const targetWord = item.word;
+            const container = document.getElementById('hangman-word-slots');
+
+            container.innerHTML = targetWord.split('').map(char => {
+                const isGuessed = hangmanGuessedLetters.includes(char);
+                return `
+                    <div class="w-10 h-12 border-b-4 border-amber-500 font-extrabold text-2xl flex items-center justify-center text-emerald-950 font-heading bg-amber-50 rounded-t-md shadow-sm">
+                        ${isGuessed ? char : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderOnscreenKeyboard() {
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+            const container = document.getElementById('hangman-keyboard');
+
+            container.innerHTML = letters.map(letter => {
+                const isUsed = hangmanGuessedLetters.includes(letter);
+                return `
+                    <button onclick="guessLetter('${letter}')" ${isUsed ? 'disabled' : ''} class="p-2.5 bg-white border-2 border-slate-200 hover:border-emerald-400 hover:bg-emerald-50 rounded-xl text-slate-800 font-extrabold text-xs transition cursor-pointer shadow-sm disabled:opacity-30 disabled:cursor-not-allowed">
+                        ${letter}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function guessLetter(letter) {
+            if (hangmanGuessedLetters.includes(letter)) return;
+            hangmanGuessedLetters.push(letter);
+
+            const item = hangmanItems[hangmanIndex];
+            const targetWord = item.word;
+            const feedback = document.getElementById('hangman-feedback');
+
+            if (targetWord.includes(letter)) {
+                renderWordSlots();
+                renderOnscreenKeyboard();
+
+                const isComplete = targetWord.split('').every(ch => hangmanGuessedLetters.includes(ch));
+                if (isComplete) {
+                    feedback.classList.remove('hidden');
+                    feedback.className = "p-3.5 rounded-2xl text-center font-black bg-emerald-100 text-emerald-800 max-w-xl mx-auto text-sm";
+                    feedback.innerHTML = `🎉 Correct! Word: <b>${targetWord}</b>`;
+                    speakText(targetWord);
+
+                    setTimeout(() => {
+                        hangmanIndex++;
+                        loadHangmanWord();
+                    }, 1400);
+                }
+            } else {
+                hangmanWrongCount++;
+                document.getElementById('hangman-wrong-count').innerText = hangmanWrongCount;
+                updateHangmanDrawing();
+                renderOnscreenKeyboard();
+
+                if (hangmanWrongCount >= maxHangmanWrong) {
+                    feedback.classList.remove('hidden');
+                    feedback.className = "p-3.5 rounded-2xl text-center font-black bg-rose-100 text-rose-800 max-w-xl mx-auto text-sm";
+                    feedback.innerHTML = `❌ Game Over for this word! The correct word was: <b>${targetWord}</b>. Try again... / Thử lại nhé!`;
+
+                    setTimeout(() => {
+                        loadHangmanWord();
+                    }, 2000);
+                }
+            }
+        }
+
+        function unlockAndGoToBoardGame() {
+            const btn = document.getElementById('btn-board-game');
+            btn.classList.remove('disabled-tab');
+            switchTab('board-game');
+        }
+
+        // 4. BOARD GAME LOGIC
+        function renderBoardCells() {
+            const container = document.getElementById('board-cells');
+            if (container.children.length > 0) return;
+            container.innerHTML = boardCells.map((c, i) => `
+                <div id="cell-${i + 1}" class="board-cell bg-white p-2 rounded-xl border-2 border-slate-200 text-center font-bold text-xs relative min-h-[65px] flex flex-col justify-between">
+                    <span class="text-[9px] text-slate-400 font-black block text-left">#${i + 1}</span>
+                    <span class="text-base">${c[0]}</span>
+                    <span class="text-[9px] text-slate-600 font-bold">${c[1]}</span>
+                </div>
+            `).join('');
+        }
+
+        function initBoardGame() {
+            renderBoardCells();
+            playerPos = 0;
+            movePlayerToken(0);
+            document.getElementById('board-challenge-box').classList.add('hidden');
+        }
+
+        function rollDice() {
+            if (isRolling) return;
+            isRolling = true;
+
+            const btn = document.getElementById('roll-dice-btn');
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+
+            let rollAnimationCounter = 0;
+            const diceDisplay = document.getElementById('dice-value');
+
+            const rollInterval = setInterval(() => {
+                const tempRoll = Math.floor(Math.random() * 6) + 1;
+                diceDisplay.innerText = tempRoll;
+                rollAnimationCounter++;
+
+                if (rollAnimationCounter > 10) {
+                    clearInterval(rollInterval);
+                    const finalRoll = Math.floor(Math.random() * 6) + 1;
+                    diceDisplay.innerText = finalRoll;
+
+                    let nextPos = playerPos + finalRoll;
+                    if (nextPos >= 16) nextPos = 16;
+
+                    movePlayerToken(nextPos);
+                    
+                    setTimeout(() => {
+                        if (nextPos === 16) {
+                            document.getElementById('board-challenge-box').classList.add('hidden');
+                            document.getElementById('board-success-box').classList.remove('hidden');
+                        } else {
+                            openTileChallenge(nextPos);
+                        }
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50');
+                        isRolling = false;
+                    }, 600);
+                }
+            }, 80);
+        }
+
+        function movePlayerToken(tileIndex) {
+            playerPos = tileIndex;
+            document.getElementById('board-position-text').innerText = tileIndex === 0 ? "Start (Tile 0)" : (tileIndex === 16 ? "FINISH 🏆" : `Tile #${tileIndex}`);
+
+            const token = document.getElementById('player-token');
+            const targetCell = document.getElementById(`cell-${tileIndex}`);
+
+            document.querySelectorAll('.board-cell').forEach(c => c.classList.remove('active-cell'));
+            if (targetCell) {
+                targetCell.classList.add('active-cell');
+                targetCell.appendChild(token);
+            }
+        }
+
+        function openTileChallenge(tileIndex) {
+            const challenge = boardChallenges[tileIndex];
+            if (!challenge) return;
+
+            const box = document.getElementById('board-challenge-box');
+            box.classList.remove('hidden');
+
+            document.getElementById('challenge-tile-title').innerText = challenge.title;
+            document.getElementById('challenge-grammar-tag').innerText = challenge.grammar;
+            document.getElementById('challenge-question-text').innerText = challenge.q;
+
+            const feedback = document.getElementById('board-feedback');
+            feedback.classList.add('hidden');
+
+            let shuffledOpts = [...challenge.options].sort(() => Math.random() - 0.5);
+
+            const grid = document.getElementById('challenge-options-grid');
+            grid.innerHTML = shuffledOpts.map(opt => `
+                <button onclick="checkBoardAnswer('${opt.replace(/'/g, "\\'")}')" class="p-3 bg-white border-2 border-emerald-200 hover:bg-emerald-50 rounded-xl text-emerald-950 font-black text-xs md:text-sm transition cursor-pointer shadow-sm">
+                    ${opt}
+                </button>
+            `).join('');
+
+            box.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function checkBoardAnswer(selectedOpt) {
+            const challenge = boardChallenges[playerPos];
+            const feedback = document.getElementById('board-feedback');
+            feedback.classList.remove('hidden');
+
+            if (selectedOpt === challenge.answer) {
+                feedback.className = "p-3 rounded-xl text-center font-black bg-emerald-100 text-emerald-800 text-xs sm:text-sm";
+                feedback.innerHTML = `✨ Correct Answer! You stay at Tile #${playerPos}. Roll again! / Chính xác! Hãy tung xúc xắc tiếp.`;
+
+                setTimeout(() => {
+                    document.getElementById('board-challenge-box').classList.add('hidden');
+                }, 1200);
+            } else {
+                feedback.className = "p-3 rounded-xl text-center font-black bg-rose-100 text-rose-800 text-xs sm:text-sm";
+                feedback.innerHTML = `❌ Wrong answer! The correct answer was: <b>${challenge.answer}</b>.<br> Returning to START... / Quay về ô XUẤT PHÁT...`;
+
+                setTimeout(() => {
+                    document.getElementById('board-challenge-box').classList.add('hidden');
+                    movePlayerToken(0);
+                }, 1800);
+            }
+        }
+
+        function unlockAndGoToCompletion() {
+            const btn = document.getElementById('btn-completion');
+            btn.classList.remove('disabled-tab');
+            switchTab('completion');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderWordBank();
+            initFlashcards();
+            renderBoardCells();
+        });
+    </script>
+</body>
+</html>
